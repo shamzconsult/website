@@ -4,14 +4,27 @@ import React, { useEffect, useRef, useState } from "react";
 
 const Carousel = () => {
   const data = [
-    { image: "https://picsum.photos/seed/random101/500/500" },
-    { image: "https://picsum.photos/seed/random102/500/500" },
-    { image: "https://picsum.photos/seed/random103/500/500" },
+    {
+      image:
+        "https://cdn.hashnode.com/res/hashnode/image/upload/v1711867102709/c255d758-8bdf-47d2-ba00-0295f22165b1.jpeg",
+    },
+    {
+      image:
+        "https://cdn.hashnode.com/res/hashnode/image/upload/v1711867128461/14b36377-8dbf-40af-b3ff-ba1579b9e93d.jpeg",
+    },
+    {
+      image:
+        "https://cdn.hashnode.com/res/hashnode/image/upload/v1711867174771/e984c846-9579-48ea-ad27-95a376638edf.jpeg",
+    },
+    {
+      image:
+        "https://cdn.hashnode.com/res/hashnode/image/upload/v1711867200134/fbbba936-ff16-47c7-8d83-bb5d73667af4.jpeg",
+    },
   ];
 
   // State and Ref initialization
   const [currentImg, setCurrentImg] = useState(0);
-  const [carouselSize, setCarouselSize] = useState({ width: 2, height: 0 });
+  const [carouselSize, setCarouselSize] = useState({ width: 0, height: 0 });
   const carouselRef = useRef(null);
 
   // useEffect to get the initial carousel size
@@ -29,7 +42,7 @@ const Carousel = () => {
   return (
     <div className="flex flex-col justify-center items-center mt-6">
       {/* Carousel container */}
-      <div className="w-80 h-60 rounded-md overflow-hidden relative">
+      <div className="w-[100%] h-[32rem] rounded-md overflow-hidden relative">
         {/* Image container */}
         <div
           ref={carouselRef}
@@ -40,12 +53,15 @@ const Carousel = () => {
         >
           {/* Map through data to render images */}
           {data.map((v, i) => (
-            <div key={i} className="relative shrink-0 w-full h-full">
+            <div key={i} className="relative shrink-0 w-full h-full ">
               <Image
-                className="pointer-events-none "
+                className="pointer-events-none object-cover "
                 alt={`carousel-image-${i}`}
                 fill
-                src={v.image || "https://random.imagecdn.app/500/500"}
+                src={
+                  v.image ||
+                  "https://cdn.hashnode.com/res/hashnode/image/upload/v1711867200134/fbbba936-ff16-47c7-8d83-bb5d73667af4.jpeg"
+                }
               />
             </div>
           ))}
