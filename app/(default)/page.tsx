@@ -8,11 +8,13 @@ import Testimonials from "@/components/testimonials";
 import Newsletter from "@/components/newsletter";
 import Mission from "@/components/mission-vision";
 import Services from "@/components/our-service";
+import Slider from "@/components/carousel/Slider";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Slider />
       <Mission />
       <Services />
       <Testimonials />
