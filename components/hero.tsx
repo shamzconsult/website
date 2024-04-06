@@ -1,6 +1,5 @@
 "use client";
 import DialogDemo from "./contact";
-import Carousel from "./hero-carousel";
 
 export default function Hero() {
   return (
@@ -66,7 +65,6 @@ export default function Hero() {
               </div>
             </div>
           </div>
-          <Carousel />
         </div>
       </div>
     </section>
