@@ -1,4 +1,4 @@
-export default function FeaturesBlocks() {
+export default function Services() {
   return (
     <section className="relative mt-6">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
@@ -14,9 +14,8 @@ export default function FeaturesBlocks() {
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h2 className="h2 mb-4">Our Services</h2>
             <p className="text-xl text-gray-600">
-              Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur excepteur sint occaecat
-              cupidatat.
+              Explore our diverse offerings and experience unparalleled
+              excellence from tailored solutions to personalized consultations.
             </p>
           </div>
 
@@ -63,7 +62,7 @@ export default function FeaturesBlocks() {
                 Project Management
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Partner with us for seamless project execution.
               </p>
             </div>
 
@@ -104,7 +103,7 @@ export default function FeaturesBlocks() {
                 Capacity Building
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Nurture talent and skills with our capacity building services
               </p>
             </div>
 
@@ -148,7 +147,7 @@ export default function FeaturesBlocks() {
                 Consultancy Services
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Elevate your strategy with our consultancy services
               </p>
             </div>
 
@@ -191,7 +190,7 @@ export default function FeaturesBlocks() {
                 Event Host/Management
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Let us handle the details while you enjoy the moment.
               </p>
             </div>
 
@@ -229,7 +228,7 @@ export default function FeaturesBlocks() {
                 Community Development
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Championing development where it matters most
               </p>
             </div>
 
@@ -263,7 +262,7 @@ export default function FeaturesBlocks() {
                 Develop & Launch
               </h4>
               <p className="text-gray-600 text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Empower your vision with our development and launch services
               </p>
             </div>
           </div>
