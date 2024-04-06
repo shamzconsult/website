@@ -1,9 +1,10 @@
+"use client";
+import DialogDemo from "./contact";
 import Carousel from "./hero-carousel";
 
 export default function Hero() {
   return (
     <section className="relative">
-      {/* Illustration behind hero content */}
       <div
         className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none -z-1"
         aria-hidden="true"
@@ -61,26 +62,10 @@ export default function Hero() {
                 data-aos="zoom-y-out"
                 data-aos-delay="300"
               >
-                <div>
-                  <a
-                    className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
-                    href="#0"
-                  >
-                    Contact us
-                  </a>
-                </div>
-                <div>
-                  <a
-                    className="btn text-white bg-gray-900 hover:bg-gray-800 w-full sm:w-auto sm:ml-4"
-                    href="#0"
-                  >
-                    Learn more
-                  </a>
-                </div>
+                <DialogDemo />
               </div>
             </div>
           </div>
-
           <Carousel />
         </div>
       </div>

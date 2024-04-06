@@ -1,5 +1,6 @@
 import Image from "next/image";
 import TestimonialImage from "@/public/images/Samuel.jpg";
+import Link from "next/link";
 
 export default function Testimonials() {
   // const TestimonialImg =
@@ -47,53 +48,79 @@ export default function Testimonials() {
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
             <h2 className="h2 mb-4">Organizations who trust us</h2>
             <p className="text-xl text-gray-600" data-aos="zoom-y-out">
-              Arcu cursus vitae congue mauris rhoncus viverra nibh cras pulvinar
-              mattis blandit libero cursus mattis.
+              Discover the Diverse Range of Organizations Who Trust Us for
+              Unmatched Excellence. From global enterprises to local businesses,
+              our commitment to delivering exceptional service has earned us the
+              trust of clients across various industries.
             </p>
           </div>
 
           {/* Items */}
-          <div className="flex flex-wrap justify-center items-center gap-6 font-bold opacity-60 text-2xl">
+          <div className="flex flex-wrap justify-center items-center gap-6 font-bold  text-2xl">
             {/* Item */}
-            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto">
+            <Link
+              href=""
+              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
+            >
               •Kwara state Government•
-            </div>
+            </Link>
 
             {/* Item */}
-            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto">
-              ◆ National Productivity Center◆
-            </div>
+            <Link
+              href=""
+              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
+            >
+              •National Productivity Center•
+            </Link>
 
             {/* Item */}
-            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto">
+            <Link
+              href=""
+              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
+            >
               •KSolutions•
-            </div>
+            </Link>
 
             {/* Item */}
-            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto">
-              ◆Kanon Royal Consult◆
-            </div>
+            <Link
+              href=""
+              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
+            >
+              •Kanon Royal Consult•
+            </Link>
 
             {/* Item */}
-            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto col-start-2 col-end-4">
+            <Link
+              href=""
+              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center"
+            >
               •Nigeria Employers Consultative Association•
-            </div>
-            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto col-start-2 col-end-4">
-              ◆ Kwara state College of Education◆
-            </div>
-            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto col-start-2 col-end-4">
+            </Link>
+            <Link
+              href=""
+              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center"
+            >
+              •Kwara state College of Education•
+            </Link>
+            <Link
+              href=""
+              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center"
+            >
               •Students Union, University of Ilorin•
-            </div>
-            <div className="flex items-center justify-center py-2 col-span-2 md:col-auto col-start-2 col-end-4">
-              ◆ Postgraduate Students' Association, University of Ilorin◆
-            </div>
+            </Link>
+            <Link
+              href=""
+              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center"
+            >
+              •Postgraduate Students' Association, University of Ilorin•
+            </Link>
           </div>
 
           {/* Testimonials */}
           <div className="max-w-3xl mx-auto mt-20" data-aos="zoom-y-out">
             <div className="relative flex items-start border-2 border-gray-200 rounded bg-white">
               {/* Testimonial */}
-              <div className="text-center px-12 py-8 pt-20 mx-4 md:mx-0">
+              <div className="text-center md:px-12 py-8 pt-20 mx-4 md:mx-0">
                 <div className="absolute top-0 -mt-8 left-1/2 transform -translate-x-1/2">
                   <svg
                     className="absolute top-0 right-0 -mt-3 -mr-8 w-16 h-16 fill-current text-blue-500"
@@ -119,7 +146,7 @@ export default function Testimonials() {
                   improvements to enhance the participant experience.“
                 </blockquote>
                 <cite className="block font-bold text-lg not-italic mb-1">
-                  Samuel Adebayo
+                  Ayodele Samuel Adebayo
                 </cite>
                 <div className="text-gray-600">
                   <span>CEO & Founder</span>{" "}
