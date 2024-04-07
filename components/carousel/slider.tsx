@@ -36,7 +36,7 @@ const Slider = () => {
             key={idx}
             className={`relative ${
               idx === activeImage
-                ? "block w-full h-[50vh] lg:w-[70%] lg:h-[80vh] object-cover transition-all duration-500 ease-in-out"
+                ? "rounded overflow-hidden block w-full h-[50vh] lg:w-[70%] lg:h-[80vh] object-cover transition-all duration-500 ease-in-out"
                 : "hidden"
             }`}
           >
