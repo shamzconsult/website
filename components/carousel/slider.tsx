@@ -27,29 +27,34 @@ const Slider = () => {
     };
   }, [activeImage]);
   return (
-    <div className="flex flex-col justify-center items-center gap-1">
-      <div className="w-full">
+    <main className="w-full flex flex-col justify-center items-center gap-1">
+      <div
+        className={`w-full flex justify-center items-center gap-4 transition-transform ease-in-out duration-500 md:rounded-2xl p-6 md:p-0`}
+      >
         {images.map((elem, idx) => (
           <div
             key={idx}
             className={`${
               idx === activeImage
-                ? "block w-[80%] h-[80vh] object-cover transition-all duration-500 ease-in-out"
+                ? "block w-[70%] h-[80vh] object-cover transition-all duration-500 ease-in-out"
                 : "hidden"
             }`}
           >
             <Image
               src={elem.src}
               alt=""
-              width={600}
+              width={400}
               height={400}
-              className="w-full h-full object-cover rounded-lg"
+              className="w-full h-full object-cover"
             />
           </div>
         ))}
       </div>
       <div className="flex gap-2">
-        <button className=" font-extrabold" onClick={clickNext}>
+        <button
+          className="opacity-60 font-extrabold hover:opacity-100 duration-150"
+          onClick={clickNext}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -65,7 +70,10 @@ const Slider = () => {
             />
           </svg>
         </button>
-        <button className="  font-extrabold" onClick={clickPrev}>
+        <button
+          className=" opacity-60 font-extrabold hover:opacity-100 duration-150"
+          onClick={clickPrev}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -82,7 +90,7 @@ const Slider = () => {
           </svg>
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 

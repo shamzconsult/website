@@ -1,6 +1,6 @@
 export default function Services() {
   return (
-    <section className="relative mt-6">
+    <section id="service" className="relative">
       {/* Section background (needs .relative class on parent and next sibling elements) */}
       <div
         className="absolute inset-0 top-1/2 md:mt-24 lg:mt-0 bg-gray-900 pointer-events-none"
