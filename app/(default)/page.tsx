@@ -4,10 +4,10 @@ export const metadata = {
 };
 
 import Hero from "@/components/hero";
-import Newsletter from "@/components/newsletter";
+// import Newsletter from "@/components/newsletter";
 import Mission from "@/components/mission-vision";
 import Services from "@/components/our-service";
-import Slider from "@/components/carousel/Slider";
+import Slider from "@/components/carousel/slider";
 import AboutUs from "@/components/about";
 import Partners from "@/components/partners";
 
@@ -20,7 +20,7 @@ export default function Home() {
       <AboutUs />
       <Services />
       <Partners />
-      <Newsletter />
+      {/* <Newsletter /> */}
     </>
   );
 }

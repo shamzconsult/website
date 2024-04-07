@@ -27,46 +27,46 @@ export default function Header() {
         !top ? "bg-white backdrop-blur-sm shadow-lg" : ""
       }`}
     >
-      <div className="max-w-6xl mx-auto px-5 sm:px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
+      <div className='max-w-6xl mx-auto px-5 sm:px-6'>
+        <div className='flex items-center justify-between h-16 md:h-20'>
           {/* Site branding */}
-          <div className="hidden md:flex shrink-0 mr-4  flex-col gap-1 ">
-            <h1 className="font-bold">Shamz Consult</h1>
-            <p className="text-slate-600 text-sm opacity-60">
+          <div className='hidden md:flex shrink-0 mr-4  flex-col gap-1 '>
+            <h1 className='text-orange-600 font-bold'>Shamz Consult</h1>
+            <p className='text-slate-600 text-sm opacity-60'>
               4th Floor, Labour House, Central Business District, Abuja
             </p>
             <a
-              className="text-slate-600 text-sm opacity-60"
-              href="tel:+2348135153620"
+              className='text-slate-600 text-sm opacity-60'
+              href='tel:+2348135153620'
             >
               +2348135153620
             </a>
           </div>
 
           {/* Desktop navigation */}
-          <nav className="hidden md:flex md:grow">
+          <nav className='hidden md:flex md:grow'>
             {/* Desktop sign in links */}
-            <ul className="flex grow justify-end flex-wrap items-center">
+            <ul className='flex grow justify-end flex-wrap items-center'>
               <li>
                 <a
-                  href="#about"
-                  className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  href='#about'
+                  className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
                 >
                   About us
                 </a>
               </li>
               <li>
                 <a
-                  href="#service"
-                  className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  href='#service'
+                  className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
                 >
                   Services
                 </a>
               </li>
               <li>
                 <a
-                  href="#testimonial"
-                  className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                  href='#testimonial'
+                  className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
                 >
                   Testimonials
                 </a>
