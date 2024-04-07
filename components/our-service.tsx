@@ -58,7 +58,7 @@ export default function Services() {
                 </g>
               </svg>
 
-              <h4 className='text-xl font-bold leading-snug text-center tracking-tight mb-1'>
+              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600'>
                 Project Management
               </h4>
               <p className='text-gray-600 text-center'>
@@ -99,7 +99,7 @@ export default function Services() {
                   </g>
                 </g>
               </svg>
-              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1'>
+              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600'>
                 Capacity Building
               </h4>
               <p className='text-gray-600 text-center'>
@@ -143,7 +143,7 @@ export default function Services() {
                   </g>
                 </g>
               </svg>
-              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1'>
+              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600'>
                 Consultancy Services
               </h4>
               <p className='text-gray-600 text-center'>
@@ -186,7 +186,7 @@ export default function Services() {
                   </g>
                 </g>
               </svg>
-              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1'>
+              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600'>
                 Event Host/Management
               </h4>
               <p className='text-gray-600 text-center'>
@@ -224,7 +224,7 @@ export default function Services() {
                   </g>
                 </g>
               </svg>
-              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1'>
+              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600'>
                 Community Development
               </h4>
               <p className='text-gray-600 text-center'>
@@ -258,7 +258,7 @@ export default function Services() {
                   </g>
                 </g>
               </svg>
-              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1'>
+              <h4 className='text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600'>
                 Develop & Launch
               </h4>
               <p className='text-gray-600 text-center'>
