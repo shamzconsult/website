@@ -4,11 +4,12 @@ export const metadata = {
 };
 
 import Hero from "@/components/hero";
-import Testimonials from "@/components/testimonials";
 import Newsletter from "@/components/newsletter";
 import Mission from "@/components/mission-vision";
 import Services from "@/components/our-service";
 import Slider from "@/components/carousel/Slider";
+import AboutUs from "@/components/about";
+import Partners from "@/components/partners";
 
 export default function Home() {
   return (
@@ -16,8 +17,9 @@ export default function Home() {
       <Hero />
       <Slider />
       <Mission />
+      <AboutUs />
       <Services />
-      <Testimonials />
+      <Partners />
       <Newsletter />
     </>
   );
