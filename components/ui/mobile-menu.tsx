@@ -73,33 +73,27 @@ export default function MobileMenu() {
           leaveTo="opacity-0"
         >
           <ul className="px-5 py-2">
-            <li>
-              <Link
-                href="/about"
-                className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
-                onClick={() => setMobileNavOpen(false)}
-              >
-                About us
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/service"
-                className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
-                onClick={() => setMobileNavOpen(false)}
-              >
-                Services
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="#testimonial"
-                className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
-                onClick={() => setMobileNavOpen(false)}
-              >
-                Testimonials
-              </Link>
-            </li>
+            <a
+              href="#about"
+              className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              About us
+            </a>
+            <a
+              href="#service"
+              className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              Services
+            </a>
+            <a
+              href="#testimonial"
+              className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              Testimony
+            </a>
           </ul>
         </Transition>
       </div>
