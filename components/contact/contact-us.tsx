@@ -9,6 +9,12 @@ export default function ContactUs() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  const resetFormDetails = () => {
+    setName("");
+    setEmail("");
+    setMessage("");
+  };
+
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -27,6 +33,7 @@ export default function ContactUs() {
       });
       if (res.ok) {
         alert("message sent successfully");
+        resetFormDetails();
       } else {
         throw new Error("contact failed to send");
       }
@@ -78,7 +85,7 @@ export default function ContactUs() {
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-                type="text"
+                type="email"
                 placeholder="Enter your email address"
                 className="text-violet11 shadow-violet7 focus:shadow-violet8 inline-flex h-[35px] w-full flex-1 items-center justify-center rounded-[4px] px-[10px] text-[15px] leading-none shadow-[0_0_0_0.3px] outline-none"
                 required

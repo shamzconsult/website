@@ -1,6 +1,6 @@
 import connectMongoDB from "./../../../libs/mongodb";
 import { NextResponse } from "next/server";
-import Contact from "./../../model/contact";
+import Contact from "../../models/contact";
 
 const POST = async (request: any) => {
   try {
@@ -17,10 +17,4 @@ const POST = async (request: any) => {
   }
 };
 
-const GET = async () => {
-  await connectMongoDB();
-  const contact = await Contact.find();
-  return NextResponse.json({ contact });
-};
-
-export { POST, GET };
+export { POST };
