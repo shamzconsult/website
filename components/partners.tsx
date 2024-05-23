@@ -1,6 +1,7 @@
 import Link from "next/link";
 import TestimonySlider from "./testimonials/testimony-slider";
 import Newsletter from "./newsletter";
+import Sponsors from "./sponsor";
 
 export default function Partners() {
   return (
@@ -58,9 +59,30 @@ export default function Partners() {
             </p>
           </div>
 
-          {/* Items */}
-          <div className="flex flex-wrap justify-center items-center gap-6 font-bold  text-2xl">
-            {/* Item */}
+      
+          <Sponsors />
+
+          {/* Testimonials */}
+          <div
+            id="testimonial"
+            className="max-w-3xl mx-auto mt-20"
+            data-aos="zoom-y-out"
+          >
+            <TestimonySlider />
+          </div>
+        </div>
+        <Newsletter />
+      </div>
+    </section>
+  );
+}
+
+
+    {
+      /* Items */
+    }
+    {
+      /* <div className="flex flex-wrap justify-center items-center gap-6 font-bold  text-2xl">
             <Link
               href=""
               className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
@@ -68,7 +90,6 @@ export default function Partners() {
               •Kwara state Government•
             </Link>
 
-            {/* Item */}
             <Link
               href=""
               className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
@@ -76,7 +97,6 @@ export default function Partners() {
               •National Productivity Center•
             </Link>
 
-            {/* Item */}
             <Link
               href=""
               className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
@@ -84,7 +104,6 @@ export default function Partners() {
               •KSolutions•
             </Link>
 
-            {/* Item */}
             <Link
               href=""
               className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
@@ -92,7 +111,6 @@ export default function Partners() {
               •Kanon Royal Consult•
             </Link>
 
-            {/* Item */}
             <Link
               href=""
               className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center"
@@ -117,19 +135,5 @@ export default function Partners() {
             >
               •Postgraduate Students' Association, University of Ilorin•
             </Link>
-          </div>
-
-          {/* Testimonials */}
-          <div
-            id="testimonial"
-            className="max-w-3xl mx-auto mt-20"
-            data-aos="zoom-y-out"
-          >
-            <TestimonySlider />
-          </div>
-        </div>
-        <Newsletter />
-      </div>
-    </section>
-  );
-}
+          </div> */
+    }

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { ServiceNumber } from "./service-numbers";
 
 export default function AboutUs() {
   const [showMore, setShowMore] = useState(false);
@@ -34,6 +35,9 @@ export default function AboutUs() {
         >
           {showMore ? "Show less" : "Show more"}
         </button>
+      </div>
+      <div className="py-12">
+        <ServiceNumber />
       </div>
     </div>
   );
