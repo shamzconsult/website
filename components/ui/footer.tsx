@@ -4,9 +4,16 @@ import {
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
 import { CiYoutube } from "react-icons/ci";
-import Logo from "./logo";
+// import Logo from "./logo";
+import { BsWhatsapp } from "react-icons/bs";
 
 export default function Footer() {
+  const handleClick = () => {
+    const url = `https://wa.me/${+2348177098608}?text=${encodeURIComponent(
+      "Welcome to ShamzBridge, let's talk!"
+    )}`;
+    window.open(url, "_blank");
+  };
   return (
     <footer>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -15,9 +22,7 @@ export default function Footer() {
         <div className="hidden ">
           {/* 1st block */}
           <div className="sm:col-span-12 lg:col-span-3">
-            <div className="mb-2">
-              <Logo />
-            </div>
+            <div className="mb-2">{/* <Logo /> */}</div>
             <div className="text-sm text-gray-600">
               <a
                 href=""
@@ -184,6 +189,15 @@ export default function Footer() {
               >
                 <CiYoutube className="w-10 h-10 shadow-md rounded-full p-2" />
               </a>
+            </li>
+            <li className="ml-4">
+              <button
+                onClick={handleClick}
+                className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out"
+                aria-label="linkedin"
+              >
+                <BsWhatsapp className="w-10 h-10 shadow-md rounded-full p-2" />
+              </button>
             </li>
           </ul>
 

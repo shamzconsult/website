@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 import MobileMenu from "./mobile-menu";
+import Logo from "./logo";
 
 export default function Header() {
   const [top, setTop] = useState<boolean>(true);
@@ -27,17 +28,20 @@ export default function Header() {
       <div className="max-w-6xl mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Site branding */}
-          <div className="hidden md:flex shrink-0 mr-4  flex-col gap-1 ">
-            <h1 className="text-orange-600 font-bold">ShamzBridge</h1>
-            <p className="text-slate-600 text-sm opacity-60">
-              4th Floor, Labour House, Central Business District, Abuja
-            </p>
-            <a
-              className="text-slate-600 text-sm opacity-60"
-              href="tel:+2348135153620"
-            >
-              +2348135153620
-            </a>
+          <div className="flex items-end gap-1">
+            <Logo />
+            <div className="hidden md:flex shrink-0 mr-4  flex-col gap-1 ">
+              <h1 className="text-orange-600 font-bold">ShamzBridge</h1>
+              <p className="text-slate-600 text-sm opacity-60">
+                4th Floor, Labour House, Central Business District, Abuja
+              </p>
+              <a
+                className="text-slate-600 text-sm opacity-60"
+                href="tel:+2348135153620"
+              >
+                +2348135153620
+              </a>
+            </div>
           </div>
 
           {/* Desktop navigation */}

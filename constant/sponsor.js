@@ -21,7 +21,7 @@ export const sponsors = [
     id: 4,
     src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716454743578/1733f90e-c430-41b3-89ee-04fb95bb1700.jpeg",
     alt: "PGSAUI",
-    name: "Postgraduate Students' Association, UI",
+    name: "Postgraduate Students, UI",
   },
   {
     id: 5,
