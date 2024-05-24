@@ -59,7 +59,6 @@ export default function Partners() {
             </p>
           </div>
 
-      
           <Sponsors />
 
           {/* Testimonials */}
@@ -76,64 +75,3 @@ export default function Partners() {
     </section>
   );
 }
-
-
-    {
-      /* Items */
-    }
-    {
-      /* <div className="flex flex-wrap justify-center items-center gap-6 font-bold  text-2xl">
-            <Link
-              href=""
-              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
-            >
-              •Kwara state Government•
-            </Link>
-
-            <Link
-              href=""
-              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
-            >
-              •National Productivity Center•
-            </Link>
-
-            <Link
-              href=""
-              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
-            >
-              •KSolutions•
-            </Link>
-
-            <Link
-              href=""
-              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center"
-            >
-              •Kanon Royal Consult•
-            </Link>
-
-            <Link
-              href=""
-              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center"
-            >
-              •Nigeria Employers Consultative Association•
-            </Link>
-            <Link
-              href=""
-              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center"
-            >
-              •Kwara state College of Education•
-            </Link>
-            <Link
-              href=""
-              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center"
-            >
-              •Students Union, University of Ilorin•
-            </Link>
-            <Link
-              href=""
-              className="flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center"
-            >
-              •Postgraduate Students' Association, University of Ilorin•
-            </Link>
-          </div> */
-    }

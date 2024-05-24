@@ -5,10 +5,10 @@ import { sponsors } from "../constant/sponsor";
 const Sponsors = () => {
   return (
     <section className="">
-      <Marquee speed={100} pauseOnHover={true}>
+      <Marquee speed={50} pauseOnHover={true}>
         {sponsors?.map((sponsor) => (
           <div key={sponsor?.id}>
-            <div className="min-w-[100px] min-h-[100px] bg-white shadow rounded sm:min-w-[300px] max-w-[300px] sm:min-h-[200px] max-h-[200px] flex justify-center items-center mx-4 drop-shadow-sm">
+            <div className="min-w-[100px] min-h-[100px] bg-white shadow  sm:min-w-[300px] max-w-[300px] sm:min-h-[200px] max-h-[200px] flex justify-center items-center mx-4 ">
               <img
                 src={sponsor?.src}
                 alt={sponsor?.alt}
