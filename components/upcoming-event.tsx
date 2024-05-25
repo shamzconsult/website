@@ -4,11 +4,40 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import { BsX } from "react-icons/bs";
 
+interface EventType {
+  image: string;
+}
+
+export const getCurrentEvent = async () => {
+  try {
+    const res = await fetch("http://localhost:3000/api/event", {
+      cache: "no-store",
+    });
+    if (!res.ok) {
+      throw new Error("Error found while fetching");
+    }
+    return res.json();
+  } catch (error) {
+    console.log("Error loading data", error);
+  }
+};
+
 const EventNotification = () => {
   const [openModal, setModal] = useState(true);
+  const [event, setEvent] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const data = await getCurrentEvent();
+      setEvent(data.events);
+    } catch (error) {
+      console.log("Error loading data", error);
+    }
+  };
 
   useEffect(() => {
     Aos.init();
+    fetchData();
   }, []);
 
   const handleClose = () => {
@@ -36,11 +65,13 @@ const EventNotification = () => {
         >
           <BsX size={40} />
         </button>
-        <img
-          className="max-h-[600px] h-full w-full rounded object-contain object-top"
-          src="https://cdn.hashnode.com/res/hashnode/image/upload/v1716541841428/0d584802-407d-4892-b09c-d04d499479cf.jpeg"
-          alt="event"
-        />
+        {event.map((item: EventType) => (
+          <img
+            className="max-h-[600px] h-full w-full rounded object-contain object-top"
+            src={item.image}
+            alt="event"
+          />
+        ))}
       </main>
     </div>
   );

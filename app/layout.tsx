@@ -3,7 +3,7 @@ import "./css/style.css";
 import { Inter } from "next/font/google";
 
 import Header from "@/components/ui/header";
-import EventNotification from "@/components/event-notification";
+import EventNotification from "@/components/upcoming-event";
 // import Banner from '@/components/banner'
 
 const inter = Inter({
