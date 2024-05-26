@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
+import { contactNotification } from "../utils/contact-notification";
 
 export default function ContactUs() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -32,13 +34,15 @@ export default function ContactUs() {
         body: JSON.stringify({ name, email, message }),
       });
       if (res.ok) {
-        alert("message sent successfully");
+        contactNotification();
         resetFormDetails();
       } else {
         throw new Error("contact failed to send");
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
@@ -110,9 +114,10 @@ export default function ContactUs() {
             <div className="flex justify-start">
               <button
                 type="submit"
+                disabled={isSubmitting}
                 className="btn text-white bg-blue-600 hover:bg-blue-700 w-full mb-4 sm:w-auto sm:mb-0"
               >
-                Send message
+                {isSubmitting ? "Sending..." : "Send message"}
               </button>
             </div>
           </form>

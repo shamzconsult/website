@@ -3,7 +3,7 @@ export const sponsors = [
     id: 1,
     src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716454682431/78e5c2ff-9368-40bd-82a9-18422aec87d9.jpeg",
     alt: "Kwara state College of Education",
-    name: "Kwara state College of Education",
+    name: "Kwara State College of Education",
   },
   {
     id: 2,
@@ -41,5 +41,17 @@ export const sponsors = [
     src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716455206480/06bfda47-0bb2-4747-989c-d7e824bb424c.jpeg",
     alt: "NECA",
     name: "Nigeria Employers Consultative Association",
+  },
+  {
+    id: 8,
+    src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716717554791/e57aad83-b84c-4915-a2a1-1c1464729f33.jpeg",
+    alt: "BB",
+    name: "Beans 'N' Bread ",
+  },
+  {
+    id: 9,
+    src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716717570329/758a0366-460c-4ff1-ac75-dd5fb25c88bf.jpeg",
+    alt: "Tukio",
+    name: "Tukio Konsults",
   },
 ];
