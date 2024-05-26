@@ -22,7 +22,7 @@ export const getCurrentEvent = async () => {
   }
 };
 
-const EventNotification = () => {
+const UpcomingEvent = () => {
   const [openModal, setModal] = useState(true);
   const [event, setEvent] = useState([]);
 
@@ -77,4 +77,4 @@ const EventNotification = () => {
   );
 };
 
-export default EventNotification;
+export default UpcomingEvent;

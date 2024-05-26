@@ -3,17 +3,15 @@ import {
   LinkedInLogoIcon,
   TwitterLogoIcon,
 } from "@radix-ui/react-icons";
-import { CiYoutube } from "react-icons/ci";
-// import Logo from "./logo";
-import { BsWhatsapp } from "react-icons/bs";
 
 export default function Footer() {
-  const handleClick = () => {
+  const chatOnWhatsApp = () => {
     const url = `https://wa.me/${+2348177098608}?text=${encodeURIComponent(
       "Welcome to ShamzBridge, let's talk!"
     )}`;
     window.open(url, "_blank");
   };
+
   return (
     <footer>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -185,18 +183,40 @@ export default function Footer() {
               <a
                 href="https://www.youtube.com/channel/UCCT69YW8WVJeEbjPEtomkQg/"
                 className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out"
-                aria-label="linkedin"
+                aria-label="youtube"
               >
-                <CiYoutube className="w-10 h-10 shadow-md rounded-full p-2" />
+                <svg
+                  className="w-10 h-10 shadow-md rounded-full p-2"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M19.615 7.072c-.204-.72-.801-1.286-1.524-1.49-1.341-.362-6.73-.362-6.73-.362s-5.389 0-6.73.362c-.723.204-1.32.77-1.524 1.49-.364 1.356-.364 4.183-.364 4.183s0 2.827.364 4.183c.204.72.801 1.286 1.524 1.49 1.341.362 6.73.362 6.73.362s5.389 0 6.73-.362c.723-.204 1.32-.77 1.524-1.49.364-1.356.364-4.183.364-4.183s0-2.827-.364-4.183zM9.927 13.803v-4.006l4.14 2.003-4.14 2.003z" />
+                </svg>
               </a>
             </li>
             <li className="ml-4">
               <button
-                onClick={handleClick}
-                className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out"
-                aria-label="linkedin"
+                onClick={chatOnWhatsApp}
+                className="flex justify-center items-center text-gray-600  bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out "
+                aria-label="whatsapp"
               >
-                <BsWhatsapp className="w-10 h-10 shadow-md rounded-full p-2" />
+                <svg
+                  className="w-10 h-10 shadow-md rounded-full p-2"
+                  viewBox="0 0 448 512"
+                  width="16"
+                  height="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill="#4B5563"
+                    d="M380.9 97.1C339 55.1 284.8 32 226.9 32 101.7 32 0 133.7 0 258.9c0 45.6 11.9 90.1 34.5 129.4L0 512l127.8-33.8c38.8 20.9 82 32 126.1 32h.1c125.1 0 226.8-101.7 226.8-226.9 0-57.9-22.3-112.1-63.9-153.2zM226.9 450.3c-38.7 0-76.3-10.4-109.2-30.1l-7.8-4.6-75.9 20.1 20.3-74.1-5.1-8C31.8 320 20 289.9 20 258.9 20 147.7 115.7 52 226.9 52c60.1 0 116.7 23.4 159.2 66 42.6 42.6 66 99.2 66 159.3 0 124.2-100.8 225-225.2 225z"
+                  />
+                  <path
+                    fill="#4B5563"
+                    d="M331.1 274.6c-5.5-2.7-32.4-15.9-37.4-17.7-5.1-1.8-8.8-2.7-12.5 2.7s-14.3 17.7-17.5 21.4-6.4 4.1-11.9 1.4c-32.4-16.2-53.6-28.9-75.1-65.3-5.7-9.8 5.7-9.1 16.2-30.3 1.8-3.6.9-6.8-.5-9.5s-12.5-30.1-17.1-41.2c-4.5-10.9-9.1-9.3-12.5-9.5-3.2-.2-6.8-.2-10.5-.2-3.6 0-9.5 1.4-14.5 6.8-5 5.5-19 18.6-19 45.5s19.5 52.7 22.3 56.3c2.7 3.6 37.5 57.3 90.7 80.2 53.2 22.9 53.2 15.3 62.6 14.3 9.5-.9 31.7-12.9 36.2-25.4 4.5-12.4 4.5-23.2 3.2-25.4-1.3-2.1-5-3.5-10.5-6.2z"
+                  />
+                </svg>
               </button>
             </li>
           </ul>
