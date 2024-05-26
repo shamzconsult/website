@@ -3,8 +3,7 @@ import "./css/style.css";
 import { Inter } from "next/font/google";
 
 import Header from "@/components/ui/header";
-import EventNotification from "@/components/upcoming-event";
-// import Banner from '@/components/banner'
+import UpcomingEvent from "@/components/upcoming-event";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -28,7 +27,7 @@ export default function RootLayout({
         className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}
       >
         <div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
-          <EventNotification />
+          <UpcomingEvent />
           <Header />
           {children}
           {/* <Banner /> */}
