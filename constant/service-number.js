@@ -1,5 +1,3 @@
-import { BsPeopleFill } from "react-icons/bs";
-
 export const servicesNumber = [
   {
     id: 1,
