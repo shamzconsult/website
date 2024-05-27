@@ -26,7 +26,7 @@ export default function ContactUs() {
     }
 
     try {
-      const res = await fetch("http://localhost:3000/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "content-type": "application/json",

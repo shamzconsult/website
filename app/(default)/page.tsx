@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "Shamz - Shamz consult",
+  title: "ShamzBridge Consult",
   description: "Your trusted ally for your personal and organizational growth",
 };
 
