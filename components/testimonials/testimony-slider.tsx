@@ -63,8 +63,13 @@ const TestimonySlider = () => {
               {data.name}
             </cite>
             <div className='text-gray-600'>
-              <span>CEO & Founder</span>{" "}
-              <a className='text-orange-600 hover:underline' href='#0'>
+              <span>{data.companyTitle}</span>{" "}
+              <a
+                target='_blank'
+                rel='noopener'
+                className='text-orange-600 hover:underline'
+                href={data.companyUrl}
+              >
                 {data.company}
               </a>
             </div>
@@ -80,7 +85,7 @@ const TestimonySlider = () => {
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'
-            stroke-width='1.5'
+            strokeWidth='1.5'
             stroke='currentColor'
             className='w-6 h-6'
           >
@@ -99,7 +104,7 @@ const TestimonySlider = () => {
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
             viewBox='0 0 24 24'
-            stroke-width='1.5'
+            strokeWidth='1.5'
             stroke='currentColor'
             className='w-6 h-6'
           >
