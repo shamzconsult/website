@@ -10,7 +10,7 @@ interface EventType {
 
 export const getCurrentEvent = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/event", {
+    const res = await fetch("/api/event", {
       cache: "no-store",
     });
     if (!res.ok) {
