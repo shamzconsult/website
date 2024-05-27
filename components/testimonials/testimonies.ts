@@ -5,8 +5,10 @@ export const testimonies = [
       "https://cdn.hashnode.com/res/hashnode/image/upload/v1677222800340/7FWlpF0aT.jpeg?w=400&h=400&fit=crop&crop=faces&auto=compress,format&format=webp",
     testimony:
       "One of the most impressive qualities of Shamz is their genuine passion for making a difference. They go above and beyond to ensure that our program not only meets but exceeds expectations, constantly seeking feedback and implementing improvements to enhance the participant experience.",
-    name: "Ayodele Samuel Adebayo",
+    name: "Ayodele Samuel Adebayo (Unclebigbay)",
     company: "Codewithunclebigbay",
+    companyTitle: "Founder",
+    companyUrl: "https://codewithunclebigbay.vercel.app/",
   },
   {
     id: 2,
@@ -16,6 +18,8 @@ export const testimonies = [
       "Working alongside Shamz has been an absolute privilege. Their dedication to excellence and unwavering commitment to making a positive impact is truly inspiring. Shamz consistently demonstrates a deep passion for fostering growth and innovation within our organization",
     name: "Idris Haruna Alih",
     company: "Multi-auto",
+    companyTitle: "CEO & Founder",
+    companyUrl: "",
   },
   {
     id: 3,
