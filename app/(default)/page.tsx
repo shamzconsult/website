@@ -1,6 +1,6 @@
 export const metadata = {
   title: "ShamzBridge Consult",
-  description: "Your trusted ally for your personal and organizational growth",
+  description: "Your trusted ally",
 };
 
 import Hero from "@/components/hero";

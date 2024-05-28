@@ -30,24 +30,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Site branding */}
           <Link href={"/"}>
-            <div className="flex items-center gap-1">
-              <Logo />
-              <div className="flex flex-col  ">
-                <h1 className="text-orange-600 font-bold text-xl">
-                  ShamzBridge
-                </h1>
-                <p className="text-sm">Consult</p>
-                {/* <p className='text-slate-600 text-sm opacity-60'>
-                4th Floor, Labour House, Central Business District, Abuja
-              </p>
-              <a
-                className='text-slate-600 text-sm opacity-60'
-                href='tel:+2348135153620'
-              >
-                +2348135153620
-              </a> */}
-              </div>
-            </div>
+            <Logo />
           </Link>
 
           {/* Desktop navigation */}

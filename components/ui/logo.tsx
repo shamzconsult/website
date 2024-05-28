@@ -1,9 +1,9 @@
 export default function Logo() {
   return (
     <img
-      src="https://cdn.hashnode.com/res/hashnode/image/upload/v1716810375945/9a3cd9b1-dd88-44c8-ab1d-fddb00255f49.png"
+      src="https://cdn.hashnode.com/res/hashnode/image/upload/v1716860518541/dcfedf22-1fb5-435d-ab61-11294ff00a70.png"
       alt="ShamzBridge logo"
-      className="w-12 h-12 object-cover cursor-pointer"
+      className=" h-14 object-cover  cursor-pointer"
     />
   );
 }
