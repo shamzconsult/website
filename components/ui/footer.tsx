@@ -195,6 +195,7 @@ export default function Footer() {
                 </svg>
               </a>
             </li>
+
             <li className="ml-4">
               <button
                 onClick={chatOnWhatsApp}
@@ -219,11 +220,37 @@ export default function Footer() {
                 </svg>
               </button>
             </li>
+            <li className="ml-4">
+              <a
+                href="tel:+2348135153620"
+                className="flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out"
+                aria-label="youtube"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-10 h-10 shadow-md rounded-full p-2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                  />
+                </svg>
+              </a>
+            </li>
           </ul>
 
           {/* Copyrights note */}
-          <div className="text-sm text-gray-600 mr-4">
-            &copy; Shamz. All rights reserved.
+          <div className="text-sm text-gray-600 mr-4 flex flex-col gap-1 mt-8 lg:mt-0">
+            <div className="">&copy; ShamzBridge. All rights reserved.</div>
+            <p>
+              <span className="text-orange-600">Locate Us@</span> 4th Floor,
+              Labour House, Central Business District, Abuja
+            </p>
           </div>
         </div>
       </div>

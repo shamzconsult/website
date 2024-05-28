@@ -13,7 +13,7 @@ const inter = Inter({
 
 export const metadata = {
   title: "Shamzbridge consult",
-  description: "…..your trusted ally",
+  description: "Your trusted ally",
 };
 
 export default function RootLayout({
