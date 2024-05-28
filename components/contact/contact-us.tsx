@@ -48,7 +48,7 @@ export default function ContactUs() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button className='btn text-white bg-orange-600 hover:bg-orange-700 w-full mb-4 sm:w-auto sm:mb-0'>
+        <button className='btn font-semibold text-lg text-white bg-orange-600 hover:bg-orange-700 w-full mb-4 sm:w-auto sm:mb-0'>
           Let's talk
         </button>
       </Dialog.Trigger>
