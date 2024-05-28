@@ -21,13 +21,13 @@ export const sponsors = [
     id: 4,
     src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716454743578/1733f90e-c430-41b3-89ee-04fb95bb1700.jpeg",
     alt: "PGSAUI",
-    name: "Postgraduate Students, UI",
+    name: "Postgraduate Students, Unilorin",
   },
   {
     id: 5,
     src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716454788631/e38c6e32-e78e-4082-a5ce-b12cfae116eb.jpeg",
     alt: "Students Union, UI",
-    name: "Students Union, UI",
+    name: "Students Union, Unilorin",
   },
 
   {

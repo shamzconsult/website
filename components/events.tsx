@@ -7,6 +7,7 @@ import Link from "next/link";
 interface EventType {
   image: string;
   title: string;
+  description: string;
   startDate: number;
   endDate: number;
   _id: number;
@@ -51,26 +52,36 @@ const Events = () => {
       <section className="flex flex-col justify-center items-center gap-6">
         <h1 className="font-bold text-lg">Upcoming Events</h1>
         <div className="flex flex-wrap justify-center items-start gap-8">
-          {event.map(({ image, startDate, endDate, title, _id }: EventType) => (
-            <div
-              key={_id}
-              className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md p-2 hover:border-orange-300"
-            >
-              <Link href={`/event/${_id}`}>
-                <img
-                  className=" h-full w-full  object-contain object-top cursor-pointer rounded-lg "
-                  src={image}
-                  alt="event"
-                />
-              </Link>
-              <h2 className="opacity-70 font-bold">{title}</h2>
-              <div className="flex gap-4 ">
-                <p>{formatDate(startDate)}</p>
-                <h1 className="bold text-lg">-</h1>
-                <p>{formatDate(endDate)}</p>
+          {event.map(
+            ({
+              image,
+              startDate,
+              endDate,
+              title,
+              description,
+              _id,
+            }: EventType) => (
+              <div
+                key={_id}
+                className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md p-2 hover:border-orange-300"
+              >
+                <Link href={`/event/${_id}`}>
+                  <img
+                    className=" h-full w-full  object-contain object-top cursor-pointer rounded-lg "
+                    src={image}
+                    alt="event"
+                  />
+                </Link>
+                <h2 className="opacity-70 font-bold">{title}</h2>
+                <div className="flex gap-4 ">
+                  <p>{formatDate(startDate)}</p>
+                  <h1 className="bold text-lg">-</h1>
+                  <p>{formatDate(endDate)}</p>
+                </div>
+                {/* <p>{description}</p> */}
               </div>
-            </div>
-          ))}
+            )
+          )}
         </div>
       </section>
       <section className="flex flex-col justify-center items-center gap-6">
