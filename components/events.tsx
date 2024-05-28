@@ -37,12 +37,10 @@ const Events = () => {
     try {
       const data = await getCurrentEvent();
       setEvent(data.events);
-      console.log(event);
     } catch (error) {
       console.log("Error loading data", error);
     }
   };
-  console.log(event);
 
   useEffect(() => {
     fetchData();

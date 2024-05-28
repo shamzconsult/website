@@ -10,10 +10,12 @@ import Services from "@/components/our-service";
 import Slider from "@/components/carousel/slider";
 import AboutUs from "@/components/about";
 import Partners from "@/components/partners";
+import UpcomingEvent from "@/components/upcoming-event";
 
 export default function Home() {
   return (
     <>
+      <UpcomingEvent />
       <Hero />
       <Slider />
       <Mission />
