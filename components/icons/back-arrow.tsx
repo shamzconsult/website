@@ -5,11 +5,11 @@ const BackIcon = () => {
   return (
     <Link
       href={"/events"}
-      className="flex gap-1 items-center text-gray-600 border border-slate-300 w-fit px-2 rounded-xl text-sm font-normal hover:border-orange-400 duration-150 my-8"
+      className='flex gap-1 items-center text-gray-600 w-fit rounded-full border px-2 pr-3 py-0.5  text-sm font-normal hover:border-orange-400 duration-150'
     >
       <ArrowLeftIcon />
 
-      <p>Back</p>
+      <p>View all events</p>
     </Link>
   );
 };
