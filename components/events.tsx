@@ -36,10 +36,6 @@ const Events = () => {
   const [event, setEvent] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const today = Date.now();
-  const pastEvents = formatDate(today);
-  console.log(pastEvents);
-
   const fetchData = async () => {
     try {
       const data = await getCurrentEvent();
@@ -55,14 +51,23 @@ const Events = () => {
     fetchData();
   }, []);
 
-  const checkPastEvents = (eventDate: EventType[]) => {
+  const checkForUpcomingEvents = (eventDate: EventType[]) => {
+    const todayTimestamp = Date.now();
     return eventDate.filter((item) => {
-      console.log(item.endDate);
-      return Number(item.endDate) < Number(pastEvents);
+      const eventEndDate = new Date(item.endDate).getTime();
+      return eventEndDate > todayTimestamp;
+    });
+  };
+  const checkForPastEvents = (eventDate: EventType[]) => {
+    const todayTimestamp = Date.now();
+    return eventDate.filter((item) => {
+      const eventEndDate = new Date(item.endDate).getTime();
+      return eventEndDate < todayTimestamp;
     });
   };
 
-  const filteredPastEvents = checkPastEvents(event);
+  const filteredPastEvents = checkForPastEvents(event);
+  const filteredUpcomingEvents = checkForUpcomingEvents(event);
 
   const EventPageLoader = () => (
     <div className="min-h-[60vh] flex justify-center items-center">
@@ -79,29 +84,31 @@ const Events = () => {
           <section className="flex flex-col justify-center items-center gap-6">
             <h1 className="font-bold text-lg">Upcoming Events</h1>
             <div className="flex flex-wrap justify-center items-start gap-8">
-              {event.map(
-                ({ image, startDate, endDate, title, _id }: EventType) => (
-                  <div
-                    key={_id}
-                    className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md hover:border-orange-300"
-                  >
-                    <Link href={`/events/${_id}`}>
-                      <img
-                        className=" h-full w-full object-contain object-top cursor-pointer rounded-lg "
-                        src={image}
-                        alt="event"
-                      />
-                    </Link>
-                    <div className="p-2 flex flex-col gap-2">
+              {filteredUpcomingEvents.length > 0 ? (
+                filteredUpcomingEvents.map(
+                  ({ image, startDate, endDate, title, _id }) => (
+                    <div
+                      key={_id}
+                      className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md p-2 hover:border-orange-300"
+                    >
+                      <Link href={`/events/${_id}`}>
+                        <img
+                          className="h-full w-full object-contain object-top cursor-pointer rounded-lg"
+                          src={image}
+                          alt="event"
+                        />
+                      </Link>
                       <h2 className="opacity-70 font-bold">{title}</h2>
-                      <div className="flex gap-4 ">
+                      <div className="flex gap-4">
                         <p>{formatDate(startDate)}</p>
                         <h1 className="bold text-lg">-</h1>
                         <p>{formatDate(endDate)}</p>
                       </div>
                     </div>
-                  </div>
+                  )
                 )
+              ) : (
+                <div>No upcoming event for now...</div>
               )}
             </div>
           </section>
@@ -115,11 +122,13 @@ const Events = () => {
                       key={_id}
                       className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md p-2 hover:border-orange-300"
                     >
-                      <img
-                        className="h-full w-full object-contain object-top cursor-pointer rounded-lg"
-                        src={image}
-                        alt="event"
-                      />
+                      <Link href={`/events/${_id}`}>
+                        <img
+                          className="h-full w-full object-contain object-top cursor-pointer rounded-lg"
+                          src={image}
+                          alt="event"
+                        />
+                      </Link>
                       <h2 className="opacity-70 font-bold">{title}</h2>
                       <div className="flex gap-4">
                         <p>{formatDate(startDate)}</p>
