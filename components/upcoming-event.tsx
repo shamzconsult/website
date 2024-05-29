@@ -45,10 +45,12 @@ const UpcomingEvent = () => {
   const handleClose = () => {
     setModal((prev) => !prev);
   };
+
+  if (!event) return null;
   return (
     <div
       id="my-modal"
-      className={`modal fixed inset-0 z-50 overflow-y-auto sm:px-0 bg-gray-800 bg-opacity-60 transition-opacity duration-300 ease-in-out backdrop-blur-sm ${
+      className={`modal fixed inset-0 z-50 overflow-y-auto sm:px-0  bg-opacity-60 transition-opacity duration-300 ease-in-out backdrop-blur-sm ${
         openModal ? "" : "hidden"
       }`}
     >
@@ -58,15 +60,17 @@ const UpcomingEvent = () => {
         data-aos-easing="ease-in-out"
         className={`${
           openModal ? "" : "hidden"
-        }  bg-[#fff]/40 min-h-screen rounded-lg backdrop-blur-md flex flex-col justify-center  gap-6 py-12 px-4 lg:px-14`}
+        }  bg-black/60 min-h-screen  backdrop-blur-md flex flex-col justify-center  gap-6 py-12 px-4 lg:px-14`}
       >
-        <button
-          onClick={handleClose}
-          type="button"
-          className=" w-fit px-2 py-1  font-bold text-white bg-orange-600 hover:bg-orange-700 duration-150 rounded-sm  "
-        >
-          close
-        </button>
+        <div className="flex justify-end px-4">
+          <button
+            onClick={handleClose}
+            type="button"
+            className=" w-fit px-2 py-1  font-bold text-white bg-orange-600 hover:bg-orange-700 duration-150 rounded-sm "
+          >
+            close
+          </button>
+        </div>
         {event && (
           <Link href={"/event"}>
             <img

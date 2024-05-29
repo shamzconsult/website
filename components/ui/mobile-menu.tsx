@@ -80,6 +80,14 @@ export default function MobileMenu() {
             >
               About us
             </a>
+            <Link
+              href={"/event"}
+              className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
+              onClick={() => setMobileNavOpen(false)}
+            >
+              Events
+            </Link>
+
             <a
               href="#service"
               className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"

@@ -2,7 +2,7 @@ import UpcomingEvent from "@/app/models/upcoming-event";
 import connectMongoDB from "@/libs/mongodb";
 import { NextResponse } from "next/server";
 
-export async function POST(request: any) {
+const POST = async (request: any) => {
   try {
     const { image, startDate, endDate, title, description } =
       await request.json();
@@ -26,10 +26,12 @@ export async function POST(request: any) {
       { status: 500 }
     );
   }
-}
+};
 
-export async function GET() {
+const GET = async () => {
   await connectMongoDB();
   const events = await UpcomingEvent.find();
   return NextResponse.json({ events });
-}
+};
+
+export { POST, GET };
