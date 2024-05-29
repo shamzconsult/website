@@ -21,7 +21,7 @@ export default function Mission() {
             >
               <div className='flex flex-col gap-1 items-center'>
                 <div className='font-bold leading-snug tracking-tight mb-1'>
-                  Vision:
+                  Vision
                 </div>
                 <div className='text-gray-600 text-center'>
                   To become a premier organization dedicated to enhancing both
