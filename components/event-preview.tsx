@@ -63,13 +63,15 @@ const EventPreview = () => {
         <EventPageLoader />
       ) : (
         <div className="mx-auto w-[90%] flex flex-col gap-3 py-8 lg:w-[70%] font-bold text-xl text-orange-600">
+          <BackIcon />
+          <p className="lg:text-2xl">{event.title}</p>
           <div className="rounded overflow-hidden border border-orange-300">
             <img src={event.image} alt={event.title} className="w-full" />
           </div>
-          <p>{event.title}</p>
-          <p className="text-gray-500 font-normal text-sm ">
-            {event.description}
-          </p>
+          <div className="text-gray-500 flex flex-col gap-2">
+            <h1>About</h1>
+            <p className=" font-normal text-sm ">{event.description}</p>
+          </div>
           <div className="flex gap-4 bold">
             <p>{event.startDate}</p>
             <h1 className=" text-lg">-</h1>
