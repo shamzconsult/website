@@ -7,6 +7,7 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 
 interface EventType {
   image: string;
+  _id: string;
 }
 
 export const getCurrentEvent = async () => {
@@ -73,7 +74,7 @@ const UpcomingEvent = () => {
           </button>
         </div>
         {event && (
-          <Link href={"/events"}>
+          <Link href={`/events/${event._id}`}>
             <img
               className='max-h-[600px] h-full w-full rounded object-contain object-top cursor-pointer'
               src={event.image}
