@@ -154,6 +154,8 @@ export default function Footer() {
           <ul className='flex mb-4 md:order-1 md:ml-4 md:mb-0'>
             <li className='ml-4'>
               <a
+                target='_blank'
+                rel='noopener'
                 href='https://www.instagram.com/shamzbridge/'
                 className='flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out'
                 aria-label='instagram'
@@ -163,6 +165,8 @@ export default function Footer() {
             </li>
             <li className='ml-4'>
               <a
+                target='_blank'
+                rel='noopener'
                 href='https://x.com/shamzbridge'
                 className='flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out'
                 aria-label='instagram'
@@ -172,6 +176,8 @@ export default function Footer() {
             </li>
             <li className='ml-4'>
               <a
+                target='_blank'
+                rel='noopener'
                 href='https://www.linkedin.com/company/102454275/admin/feed/posts/'
                 className='flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out'
                 aria-label='linkedin'
@@ -181,6 +187,8 @@ export default function Footer() {
             </li>
             <li className='ml-4'>
               <a
+                target='_blank'
+                rel='noopener'
                 href='https://www.youtube.com/channel/UCCT69YW8WVJeEbjPEtomkQg/'
                 className='flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out'
                 aria-label='youtube'
@@ -222,6 +230,8 @@ export default function Footer() {
             </li>
             <li className='ml-4'>
               <a
+                target='_blank'
+                rel='noopener'
                 href='tel:+2348135153620'
                 className='flex justify-center items-center text-gray-600 hover:text-gray-900 bg-white hover:bg-white-100 rounded-full shadow transition duration-150 ease-in-out'
                 aria-label='youtube'
@@ -230,13 +240,13 @@ export default function Footer() {
                   xmlns='http://www.w3.org/2000/svg'
                   fill='none'
                   viewBox='0 0 24 24'
-                  stroke-width='1.5'
+                  strokeWidth='1.5'
                   stroke='currentColor'
                   className='w-10 h-10 shadow-md rounded-full p-2'
                 >
                   <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
+                    strokeLinecap='round'
+                    strokeLinejoin='round'
                     d='M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z'
                   />
                 </svg>
