@@ -45,6 +45,17 @@ export default function ContactUs() {
       setIsSubmitting(false);
     }
   };
+
+  return (
+    <a
+      target='_blank'
+      rel='noopener'
+      href='mailto:shamzbridgeconsult@gmail.com?subject=Contacting%20you%20about%20Shamzbridge&body=Hi, %0D%0A%0D%0A'
+      className='btn font-semibold text-lg text-white bg-orange-600 hover:bg-orange-700 w-full mb-4 sm:w-auto sm:mb-0'
+    >
+      Let's talk
+    </a>
+  );
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
