@@ -39,7 +39,7 @@ export default function Header() {
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <a
-                  href="#about"
+                  href="/#about"
                   className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   About us
@@ -47,7 +47,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href={"/event"}
+                  href={"/events"}
                   className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Events
@@ -55,7 +55,7 @@ export default function Header() {
               </li>
               <li>
                 <a
-                  href="#service"
+                  href="/#service"
                   className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Services
@@ -63,7 +63,7 @@ export default function Header() {
               </li>
               <li>
                 <a
-                  href="#testimonial"
+                  href="/#testimonial"
                   className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Testimonials
