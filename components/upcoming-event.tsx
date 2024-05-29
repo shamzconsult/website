@@ -72,7 +72,7 @@ const UpcomingEvent = () => {
           </button>
         </div>
         {event && (
-          <Link href={"/event"}>
+          <Link href={"/events"}>
             <img
               className="max-h-[600px] h-full w-full rounded object-contain object-top cursor-pointer"
               src={event.image}

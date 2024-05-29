@@ -36,6 +36,9 @@ const Events = () => {
   const [event, setEvent] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const today = Date.now();
+  const pastEvents = formatDate(today);
+
   const fetchData = async () => {
     try {
       const data = await getCurrentEvent();
@@ -51,6 +54,18 @@ const Events = () => {
     fetchData();
   }, []);
 
+  const checkPastEvents = (eventDate: EventType[]) => {
+    return eventDate.filter((item) => {
+      const convertDate = formatDate(item.endDate);
+      console.log(convertDate);
+      console.log(pastEvents);
+      return Number(convertDate) < Number(pastEvents);
+    });
+  };
+
+  const filteredPastEvents = checkPastEvents(event);
+  console.log(filteredPastEvents);
+
   if (loading) {
     return <Loading />;
   }
@@ -65,7 +80,7 @@ const Events = () => {
               key={_id}
               className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md p-2 hover:border-orange-300"
             >
-              <Link href={`/event/${_id}`}>
+              <Link href={`/events/${_id}`}>
                 <img
                   className=" h-full w-full  object-contain object-top cursor-pointer rounded-lg "
                   src={image}
@@ -85,27 +100,30 @@ const Events = () => {
       <section className="flex flex-col justify-center items-center gap-6">
         <h1 className="font-bold text-lg">Past Events</h1>
         <div className="flex flex-wrap justify-center items-start gap-8">
-          {event &&
-            event.map(
+          {filteredPastEvents.length > 0 ? (
+            filteredPastEvents.map(
               ({ image, startDate, endDate, title, _id }: EventType) => (
                 <div
                   key={_id}
                   className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md p-2 hover:border-orange-300"
                 >
                   <img
-                    className=" h-full w-full  object-contain object-top cursor-pointer rounded-lg "
+                    className="h-full w-full object-contain object-top cursor-pointer rounded-lg"
                     src={image}
                     alt="event"
                   />
                   <h2 className="opacity-70 font-bold">{title}</h2>
-                  <div className="flex gap-4 ">
+                  <div className="flex gap-4">
                     <p>{formatDate(startDate)}</p>
                     <h1 className="bold text-lg">-</h1>
                     <p>{formatDate(endDate)}</p>
                   </div>
                 </div>
               )
-            )}
+            )
+          ) : (
+            <div>No past event...</div>
+          )}
         </div>
       </section>
     </div>

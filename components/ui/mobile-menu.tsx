@@ -74,14 +74,14 @@ export default function MobileMenu() {
         >
           <ul className="px-5 py-2">
             <a
-              href="#about"
+              href="/#about"
               className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
               onClick={() => setMobileNavOpen(false)}
             >
               About us
             </a>
             <Link
-              href={"/event"}
+              href={"/events"}
               className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
               onClick={() => setMobileNavOpen(false)}
             >
@@ -89,14 +89,14 @@ export default function MobileMenu() {
             </Link>
 
             <a
-              href="#service"
+              href="/#service"
               className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
               onClick={() => setMobileNavOpen(false)}
             >
               Services
             </a>
             <a
-              href="#testimonial"
+              href="/#testimonial"
               className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
               onClick={() => setMobileNavOpen(false)}
             >
