@@ -44,7 +44,6 @@ const UpcomingEvent = () => {
     fetchData();
   }, []);
 
-  console.log(event);
   const handleClose = () => {
     setModal((prev) => !prev);
   };
