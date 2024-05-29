@@ -4,11 +4,12 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Loading from "./loader";
 import BackIcon from "./icons/back-arrow";
+import { formatDate } from "./events";
 
 interface EventType {
   image: string;
-  startDate: string;
-  endDate: string;
+  startDate: number;
+  endDate: number;
   title: string;
   description: string;
 }
@@ -72,10 +73,10 @@ const EventPreview = () => {
             <h1>About</h1>
             <p className=" font-normal text-sm ">{event.description}</p>
           </div>
-          <div className="flex gap-4 bold">
-            <p>{event.startDate}</p>
+          <div className="flex gap-4 ">
+            <p>{formatDate(event.startDate)}</p>
             <h1 className=" text-lg">-</h1>
-            <p>{event.endDate}</p>
+            <p> {formatDate(event.endDate)}</p>
           </div>
         </div>
       )}
