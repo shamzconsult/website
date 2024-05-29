@@ -7,6 +7,7 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 
 interface EventType {
   image: string;
+  _id: number;
 }
 
 export const getCurrentEvent = async () => {
@@ -43,6 +44,7 @@ const UpcomingEvent = () => {
     fetchData();
   }, []);
 
+  console.log(event);
   const handleClose = () => {
     setModal((prev) => !prev);
   };
@@ -50,35 +52,38 @@ const UpcomingEvent = () => {
   if (!event) return null;
   return (
     <div
-      id='my-modal'
+      id="my-modal"
       className={`modal fixed inset-0 z-50 overflow-y-auto sm:px-0  bg-opacity-60 transition-opacity duration-300 ease-in-out backdrop-blur-sm ${
         openModal ? "" : "hidden"
       }`}
     >
       <main
-        data-aos='fade-down'
-        data-aos-duration='2000'
-        data-aos-easing='ease-in-out'
+        data-aos="fade-down"
+        data-aos-duration="2000"
+        data-aos-easing="ease-in-out"
         className={`${
           openModal ? "" : "hidden"
         }  bg-black/60 min-h-screen backdrop-blur-md flex flex-col justify-center items-center gap-6 py-12 px-4 lg:px-14`}
       >
-        <div className='fixed top-8 right-4 lg:right-14'>
+        <div className="fixed top-8 right-4 lg:right-14">
           <button
             onClick={handleClose}
-            type='button'
-            className='w-fit px-2 py-1 font-bold text-white bg-orange-600 hover:bg-orange-700 duration-150 rounded-sm '
+            type="button"
+            className="w-fit px-2 py-1 font-bold text-white bg-orange-600 hover:bg-orange-700 duration-150 rounded-sm "
           >
             <Cross1Icon />
           </button>
         </div>
         {event && (
-          <Link href={"/events"}>
+          <Link href={`/events/${event._id}`}>
             <img
-              className='max-h-[600px] h-full w-full rounded object-contain object-top cursor-pointer'
+              className="max-h-[600px] h-full w-full rounded object-contain object-top cursor-pointer"
               src={event.image}
-              alt='event'
+              alt="event"
             />
+            <p className="text-sm text-orange-400 text-center font-semibold">
+              Click for more details
+            </p>
           </Link>
         )}
       </main>
