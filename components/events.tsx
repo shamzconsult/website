@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { getCurrentEvent } from "./upcoming-event";
 import Link from "next/link";
 import Loading from "./loader";
+import Footer from "./ui/footer";
 
 interface EventType {
   image: string;
@@ -70,7 +71,7 @@ const Events = () => {
   const filteredUpcomingEvents = checkForUpcomingEvents(event);
 
   const EventPageLoader = () => (
-    <div className='min-h-[60vh] flex justify-center items-center'>
+    <div className='min-h-screen flex justify-center items-center'>
       <Loading />
     </div>
   );
@@ -87,17 +88,16 @@ const Events = () => {
               {filteredUpcomingEvents.length > 0 ? (
                 filteredUpcomingEvents.map(
                   ({ image, startDate, endDate, title, _id }) => (
-                    <div
+                    <Link
+                      href={`/events/${_id}`}
                       key={_id}
                       className='flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md overflow-hidden hover:border-orange-300'
                     >
-                      <Link href={`/events/${_id}`}>
-                        <img
-                          className='h-full w-full object-contain object-top'
-                          src={image}
-                          alt='event'
-                        />
-                      </Link>
+                      <img
+                        className='h-full w-full object-contain object-top'
+                        src={image}
+                        alt='event'
+                      />
                       <div className='flex flex-col gap-2 p-2'>
                         <h2 className='opacity-70 font-bold'>{title}</h2>
                         <div className='flex gap-4'>
@@ -106,7 +106,7 @@ const Events = () => {
                           <p>{formatDate(endDate)}</p>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   )
                 )
               ) : (
@@ -120,17 +120,16 @@ const Events = () => {
               {filteredPastEvents.length > 0 ? (
                 filteredPastEvents.map(
                   ({ image, startDate, endDate, title, _id }) => (
-                    <div
+                    <Link
+                      href={`/events/${_id}`}
                       key={_id}
                       className='flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md overflow-hidden p-2 hover:border-orange-300'
                     >
-                      <Link href={`/events/${_id}`}>
-                        <img
-                          className='h-full w-full object-contain object-top'
-                          src={image}
-                          alt='event'
-                        />
-                      </Link>
+                      <img
+                        className='h-full w-full object-contain object-top'
+                        src={image}
+                        alt='event'
+                      />
                       <div className='flex flex-col gap-2 p-2'>
                         <h2 className='opacity-70 font-bold'>{title}</h2>
                         <div className='flex gap-4'>
@@ -139,7 +138,7 @@ const Events = () => {
                           <p>{formatDate(endDate)}</p>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   )
                 )
               ) : (
@@ -149,6 +148,7 @@ const Events = () => {
           </section>
         </div>
       )}
+      <Footer />
     </>
   );
 };
