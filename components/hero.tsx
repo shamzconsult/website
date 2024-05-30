@@ -42,22 +42,24 @@ export default function Hero() {
           {/* Section header */}
           <div className='text-center pb-12 md:pb-16'>
             <h1
-              className='text-2xl md:text-4xl font-extrabold leading-snug tracking-tighter mb-4'
+              className='text-3xl sm:text-2xl md:text-4xl font-extrabold leading-snug tracking-tighter mb-4'
               data-aos='zoom-y-out'
             >
               <p>Build an Organization of High Repute,</p>
-              <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400'>
-                Immerse yourself in{" "}
-              </span>
-              <span className='inline-flex flex-col h-[calc(theme(fontSize.2xl)*theme(lineHeight.tight))] md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden'>
-                <ul className='block animate-text-slide-3 text-left leading-tight [&_li]:block'>
-                  <li>Transferable skills</li>
-                  <li>In-Demand skills</li>
-                  <li>Marketable skillset</li>
-                  <li aria-hidden='true'>Transferable skills</li>
-                </ul>
-              </span>{" "}
-              <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400'>
+              <div className='sm:flex sm:items-center sm:gap-1 sm:justify-center'>
+                <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400'>
+                  Immerse yourself in{" "}
+                </span>
+                <span className='block sm:inline-flex flex-col h-[calc(theme(fontSize.3xl)*theme(lineHeight.tight))] sm:h-[calc(theme(fontSize.2xl)*theme(lineHeight.tight))]  md:h-[calc(theme(fontSize.4xl)*theme(lineHeight.tight))] overflow-hidden'>
+                  <ul className='block animate-text-slide-3 text-center sm:text-left leading-tight [&_li]:block'>
+                    <li>Transferable skills</li>
+                    <li>In-Demand skills</li>
+                    <li>Marketable skillset</li>
+                    <li aria-hidden='true'>Transferable skills</li>
+                  </ul>
+                </span>{" "}
+              </div>
+              <span className='sm:block bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400'>
                 for Self Sustenance
               </span>
             </h1>
