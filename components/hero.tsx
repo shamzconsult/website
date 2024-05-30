@@ -46,7 +46,7 @@ export default function Hero() {
               data-aos='zoom-y-out'
             >
               <p>Build an Organization of High Repute,</p>
-              <div className='sm:flex sm:items-center sm:gap-1 sm:justify-center'>
+              <div className='sm:flex sm:items-center sm:gap-2 sm:justify-center'>
                 <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400'>
                   Immerse yourself in{" "}
                 </span>
