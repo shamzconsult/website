@@ -8,6 +8,8 @@ import { Cross1Icon } from "@radix-ui/react-icons";
 interface EventType {
   image: string;
   _id: number;
+  isActive: boolean;
+  endDate: number;
 }
 
 export const getCurrentEvent = async () => {
@@ -32,7 +34,14 @@ const UpcomingEvent = () => {
     try {
       const data = await getCurrentEvent();
       if (data && data.events && data.events.length > 0) {
-        setEvent(data.events[data.events.length - 1] as EventType);
+        const todayTimestamp = Date.now();
+        const activeEvents = data.events.filter(
+          (event: EventType) =>
+            event.isActive && new Date(event.endDate).getTime() > todayTimestamp
+        );
+        if (activeEvents.length > 0) {
+          setEvent(activeEvents[activeEvents.length - 1]);
+        }
       }
     } catch (error) {
       console.log("Error loading data", error);

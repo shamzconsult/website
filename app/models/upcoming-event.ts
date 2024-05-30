@@ -7,6 +7,7 @@ const eventSchema = new Schema(
     endDate: { type: Date },
     title: { type: String },
     description: { type: String },
+    isActive: { type: Boolean, default: true },
   },
   {
     timestamps: true,
