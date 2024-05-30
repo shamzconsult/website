@@ -96,7 +96,7 @@ const Events = () => {
                         className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md overflow-hidden hover:border-orange-300"
                       >
                         <img
-                          className="h-full w-full object-contain lg:h-[50vh] object-top"
+                          className="h-full w-full object-contain  object-top"
                           src={image}
                           alt="event"
                         />
@@ -129,7 +129,7 @@ const Events = () => {
                         className="flex flex-col gap-2 lg:w-[25%]  border border-slate-100 rounded-md overflow-hidden p-2 hover:border-orange-300"
                       >
                         <img
-                          className="h-full w-full object-contain object-top lg:h-[50vh]"
+                          className="h-full w-full object-contain object-top "
                           src={image}
                           alt="event"
                         />
