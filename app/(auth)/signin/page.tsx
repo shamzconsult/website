@@ -8,7 +8,7 @@ export default function SignIn() {
   const [inputPassword, setInputPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
   const router = useRouter();
-  const password = "Shams2024";
+  const password = "shamz2024";
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
