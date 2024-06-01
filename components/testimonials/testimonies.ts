@@ -8,7 +8,7 @@ export const testimonies = [
     name: "Ayodele Samuel Adebayo (Unclebigbay)",
     company: "Codewithunclebigbay",
     companyTitle: "Founder",
-    companyUrl: "https://codewithunclebigbay.vercel.app/",
+    companyUrl: "https://codewithunclebigbay.com",
   },
   {
     id: 2,
