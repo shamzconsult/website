@@ -1,89 +1,101 @@
-export const metadata = {
-  title: 'Sign In - Simple',
-  description: 'Page description',
-}
+"use client";
 
-import Link from 'next/link'
+import { LoginAlert } from "@/components/utils/login-alert";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function SignIn() {
+  const [inputPassword, setInputPassword] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const router = useRouter();
+  const password = "shamz2024";
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (inputPassword === password) {
+      router.push("/newevent");
+    } else {
+      LoginAlert();
+    }
+  };
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+  };
+
   return (
     <section className="bg-gradient-to-b from-gray-100 to-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="pt-32 pb-12 md:pt-40 md:pb-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-12 md:pt-40 md:pb-20">
+        <div className="max-w-3xl mx-auto text-center text-2xl pb-12 md:pb-20 font-bold">
+          <h1 className="">Welcome back.</h1>
+          <h2 className="text-orange-600"> Login to add event.</h2>
+        </div>
 
-          {/* Page header */}
-          <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
-            <h1 className="h1">Welcome back. We exist to make entrepreneurism easier.</h1>
-          </div>
-
-          {/* Form */}
-          <div className="max-w-sm mx-auto">
-            <form>
-              <div className="flex flex-wrap -mx-3 mb-4">
-                <div className="w-full px-3">
-                  <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="email">Email</label>
-                  <input id="email" type="email" className="form-input w-full text-gray-800" placeholder="Enter your email address" required />
-                </div>
-              </div>
-              <div className="flex flex-wrap -mx-3 mb-4">
-                <div className="w-full px-3">
-                  <div className="flex justify-between">
-                    <label className="block text-gray-800 text-sm font-medium mb-1" htmlFor="password">Password</label>
-                    <Link href="/reset-password" className="text-sm font-medium text-blue-600 hover:underline">Having trouble signing in?</Link>
-                  </div>
-                  <input id="password" type="password" className="form-input w-full text-gray-800" placeholder="Enter your password" required />
-                </div>
-              </div>
-              <div className="flex flex-wrap -mx-3 mb-4">
-                <div className="w-full px-3">
-                  <div className="flex justify-between">
-                    <label className="flex items-center">
-                      <input type="checkbox" className="form-checkbox" />
-                      <span className="text-gray-600 ml-2">Keep me signed in</span>
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-wrap -mx-3 mt-6">
-                <div className="w-full px-3">
-                  <button className="btn text-white bg-blue-600 hover:bg-blue-700 w-full">Sign in</button>
-                </div>
-              </div>
-            </form>
-            <div className="flex items-center my-6">
-              <div className="border-t border-gray-300 grow mr-3" aria-hidden="true"></div>
-              <div className="text-gray-600 italic">Or</div>
-              <div className="border-t border-gray-300 grow ml-3" aria-hidden="true"></div>
-            </div>
-            <form>
-              <div className="flex flex-wrap -mx-3 mb-3">
-                <div className="w-full px-3">
-                  <button className="btn px-0 text-white bg-gray-900 hover:bg-gray-800 w-full relative flex items-center">
-                    <svg className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7.95 0C3.578 0 0 3.578 0 7.95c0 3.479 2.286 6.46 5.466 7.553.397.1.497-.199.497-.397v-1.392c-2.187.497-2.683-.993-2.683-.993-.398-.895-.895-1.193-.895-1.193-.696-.497.1-.497.1-.497.795.1 1.192.795 1.192.795.696 1.292 1.888.895 2.286.696.1-.497.298-.895.497-1.093-1.79-.2-3.578-.895-3.578-3.975 0-.895.298-1.59.795-2.087-.1-.2-.397-.994.1-2.087 0 0 .695-.2 2.186.795a6.408 6.408 0 011.987-.299c.696 0 1.392.1 1.988.299 1.49-.994 2.186-.795 2.186-.795.398 1.093.199 1.888.1 2.087.496.596.795 1.291.795 2.087 0 3.08-1.889 3.677-3.677 3.875.298.398.596.895.596 1.59v2.187c0 .198.1.497.596.397C13.714 14.41 16 11.43 16 7.95 15.9 3.578 12.323 0 7.95 0z" />
+        <div className="max-w-sm mx-auto">
+          <form onSubmit={handleSubmit}>
+            <div className="flex flex-wrap  mb-4">
+              <label
+                className="block text-gray-800 text-sm font-medium mb-1"
+                htmlFor="password"
+              >
+                Password
+              </label>
+              <div className="relative w-full">
+                <input
+                  id="password"
+                  type={passwordVisible ? "text" : "password"}
+                  value={inputPassword}
+                  onChange={(e) => setInputPassword(e.target.value)}
+                  className="form-input w-full text-gray-800"
+                  placeholder="Enter your password"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500"
+                >
+                  {passwordVisible ? (
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M7.5 11C4.80285 11 2.52952 9.62184 1.09622 7.50001C2.52952 5.37816 4.80285 4 7.5 4C10.1971 4 12.4705 5.37816 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11ZM7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C1.65639 10.2936 4.30786 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C13.3436 4.70638 10.6921 3 7.5 3ZM7.5 9.5C8.60457 9.5 9.5 8.60457 9.5 7.5C9.5 6.39543 8.60457 5.5 7.5 5.5C6.39543 5.5 5.5 6.39543 5.5 7.5C5.5 8.60457 6.39543 9.5 7.5 9.5Z"
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span className="flex-auto pl-16 pr-8 -ml-16">Continue with GitHub</span>
-                  </button>
-                </div>
-              </div>
-              <div className="flex flex-wrap -mx-3">
-                <div className="w-full px-3">
-                  <button className="btn px-0 text-white bg-red-600 hover:bg-red-700 w-full relative flex items-center">
-                    <svg className="w-4 h-4 fill-current text-white opacity-75 shrink-0 mx-4" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M7.9 7v2.4H12c-.2 1-1.2 3-4 3-2.4 0-4.3-2-4.3-4.4 0-2.4 2-4.4 4.3-4.4 1.4 0 2.3.6 2.8 1.1l1.9-1.8C11.5 1.7 9.9 1 8 1 4.1 1 1 4.1 1 8s3.1 7 7 7c4 0 6.7-2.8 6.7-6.8 0-.5 0-.8-.1-1.2H7.9z" />
+                  ) : (
+                    <svg
+                      width="15"
+                      height="15"
+                      viewBox="0 0 15 15"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M13.3536 2.35355C13.5488 2.15829 13.5488 1.84171 13.3536 1.64645C13.1583 1.45118 12.8417 1.45118 12.6464 1.64645L10.6828 3.61012C9.70652 3.21671 8.63759 3 7.5 3C4.30786 3 1.65639 4.70638 0.0760002 7.23501C-0.0253338 7.39715 -0.0253334 7.60288 0.0760014 7.76501C0.902945 9.08812 2.02314 10.1861 3.36061 10.9323L1.64645 12.6464C1.45118 12.8417 1.45118 13.1583 1.64645 13.3536C1.84171 13.5488 2.15829 13.5488 2.35355 13.3536L4.31723 11.3899C5.29348 11.7833 6.36241 12 7.5 12C10.6921 12 13.3436 10.2936 14.924 7.76501C15.0253 7.60288 15.0253 7.39715 14.924 7.23501C14.0971 5.9119 12.9769 4.81391 11.6394 4.06771L13.3536 2.35355ZM9.90428 4.38861C9.15332 4.1361 8.34759 4 7.5 4C4.80285 4 2.52952 5.37816 1.09622 7.50001C1.87284 8.6497 2.89609 9.58106 4.09974 10.1931L9.90428 4.38861ZM5.09572 10.6114L10.9003 4.80685C12.1039 5.41894 13.1272 6.35031 13.9038 7.50001C12.4705 9.62183 10.1971 11 7.5 11C6.65241 11 5.84668 10.8639 5.09572 10.6114Z"
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                      ></path>
                     </svg>
-                    <span className="flex-auto pl-16 pr-8 -ml-16">Continue with Google</span>
-                  </button>
-                </div>
+                  )}
+                </button>
               </div>
-            </form>
-            <div className="text-gray-600 text-center mt-6">
-              Don't you have an account? <Link href="/signup" className="text-blue-600 hover:underline transition duration-150 ease-in-out">Sign up</Link>
             </div>
-          </div>
 
+            <button className="btn text-white bg-orange-600 hover:bg-orange-700 w-full">
+              Sign in
+            </button>
+          </form>
         </div>
       </div>
     </section>
-  )
+  );
 }
