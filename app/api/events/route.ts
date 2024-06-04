@@ -42,6 +42,7 @@ const DELETE = async (request: any) => {
     if (!id) {
       return NextResponse.json(
         { message: "Event-ID does not exists" },
+        //executing here
         { status: 400 }
       );
     }
