@@ -34,4 +34,63 @@ const GET = async () => {
   return NextResponse.json({ events });
 };
 
-export { POST, GET };
+// const DELETE = async (req: Request, res: Response) => {
+//   try {
+//     const body = await req.json();
+//     const { _id } = body;
+
+//     if (!_id) {
+//       return NextResponse.json(
+//         { message: "Event ID does not exist, please check again" },
+//         { status: 400 }
+//       );
+//     }
+//     await connectMongoDB();
+//     const result = await UpcomingEvent.findByIdAndDelete(_id);
+//     if (!result) {
+//       return NextResponse.json({ message: "Event not found" }, { status: 404 });
+//     }
+//     return NextResponse.json(
+//       { message: "Event deleted successfully!!!" },
+//       { status: 200 }
+//     );
+//   } catch (error) {
+//     console.log(error);
+//     return NextResponse.json(
+//       { message: "Event not deleted, check details" },
+//       {
+//         status: 500,
+//       }
+//     );
+//   }
+// };
+
+const DELETE = async (request: any) => {
+  try {
+    const _id = await request.json();
+    await connectMongoDB();
+    if (!_id) {
+      return NextResponse.json(
+        { message: "Event ID does not exist, check again!!" },
+        { status: 400 }
+      );
+    }
+    const result = await UpcomingEvent.findByIdAndDelete(_id);
+    if (result) {
+      return NextResponse.json(
+        { message: "Event deleted successfully" },
+        { status: 200 }
+      );
+    } else {
+      return NextResponse.json({ message: "Event not found" }, { status: 404 });
+    }
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json(
+      { message: "Internal server error...." },
+      { status: 500 }
+    );
+  }
+};
+
+export { POST, GET, DELETE };
