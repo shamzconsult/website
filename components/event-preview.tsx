@@ -17,7 +17,7 @@ interface EventType {
 
 export const getEventById = async (_id: string) => {
   try {
-    const res = await fetch(`/api/event/${_id}`, {
+    const res = await fetch(`/api/events/${_id}`, {
       cache: "no-store",
     });
     if (!res.ok) {
