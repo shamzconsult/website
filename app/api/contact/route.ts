@@ -7,7 +7,6 @@ const POST = async (request: any) => {
     await connectMongoDB();
     const { name, email, message } = await request.json();
     const result = await Contact.create({ name, email, message });
-    console.log(result);
     return NextResponse.json(
       { message: "New message sent successfully" },
       { status: 201 }
