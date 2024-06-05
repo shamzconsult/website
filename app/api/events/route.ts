@@ -33,7 +33,7 @@ const GET = async () => {
   return NextResponse.json({ events });
 };
 
-const PATCH = async (request: any) => {
+const DELETE = async (request: any) => {
   try {
     await connectMongoDB();
 
@@ -63,4 +63,4 @@ const PATCH = async (request: any) => {
   }
 };
 
-export { POST, GET, PATCH };
+export { POST, GET, DELETE };

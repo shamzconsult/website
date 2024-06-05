@@ -75,7 +75,7 @@ export default function AddNewEventForm() {
         onChange={(e) => setStartDate(e.target.value)}
         value={startDate}
         type="text "
-        placeholder="Jul-06-2024"
+        placeholder="StartDate e.g Jul-06-2024"
         className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
@@ -83,7 +83,7 @@ export default function AddNewEventForm() {
         onChange={(e) => setEndDate(e.target.value)}
         value={endDate}
         type="text"
-        placeholder="Dec-18-2024"
+        placeholder="EndDate e.g Dec-18-2024"
         className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
