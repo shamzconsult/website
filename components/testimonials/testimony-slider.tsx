@@ -97,7 +97,7 @@ const TestimonySlider = () => {
                     src={image}
                     width={96}
                     height={96}
-                    alt={`Testimonial from ${name}`}
+                    alt={name}
                   />
                 </div>
                 <blockquote className="text-md font-medium mb-4 text-gray-600">
