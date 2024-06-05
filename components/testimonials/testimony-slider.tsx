@@ -108,9 +108,7 @@ const TestimonySlider = () => {
                 </cite>
                 <div className="flex flex-col gap-1 text-gray-600">
                   <p>{companyTitle}</p>
-                  <p className="text-orange-600 hover:underline">
-                    {companyName}
-                  </p>
+                  <p className="text-orange-600">{companyName}</p>
                 </div>
               </div>
             )
