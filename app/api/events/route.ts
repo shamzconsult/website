@@ -20,7 +20,6 @@ const POST = async (request: any) => {
       { status: 201 }
     );
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { message: "Check details, bad request" },
       { status: 500 }
@@ -34,28 +33,34 @@ const GET = async () => {
   return NextResponse.json({ events });
 };
 
-const DELETE = async (request: any) => {
+const PATCH = async (request: any) => {
   try {
     await connectMongoDB();
+
     const { id } = await request.json();
-    await UpcomingEvent.findByIdAndDelete({ _id: id });
+
     if (!id) {
       return NextResponse.json(
         { message: "Event-ID does not exists" },
-        //executing here
+
         { status: 400 }
       );
     }
+
+    await UpcomingEvent.findByIdAndDelete({ _id: id });
+
     return NextResponse.json(
       { message: "Event deleted successfully" },
+
       { status: 200 }
     );
   } catch (error) {
-    console.error(error);
     return NextResponse.json(
       { message: "Failed to delete event" },
+
       { status: 500 }
     );
   }
 };
-export { POST, GET, DELETE };
+
+export { POST, GET, PATCH };

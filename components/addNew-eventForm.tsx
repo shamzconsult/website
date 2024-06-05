@@ -19,7 +19,7 @@ export default function AddNewEventForm() {
     }
 
     try {
-      const res = await fetch("/api/event", {
+      const res = await fetch("/api/events", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -45,7 +45,7 @@ export default function AddNewEventForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mt-32 flex flex-col gap-6  bg-slate-50 p-2 mx-auto w-[90%] lg:w-[60%]"
+      className=" flex flex-col gap-6  bg-slate-50 p-2 mx-auto w-[90%] lg:w-[60%]"
     >
       <input
         onChange={(e) => setImage(e.target.value)}
