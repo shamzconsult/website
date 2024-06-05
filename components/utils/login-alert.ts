@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 
 export const LoginAlert = () => {
   Swal.fire({
-    position: "bottom-right",
+    position: "center",
     icon: "error",
     title: "wrong password",
     showConfirmButton: false,

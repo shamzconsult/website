@@ -49,7 +49,7 @@ const AllTestimonies = () => {
         <div className="flex flex-col justify-center items-center mt-20 text-gray-600 p-8">
           <section className="flex flex-col justify-center items-center gap-6">
             <h1 className="font-bold text-lg">All Testimonies</h1>
-            <div className="flex flex-wrap justify-center items-start gap-8">
+            <div className="flex flex-wrap justify-start items-start gap-8">
               {testimonies.length > 0 ? (
                 testimonies.map(
                   ({
