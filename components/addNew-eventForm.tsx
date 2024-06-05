@@ -63,10 +63,10 @@ export default function AddNewEventForm() {
         className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
-      <input
+      <textarea
         onChange={(e) => setDescription(e.target.value)}
         value={description}
-        type="text "
+        rows={5}
         placeholder="Event description"
         className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
         required
