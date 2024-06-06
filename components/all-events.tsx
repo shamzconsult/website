@@ -7,6 +7,7 @@ import Loading from "./loader";
 import Footer from "./ui/footer";
 import { formatDate } from "./events";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 interface EventType {
   image: string;
@@ -18,7 +19,7 @@ interface EventType {
   isActive: boolean;
 }
 
-export const deleteData = async (_id: number) => {
+const deleteData = async (_id: number) => {
   try {
     const res = await fetch(`/api/events/${_id}`, {
       method: "DELETE",
@@ -39,6 +40,14 @@ export const deleteData = async (_id: number) => {
 const AllEvents = () => {
   const [event, setEvent] = useState<EventType[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+   useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    if (!isLoggedIn) {
+      router.push("/"); 
+    }
+  }, [router]);
 
   const fetchData = async () => {
     try {
@@ -54,6 +63,8 @@ const AllEvents = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+ 
 
   const EventPageLoader = () => (
     <div className="min-h-[70vh] flex justify-center items-center">
