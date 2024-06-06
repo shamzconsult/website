@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { EventAlert } from "./utils/login-alert";
 
 export default function AddNewEventForm() {
   const [image, setImage] = useState("");
@@ -33,8 +34,8 @@ export default function AddNewEventForm() {
         }),
       });
       if (res.ok) {
+        EventAlert();
         router.push("/events");
-        console.log(res);
       } else {
         throw new Error("Event failed to add");
       }

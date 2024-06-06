@@ -34,7 +34,6 @@ export default function AddNewTestimonyForm() {
       });
       if (res.ok) {
         router.push("/");
-        console.log(res);
       } else {
         throw new Error("Event failed to add");
       }

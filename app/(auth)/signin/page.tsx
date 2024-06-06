@@ -9,7 +9,7 @@ export default function SignIn() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
-  const password = "shamz2024";
+  const password = process.env.PASSWORD;
 
   useEffect(() => {
     const loggedInStatus = localStorage.getItem("isLoggedIn");
