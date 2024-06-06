@@ -1,4 +1,33 @@
+"use client";
+import { useState } from "react";
+
 export default function Newsletter() {
+  const [email, setEmail] = useState("");
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+
+    if (!email) {
+      alert("field is required");
+      return;
+    }
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+      if (res.ok) {
+        setEmail("");
+      } else {
+        throw new Error("subscription failed ");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <section>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
@@ -101,20 +130,23 @@ export default function Newsletter() {
                 </p>
 
                 {/* CTA form */}
-                <form className="w-full lg:w-auto">
+                <form onSubmit={handleSubmit} className="w-full lg:w-auto">
                   <div className="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:mx-0">
                     <input
                       type="email"
+                      onChange={(e) => setEmail(e.target.value)}
+                      value={email}
                       className="form-input w-full appearance-none bg-gray-800 border border-gray-700 focus:border-gray-600 rounded-sm px-4 py-3 mb-2 sm:mb-0 sm:mr-2 text-white placeholder-gray-500"
                       placeholder="Your email…"
                       aria-label="Your email…"
+                      required
                     />
-                    <a
-                      className="btn text-white bg-blue-600 hover:bg-blue-700 shadow"
-                      href="#0"
+                    <button
+                      className="btn text-white bg-orange-600 hover:bg-orange-700 shadow"
+                      type="submit"
                     >
-                      Subscribe
-                    </a>
+                      Subscribe.
+                    </button>
                   </div>
                   {/* Success message */}
                   {/* <p className="text-sm text-gray-400 mt-3">Thanks for subscribing!</p> */}
