@@ -4,8 +4,9 @@ import "aos/dist/aos.css";
 import Link from "next/link";
 import Loading from "./loader";
 import Footer from "./ui/footer";
-import DeleteButton from "./delete-Btn";
 import { getAllTestimonies } from "./testimonials/testimony-slider";
+import { deleteData } from "./all-events";
+import Swal from "sweetalert2";
 
 interface TestimonyType {
   image: string;
@@ -34,6 +35,34 @@ const AllTestimonies = () => {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleDelete = async (_id: number) => {
+    try {
+      const result = await deleteData(_id);
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setTestimonies((prevEvents: any) =>
+            prevEvents.filter((event: any) => event._id !== _id)
+          );
+          Swal.fire({
+            title: "Deleted!",
+            text: "Testimony has been deleted.",
+            icon: "success",
+          });
+        }
+      });
+    } catch (error) {
+      console.error("Error deleting ", error);
+    }
+  };
 
   const TestimonyPageLoader = () => (
     <div className="min-h-[70vh] flex justify-center items-center">
@@ -78,11 +107,16 @@ const AllTestimonies = () => {
                       </div>
                       <div className="p-2 flex justify-between items-center">
                         <Link href={`/edittestimony/${_id}`}>
-                          <button className="bg-green-100 rounded-md w-fit px-5 font-medium border hover:border-orange-300 hover:bg-white">
+                          <button className="bg-green-400 rounded-md w-fit px-5 font-medium border text-white hover:bg-green-600">
                             Edit
                           </button>
                         </Link>
-                        <DeleteButton _id={_id} />
+                        <button
+                          onClick={() => handleDelete(_id)}
+                          className="bg-blue-500 text-white rounded-md w-fit px-5 font-medium border  hover:bg-red-600"
+                        >
+                          Delete
+                        </button>
                       </div>
                     </div>
                   )

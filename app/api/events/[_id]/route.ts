@@ -52,4 +52,32 @@ const PUT = async (request: any, { params }: { params: { _id: string } }) => {
   }
 };
 
-export { GET, PUT };
+const DELETE = async (
+  request: any,
+  { params }: { params: { _id: string } }
+) => {
+  try {
+    await connectMongoDB();
+    const dataToDelete = await UpcomingEvent.findByIdAndDelete({
+      _id: params._id,
+    });
+    if (!dataToDelete) {
+      return NextResponse.json(
+        { message: "Data to delete not found  " },
+        { status: 404 }
+      );
+    }
+    return NextResponse.json(
+      { message: "Event deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Failed to delete event" },
+
+      { status: 500 }
+    );
+  }
+};
+
+export { GET, PUT, DELETE };
