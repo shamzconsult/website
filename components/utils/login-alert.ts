@@ -9,3 +9,13 @@ export const LoginAlert = () => {
     timer: 1200,
   });
 };
+
+export const EventAlert = () => {
+  Swal.fire({
+    position: "center",
+    icon: "success",
+    title: "Event added successfully",
+    showConfirmButton: false,
+    timer: 1200,
+  });
+};

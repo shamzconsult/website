@@ -42,10 +42,10 @@ const AllEvents = () => {
   const [loading, setLoading] = useState(true);
   const router = useRouter();
 
-   useEffect(() => {
+  useEffect(() => {
     const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     if (!isLoggedIn) {
-      router.push("/"); 
+      router.push("/");
     }
   }, [router]);
 
@@ -63,8 +63,6 @@ const AllEvents = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
- 
 
   const EventPageLoader = () => (
     <div className="min-h-[70vh] flex justify-center items-center">
@@ -93,6 +91,7 @@ const AllEvents = () => {
             text: "Event has been deleted.",
             icon: "success",
           });
+          fetchData();
         }
       });
     } catch (error) {
@@ -110,40 +109,44 @@ const AllEvents = () => {
             <h1 className="font-bold text-lg">All Events</h1>
             <div className="flex flex-wrap justify-center items-start gap-8">
               {event.length > 0 ? (
-                event.map(({ image, startDate, endDate, title, _id }) => (
-                  <div className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md overflow-hidden hover:border-orange-300">
-                    <Link href={`/events/${_id}`} key={_id}>
-                      <img
-                        className="h-full w-full object-contain  object-top"
-                        src={image}
-                        alt="event"
-                      />
-                      <div className="flex flex-col gap-2 p-2">
-                        <h2 className="opacity-70 font-bold">{title}</h2>
-                        <div className="flex gap-4">
-                          <p>{formatDate(startDate)}</p>
-                          <h1 className="bold text-lg">-</h1>
-                          <p>{formatDate(endDate)}</p>
+                event.map(
+                  ({ image, startDate, endDate, title, _id, isActive }) => (
+                    <div className="flex flex-col gap-2 lg:w-[25%] border border-slate-100 rounded-md overflow-hidden hover:border-orange-300">
+                      <Link href={`/events/${_id}`} key={_id}>
+                        <img
+                          className="h-full w-full object-contain  object-top"
+                          src={image}
+                          alt="event"
+                        />
+                        <div className="flex flex-col gap-2 p-2">
+                          <h2 className="opacity-70 font-bold">{title}</h2>
+                          <div className="flex gap-4">
+                            <p>{formatDate(startDate)}</p>
+                            <h1 className="bold text-lg">-</h1>
+                            <p>{formatDate(endDate)}</p>
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                    <div className="p-2 flex justify-between items-center">
-                      <Link href={`/editevent/${_id}`}>
-                        <button className="bg-green-100 rounded-md w-fit px-5 font-medium border hover:border-orange-300 hover:bg-white">
-                          Edit
-                        </button>
                       </Link>
-                      <button
-                        onClick={() => handleDelete(_id)}
-                        className="bg-red-500 text-white rounded-md w-fit px-5 font-medium border  hover:bg-red-600"
-                      >
-                        Delete
-                      </button>
+                      <div className="p-2 flex justify-between items-center">
+                        <Link href={`/editevent/${_id}`}>
+                          <button className="bg-green-100 rounded-md w-fit px-5 font-medium border hover:border-orange-300 hover:bg-white">
+                            Edit
+                          </button>
+                        </Link>
+                        <button
+                          onClick={() => handleDelete(_id)}
+                          className="bg-red-500 text-white rounded-md w-fit px-5 font-medium border  hover:bg-red-600"
+                        >
+                          {isActive ? "Disable" : "Enable"}
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                ))
+                  )
+                )
               ) : (
-                <div>No event for now...</div>
+                <div className="text-gray-500 text-md">
+                  Hello admin👋, Your events will appear here once you add..
+                </div>
               )}
             </div>
           </section>

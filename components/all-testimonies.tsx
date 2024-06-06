@@ -14,6 +14,7 @@ interface TestimonyType {
   testimony: string;
   companyName: string;
   companyTitle: string;
+  isActive: boolean;
   _id: number;
 }
 
@@ -113,6 +114,7 @@ const AllTestimonies = () => {
                     testimony,
                     companyName,
                     companyTitle,
+                    isActive,
                     _id,
                   }) => (
                     <div className="flex flex-col gap-2 lg:w-[45%] border border-slate-100 rounded-md overflow-hidden hover:border-blue-400">
@@ -141,7 +143,7 @@ const AllTestimonies = () => {
                           onClick={() => handleDelete(_id)}
                           className="bg-blue-500 text-white rounded-md w-fit px-5 font-medium border  hover:bg-red-600"
                         >
-                          Delete
+                          {isActive ? "Disable" : "Enable"}
                         </button>
                       </div>
                     </div>

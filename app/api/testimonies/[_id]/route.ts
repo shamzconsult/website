@@ -59,9 +59,11 @@ const DELETE = async (
 ) => {
   try {
     await connectMongoDB();
-    const testimonyToDelete = await Testimonials.findByIdAndDelete({
-      _id: params._id,
-    });
+    const testimonyToDelete = await Testimonials.findByIdAndUpdate(
+      params._id,
+      { isActive: false },
+      { new: true }
+    );
     if (!testimonyToDelete) {
       return NextResponse.json(
         { message: "Testimony to delete not found  " },

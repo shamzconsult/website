@@ -58,9 +58,11 @@ const DELETE = async (
 ) => {
   try {
     await connectMongoDB();
-    const dataToDelete = await UpcomingEvent.findByIdAndDelete({
-      _id: params._id,
-    });
+    const dataToDelete = await UpcomingEvent.findByIdAndUpdate(
+      params._id,
+      { isActive: false },
+      { new: true }
+    );
     if (!dataToDelete) {
       return NextResponse.json(
         { message: "Data to delete not found  " },

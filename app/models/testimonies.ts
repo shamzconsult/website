@@ -7,6 +7,7 @@ const testimonySchema = new Schema(
     name: { type: String },
     companyName: { type: String },
     companyTitle: { type: String },
+    isActive: { type: Boolean, default: true },
   },
   {
     timestamps: true,
