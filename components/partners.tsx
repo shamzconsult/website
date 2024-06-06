@@ -1,5 +1,7 @@
 import Link from "next/link";
 import TestimonySlider from "./testimonials/testimony-slider";
+import Newsletter from "./newsletter";
+import Sponsors from "./sponsor";
 
 export default function Partners() {
   return (
@@ -57,76 +59,18 @@ export default function Partners() {
             </p>
           </div>
 
-          {/* Items */}
-          <div className='flex flex-wrap justify-center items-center gap-6 font-bold  text-2xl'>
-            {/* Item */}
-            <Link
-              href=''
-              className='flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center'
-            >
-              •Kwara state Government•
-            </Link>
-
-            {/* Item */}
-            <Link
-              href=''
-              className='flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center'
-            >
-              •National Productivity Center•
-            </Link>
-
-            {/* Item */}
-            <Link
-              href=''
-              className='flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center'
-            >
-              •KSolutions•
-            </Link>
-
-            {/* Item */}
-            <Link
-              href=''
-              className='flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer text-center'
-            >
-              •Kanon Royal Consult•
-            </Link>
-
-            {/* Item */}
-            <Link
-              href=''
-              className='flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center'
-            >
-              •Nigeria Employers Consultative Association•
-            </Link>
-            <Link
-              href=''
-              className='flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center'
-            >
-              •Kwara state College of Education•
-            </Link>
-            <Link
-              href=''
-              className='flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center'
-            >
-              •Students Union, University of Ilorin•
-            </Link>
-            <Link
-              href=''
-              className='flex items-center justify-center py-2 col-span-2 md:col-auto opacity-60 hover:opacity-100 cursor-pointer col-start-2 col-end-4 text-center'
-            >
-              •Postgraduate Students' Association, University of Ilorin•
-            </Link>
-          </div>
+          <Sponsors />
 
           {/* Testimonials */}
           <div
             id='testimonial'
-            className='max-w-3xl mx-auto mt-20'
+            className='max-w-3xl mx-auto pt-20'
             data-aos='zoom-y-out'
           >
             <TestimonySlider />
           </div>
         </div>
+        <Newsletter />
       </div>
     </section>
   );
