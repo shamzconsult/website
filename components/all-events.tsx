@@ -6,7 +6,7 @@ import Link from "next/link";
 import Loading from "./loader";
 import Footer from "./ui/footer";
 import { formatDate } from "./events";
-import DeleteButton from "./delete-Btn";
+import Swal from "sweetalert2";
 
 interface EventType {
   image: string;
@@ -17,6 +17,24 @@ interface EventType {
   _id: number;
   isActive: boolean;
 }
+
+export const deleteData = async (_id: number) => {
+  try {
+    const res = await fetch(`/api/events/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Error occurred while deleting");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error deleting ", error);
+  }
+};
 
 const AllEvents = () => {
   const [event, setEvent] = useState<EventType[]>([]);
@@ -42,6 +60,34 @@ const AllEvents = () => {
       <Loading />
     </div>
   );
+
+  const handleDelete = async (_id: number) => {
+    try {
+      const result = await deleteData(_id);
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setEvent((prevEvents: any) =>
+            prevEvents.filter((event: any) => event._id !== _id)
+          );
+          Swal.fire({
+            title: "Deleted!",
+            text: "Event has been deleted.",
+            icon: "success",
+          });
+        }
+      });
+    } catch (error) {
+      console.error("Error deleting ", error);
+    }
+  };
 
   return (
     <>
@@ -76,7 +122,12 @@ const AllEvents = () => {
                           Edit
                         </button>
                       </Link>
-                      <DeleteButton _id={_id} />
+                      <button
+                        onClick={() => handleDelete(_id)}
+                        className="bg-red-500 text-white rounded-md w-fit px-5 font-medium border  hover:bg-red-600"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 ))
