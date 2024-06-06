@@ -45,7 +45,7 @@ export default function EditAnEvent() {
   if (!event) {
     return (
       <div className="text-red-500 text-sm text-center p-4">
-        Error loading event details, Please reload your browser
+        Error loading event details, Please check the event id
       </div>
     );
   }

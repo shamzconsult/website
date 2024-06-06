@@ -5,8 +5,8 @@ import Link from "next/link";
 import Loading from "./loader";
 import Footer from "./ui/footer";
 import { getAllTestimonies } from "./testimonials/testimony-slider";
-import { deleteData } from "./all-events";
 import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
 
 interface TestimonyType {
   image: string;
@@ -17,9 +17,35 @@ interface TestimonyType {
   _id: number;
 }
 
+const deleteData = async (_id: number) => {
+  try {
+    const res = await fetch(`/api/testimonies/${_id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!res.ok) {
+      throw new Error("Error occurred while deleting");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error deleting ", error);
+  }
+};
+
 const AllTestimonies = () => {
   const [testimonies, setTestimonies] = useState<TestimonyType[]>([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    if (!isLoggedIn) {
+      router.push("/");
+    }
+  }, [router]);
 
   const fetchData = async () => {
     try {

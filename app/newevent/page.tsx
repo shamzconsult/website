@@ -4,6 +4,7 @@ import NewEvents from "@/components/new-events";
 import Link from "next/link";
 
 export default function AddNewEvent() {
+  
   return (
     <div className="mt-32 ">
       <Link href={"/testimonies"}>

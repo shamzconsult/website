@@ -1,5 +1,4 @@
 import Testimonials from "@/app/models/testimonies";
-import UpcomingEvent from "@/app/models/upcoming-event";
 import connectMongoDB from "@/libs/mongodb";
 import { NextResponse } from "next/server";
 
@@ -54,4 +53,31 @@ const PUT = async (request: any, { params }: { params: { _id: string } }) => {
   }
 };
 
-export { GET, PUT };
+const DELETE = async (
+  request: any,
+  { params }: { params: { _id: string } }
+) => {
+  try {
+    await connectMongoDB();
+    const testimonyToDelete = await Testimonials.findByIdAndDelete({
+      _id: params._id,
+    });
+    if (!testimonyToDelete) {
+      return NextResponse.json(
+        { message: "Testimony to delete not found  " },
+        { status: 404 }
+      );
+    }
+    return NextResponse.json(
+      { message: "Testimony deleted successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Failed to delete Testimony" },
+
+      { status: 500 }
+    );
+  }
+};
+export { GET, PUT, DELETE };

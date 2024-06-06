@@ -2,23 +2,33 @@
 
 import { LoginAlert } from "@/components/utils/login-alert";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function SignIn() {
   const [inputPassword, setInputPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
   const password = "shamz2024";
+
+  useEffect(() => {
+    const loggedInStatus = localStorage.getItem("isLoggedIn");
+    if (loggedInStatus === "true") {
+      setIsLoggedIn(true);
+      router.push("/newevent");
+    }
+  }, []);
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     if (inputPassword === password) {
+      setIsLoggedIn(true);
+      localStorage.setItem("isLoggedIn", "true");
       router.push("/newevent");
     } else {
       LoginAlert();
     }
   };
-
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -27,8 +37,8 @@ export default function SignIn() {
     <section className="bg-gradient-to-b from-gray-100 to-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-32 pb-12 md:pt-40 md:pb-20">
         <div className="max-w-3xl mx-auto text-center text-2xl pb-12 md:pb-20 font-bold">
-          <h1 className="">Welcome back.</h1>
-          <h2 className="text-orange-600"> Login to add event.</h2>
+          <h1 className="">Welcome back admin.</h1>
+          <h2 className="text-orange-600"> Login to add new content.</h2>
         </div>
 
         <div className="max-w-sm mx-auto">
@@ -90,7 +100,10 @@ export default function SignIn() {
               </div>
             </div>
 
-            <button className="btn text-white bg-orange-600 hover:bg-orange-700 w-full">
+            <button
+              type="submit"
+              className="btn text-white bg-orange-600 hover:bg-orange-700 w-full"
+            >
               Sign in
             </button>
           </form>
