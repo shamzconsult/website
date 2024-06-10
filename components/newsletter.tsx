@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { NewsLetterAlert } from "./utils/login-alert";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ export default function Newsletter() {
         body: JSON.stringify({ email }),
       });
       if (res.ok) {
+        NewsLetterAlert();
         setEmail("");
       } else {
         throw new Error("subscription failed ");

@@ -1,12 +1,12 @@
 "use client";
-import EditEventForm from "@/components/edit-eventForm";
+import EditTestimonyForm from "@/components/admin/edit-testimonyForm";
 import Loading from "@/components/loader";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const getEventById = async (_id: string) => {
+const getTestimonyById = async (_id: string) => {
   try {
-    const res = await fetch(`/api/events/${_id}`, {
+    const res = await fetch(`/api/testimonies/${_id}`, {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -19,15 +19,16 @@ const getEventById = async (_id: string) => {
   }
 };
 
-export default function EditAnEvent() {
+export default function EditTestimony() {
   const { _id } = useParams();
-  const [event, setEvent] = useState(null);
+
+  const [testimonies, setTestimony] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const eventData = await getEventById(_id as string);
-      setEvent(eventData.event);
+      const testimonyData = await getTestimonyById(_id as string);
+      setTestimony(testimonyData.testimony);
       setLoading(false);
     };
 
@@ -42,25 +43,26 @@ export default function EditAnEvent() {
     );
   }
 
-  if (!event) {
+  if (!testimonies) {
     return (
       <div className="text-red-500 text-sm text-center p-4">
-        Error loading event details, Please check the event id
+        Error loading event details, Please reload your browser
       </div>
     );
   }
 
-  const { image, title, description, startDate, endDate } = event;
+  const { image, name, testimony, companyName, companyTitle } = testimonies;
 
   return (
     <div>
-      <EditEventForm
+      <h1 className="font-bold text-2xl text-center mt-32">Edit Testimony..</h1>
+      <EditTestimonyForm
         _id={_id}
         image={image}
-        title={title}
-        description={description}
-        startDate={startDate}
-        endDate={endDate}
+        name={name}
+        testimony={testimony}
+        companyName={companyName}
+        companyTitle={companyTitle}
       />
     </div>
   );
