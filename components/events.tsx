@@ -107,7 +107,7 @@ const Events = () => {
                     )
                 )
               ) : (
-                <div>No upcoming event for now...</div>
+                <div className="text-red-200">No upcoming event for now...</div>
               )}
             </div>
           </section>
@@ -140,7 +140,7 @@ const Events = () => {
                     )
                 )
               ) : (
-                <div>No past event...</div>
+                <div>No past event..</div>
               )}
             </div>
           </section>

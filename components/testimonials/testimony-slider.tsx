@@ -69,58 +69,60 @@ const TestimonySlider = () => {
       <main className="flex flex-col justify-center items-center pt-20">
         <div className="relative block mx-auto border-2 border-gray-200 rounded bg-white ">
           {/* Testimonial */}
-          {testimonies.map(
-            (
-              {
-                image,
-                name,
-                companyName,
-                companyTitle,
-                testimony,
-                isActive,
-                _id,
-              },
-              idx
-            ) =>
-              isActive && (
-                <div
-                  key={_id}
-                  className={`${
-                    idx === currTestimony
-                      ? "text-center md:px-12 py-8 pt-20 mx-4 md:mx-0"
-                      : "hidden"
-                  }`}
-                >
-                  <div className="absolute top-0 -mt-8 left-1/2 transform -translate-x-1/2">
-                    <svg
-                      className="absolute top-0 right-0 -mt-3 -mr-8 w-16 h-16 fill-current text-orange-500"
-                      viewBox="0 0 64 64"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
+          {testimonies.length > 0
+            ? testimonies.map(
+                (
+                  {
+                    image,
+                    name,
+                    companyName,
+                    companyTitle,
+                    testimony,
+                    isActive,
+                    _id,
+                  },
+                  idx
+                ) =>
+                  isActive && (
+                    <div
+                      key={_id}
+                      className={`${
+                        idx === currTestimony
+                          ? "text-center md:px-12 py-8 pt-20 mx-4 md:mx-0"
+                          : "hidden"
+                      }`}
                     >
-                      <path d="M37.89 58.338c-2.648-5.63-3.572-10.045-2.774-13.249.8-3.203 8.711-13.383 23.737-30.538l2.135.532c-6.552 10.033-10.532 17.87-11.939 23.515-.583 2.34.22 6.158 2.41 11.457l-13.57 8.283zm-26.963-6.56c-2.648-5.63-3.572-10.046-2.773-13.25.799-3.203 8.71-13.382 23.736-30.538l2.136.533c-6.552 10.032-10.532 17.87-11.94 23.515-.583 2.339.22 6.158 2.41 11.456l-13.57 8.283z" />
-                    </svg>
-                    <Image
-                      className="relative rounded-full"
-                      src={image}
-                      width={96}
-                      height={96}
-                      alt={name}
-                    />
-                  </div>
-                  <blockquote className="text-md font-medium mb-4 text-gray-600">
-                    “{testimony}“
-                  </blockquote>
-                  <cite className="block font-bold text-lg not-italic mb-1">
-                    {name}
-                  </cite>
-                  <div className="flex flex-col gap-1 text-gray-600">
-                    <p>{companyTitle}</p>
-                    <p className="text-orange-600">{companyName}</p>
-                  </div>
-                </div>
+                      <div className="absolute top-0 -mt-8 left-1/2 transform -translate-x-1/2">
+                        <svg
+                          className="absolute top-0 right-0 -mt-3 -mr-8 w-16 h-16 fill-current text-orange-500"
+                          viewBox="0 0 64 64"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M37.89 58.338c-2.648-5.63-3.572-10.045-2.774-13.249.8-3.203 8.711-13.383 23.737-30.538l2.135.532c-6.552 10.033-10.532 17.87-11.939 23.515-.583 2.34.22 6.158 2.41 11.457l-13.57 8.283zm-26.963-6.56c-2.648-5.63-3.572-10.046-2.773-13.25.799-3.203 8.71-13.382 23.736-30.538l2.136.533c-6.552 10.032-10.532 17.87-11.94 23.515-.583 2.339.22 6.158 2.41 11.456l-13.57 8.283z" />
+                        </svg>
+                        <Image
+                          className="relative rounded-full"
+                          src={image}
+                          width={96}
+                          height={96}
+                          alt={name}
+                        />
+                      </div>
+                      <blockquote className="text-md font-medium mb-4 text-gray-600">
+                        “{testimony}“
+                      </blockquote>
+                      <cite className="block font-bold text-lg not-italic mb-1">
+                        {name}
+                      </cite>
+                      <div className="flex flex-col gap-1 text-gray-600">
+                        <p>{companyTitle}</p>
+                        <p className="text-orange-600">{companyName}</p>
+                      </div>
+                    </div>
+                  )
               )
-          )}
+            : null}
         </div>
         <div className="flex justify-center gap-2">
           <button

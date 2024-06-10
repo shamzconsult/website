@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { EventAlert } from "./utils/login-alert";
+import { EventAlert } from "../utils/login-alert";
 
 export default function AddNewEventForm() {
   const [image, setImage] = useState("");
@@ -46,14 +46,14 @@ export default function AddNewEventForm() {
   return (
     <form
       onSubmit={handleSubmit}
-      className=" flex flex-col gap-6  bg-slate-50 p-2 mx-auto w-[90%] lg:w-[60%]"
+      className="w-full flex flex-col gap-6 bg-slate-50 rounded-md p-10 lg:w-[70%]"
     >
       <input
         onChange={(e) => setImage(e.target.value)}
         value={image}
         type="url"
         placeholder="https://cdn.hashnode.com/res/hashnode/image/upload/5432338f.jpeg"
-        className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
+        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
       <input
@@ -61,7 +61,7 @@ export default function AddNewEventForm() {
         value={title}
         type="text "
         placeholder="Title.."
-        className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
+        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
       <textarea
@@ -69,7 +69,7 @@ export default function AddNewEventForm() {
         value={description}
         rows={5}
         placeholder="Event description"
-        className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
+        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
       <input
@@ -77,7 +77,7 @@ export default function AddNewEventForm() {
         value={startDate}
         type="text "
         placeholder="StartDate e.g Jul-06-2024"
-        className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
+        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
       <input
@@ -85,12 +85,12 @@ export default function AddNewEventForm() {
         value={endDate}
         type="text"
         placeholder="EndDate e.g Dec-18-2024"
-        className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
+        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
       <button
         type="submit"
-        className="bg-orange-500 px-8 py-2 w-fit font-semibold text-white hover:bg-orange-700 duration-200 "
+        className="rounded-md bg-orange-500 px-8 py-2 w-fit font-semibold text-white hover:bg-orange-700 duration-200 "
       >
         Add Event
       </button>

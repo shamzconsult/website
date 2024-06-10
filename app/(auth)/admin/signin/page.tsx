@@ -9,13 +9,15 @@ export default function SignIn() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const router = useRouter();
-  const password = process.env.PASSWORD;
+  const password = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+
+  console.log(password);
 
   useEffect(() => {
     const loggedInStatus = localStorage.getItem("isLoggedIn");
     if (loggedInStatus === "true") {
       setIsLoggedIn(true);
-      router.push("/newevent");
+      router.push("/admin/events");
     }
   }, []);
 
@@ -24,7 +26,7 @@ export default function SignIn() {
     if (inputPassword === password) {
       setIsLoggedIn(true);
       localStorage.setItem("isLoggedIn", "true");
-      router.push("/newevent");
+      router.push("/admin/events");
     } else {
       LoginAlert();
     }
