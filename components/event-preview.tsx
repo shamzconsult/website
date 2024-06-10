@@ -71,7 +71,7 @@ const EventPreview = () => {
             <img src={event.image} alt={event.title} className="w-full" />
           </div>
           <div className="text-gray-500 flex flex-col gap-2">
-            <h1 className="text-xl font-semibold text-orange-600">About</h1>
+            <h1 className="text-xl font-semibold text-orange-600 ">About</h1>
             <p className="font-normal">{event.description}</p>
           </div>
           <div className="flex flex-col gap-2 text-gray-500">
