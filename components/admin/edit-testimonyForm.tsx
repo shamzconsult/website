@@ -2,53 +2,44 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Footer from "./ui/footer";
-import { formatDate } from "./events";
+import Footer from "../ui/footer";
+import { UpdatedAlert } from "../utils/login-alert";
 
-export default function EditEventForm({
+export default function EditTestimonyForm({
   _id,
   image,
-  title,
-  description,
-  startDate,
-  endDate,
+  name,
+  testimony,
+  companyName,
+  companyTitle,
 }: any) {
   const [newImage, setNewImage] = useState(image);
-  const [newTitle, setNewTitle] = useState(title);
-  const [newDescription, setNewDescription] = useState(description);
-  const [newStartDate, setNewStartDate] = useState(startDate);
-  const [newEndDate, setNewEndDate] = useState(endDate);
+  const [newName, setNewName] = useState(name);
+  const [newTestimony, setNewTestimony] = useState(testimony);
+  const [newCompanyName, setNewCompanyName] = useState(companyName);
+  const [newCompanyTitle, setNewCompanyTitle] = useState(companyTitle);
   const router = useRouter();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (
-      !newImage ||
-      !newTitle ||
-      !newDescription ||
-      !newStartDate ||
-      !newEndDate
-    ) {
-      return;
-    }
-
     try {
-      const res = await fetch(`/api/events/${_id}`, {
+      const res = await fetch(`/api/testimonies/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify({
           newImage,
-          newTitle,
-          newDescription,
-          newStartDate,
-          newEndDate,
+          newName,
+          newTestimony,
+          newCompanyName,
+          newCompanyTitle,
         }),
       });
       if (res.ok) {
-        router.push("/newevent");
+        UpdatedAlert();
+        router.push("/");
       } else {
         throw new Error("Event failed to add");
       }
@@ -60,7 +51,7 @@ export default function EditEventForm({
     <div>
       <form
         onSubmit={handleSubmit}
-        className="my-32 flex flex-col gap-6  bg-slate-50 p-2 mx-auto w-[90%] lg:w-[60%]"
+        className="mb-32 flex flex-col gap-6  bg-slate-50 p-2 mx-auto w-[90%] lg:w-[60%]"
       >
         <input
           onChange={(e) => setNewImage(e.target.value)}
@@ -71,42 +62,40 @@ export default function EditEventForm({
           required
         />
         <input
-          onChange={(e) => setNewTitle(e.target.value)}
-          value={newTitle}
+          onChange={(e) => setNewName(e.target.value)}
+          value={newName}
           type="text "
-          placeholder="Title.."
+          placeholder="Name.."
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
           required
         />
         <textarea
-          onChange={(e) => setNewDescription(e.target.value)}
-          value={newDescription}
+          onChange={(e) => setNewTestimony(e.target.value)}
+          value={newTestimony}
           rows={5}
-          placeholder="Event description"
+          placeholder="Write testimony"
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
           required
         />
         <input
-          onChange={(e) => setNewStartDate(e.target.value)}
-          value={formatDate(newStartDate)}
+          onChange={(e) => setNewCompanyName(e.target.value)}
+          value={newCompanyName}
           type="text "
-          placeholder="Jul-06-2024"
+          placeholder="Company's Name"
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
-          required
         />
         <input
-          onChange={(e) => setNewEndDate(e.target.value)}
-          value={formatDate(newEndDate)}
+          onChange={(e) => setNewCompanyTitle(e.target.value)}
+          value={newCompanyTitle}
           type="text"
-          placeholder="Dec-18-2024"
+          placeholder="Company title.. Head of office"
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
-          required
         />
         <button
           type="submit"
           className="bg-green-500 px-8 py-2 w-fit font-semibold text-white hover:bg-green-700 duration-200 "
         >
-          Update Event
+          Update Testimony
         </button>
       </form>
       <Footer />

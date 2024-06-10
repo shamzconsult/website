@@ -2,21 +2,23 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Footer from "./ui/footer";
+import Footer from "../ui/footer";
+import { formatDate } from "../events";
+import { UpdatedAlert } from "../utils/login-alert";
 
-export default function EditTestimonyForm({
+export default function EditEventForm({
   _id,
   image,
-  name,
-  testimony,
-  companyName,
-  companyTitle,
+  title,
+  description,
+  startDate,
+  endDate,
 }: any) {
   const [newImage, setNewImage] = useState(image);
-  const [newName, setNewName] = useState(name);
-  const [newTestimony, setNewTestimony] = useState(testimony);
-  const [newCompanyName, setNewCompanyName] = useState(companyName);
-  const [newCompanyTitle, setNewCompanyTitle] = useState(companyTitle);
+  const [newTitle, setNewTitle] = useState(title);
+  const [newDescription, setNewDescription] = useState(description);
+  const [newStartDate, setNewStartDate] = useState(startDate);
+  const [newEndDate, setNewEndDate] = useState(endDate);
   const router = useRouter();
 
   const handleSubmit = async (e: any) => {
@@ -24,30 +26,31 @@ export default function EditTestimonyForm({
 
     if (
       !newImage ||
-      !newName ||
-      !newTestimony ||
-      !newCompanyName ||
-      !newCompanyTitle
+      !newTitle ||
+      !newDescription ||
+      !newStartDate ||
+      !newEndDate
     ) {
       return;
     }
 
     try {
-      const res = await fetch(`/api/testimonies/${_id}`, {
+      const res = await fetch(`/api/events/${_id}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
         },
         body: JSON.stringify({
           newImage,
-          newName,
-          newTestimony,
-          newCompanyName,
-          newCompanyTitle,
+          newTitle,
+          newDescription,
+          newStartDate,
+          newEndDate,
         }),
       });
       if (res.ok) {
-        router.push("/");
+        UpdatedAlert();
+        router.push("/admin/events");
       } else {
         throw new Error("Event failed to add");
       }
@@ -59,7 +62,7 @@ export default function EditTestimonyForm({
     <div>
       <form
         onSubmit={handleSubmit}
-        className="mb-32 flex flex-col gap-6  bg-slate-50 p-2 mx-auto w-[90%] lg:w-[60%]"
+        className="my-32 flex flex-col gap-6  bg-slate-50 p-2 mx-auto w-[90%] lg:w-[60%]"
       >
         <input
           onChange={(e) => setNewImage(e.target.value)}
@@ -70,34 +73,34 @@ export default function EditTestimonyForm({
           required
         />
         <input
-          onChange={(e) => setNewName(e.target.value)}
-          value={newName}
+          onChange={(e) => setNewTitle(e.target.value)}
+          value={newTitle}
           type="text "
-          placeholder="Name.."
+          placeholder="Title.."
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
           required
         />
         <textarea
-          onChange={(e) => setNewTestimony(e.target.value)}
-          value={newTestimony}
+          onChange={(e) => setNewDescription(e.target.value)}
+          value={newDescription}
           rows={5}
-          placeholder="Write testimony"
+          placeholder="Event description"
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
           required
         />
         <input
-          onChange={(e) => setNewCompanyName(e.target.value)}
-          value={newCompanyName}
+          onChange={(e) => setNewStartDate(e.target.value)}
+          value={formatDate(newStartDate)}
           type="text "
-          placeholder="Company's Name"
+          placeholder="Jul-06-2024"
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
           required
         />
         <input
-          onChange={(e) => setNewCompanyTitle(e.target.value)}
-          value={newCompanyTitle}
+          onChange={(e) => setNewEndDate(e.target.value)}
+          value={formatDate(newEndDate)}
           type="text"
-          placeholder="Company title.. Head of office"
+          placeholder="Dec-18-2024"
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
           required
         />
@@ -105,7 +108,7 @@ export default function EditTestimonyForm({
           type="submit"
           className="bg-green-500 px-8 py-2 w-fit font-semibold text-white hover:bg-green-700 duration-200 "
         >
-          Update Testimony
+          Update Event
         </button>
       </form>
       <Footer />

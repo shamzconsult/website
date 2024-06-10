@@ -1,12 +1,12 @@
 "use client";
-import EditTestimonyForm from "@/components/edit-testimonyForm";
+import EditEventForm from "@/components/admin/edit-eventForm";
 import Loading from "@/components/loader";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const getTestimonyById = async (_id: string) => {
+const getEventById = async (_id: string) => {
   try {
-    const res = await fetch(`/api/testimonies/${_id}`, {
+    const res = await fetch(`/api/events/${_id}`, {
       cache: "no-store",
     });
     if (!res.ok) {
@@ -19,16 +19,15 @@ const getTestimonyById = async (_id: string) => {
   }
 };
 
-export default function EditTestimony() {
+export default function EditAnEvent() {
   const { _id } = useParams();
-
-  const [testimonies, setTestimony] = useState(null);
+  const [event, setEvent] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      const testimonyData = await getTestimonyById(_id as string);
-      setTestimony(testimonyData.testimony);
+      const eventData = await getEventById(_id as string);
+      setEvent(eventData.event);
       setLoading(false);
     };
 
@@ -43,26 +42,25 @@ export default function EditTestimony() {
     );
   }
 
-  if (!testimonies) {
+  if (!event) {
     return (
       <div className="text-red-500 text-sm text-center p-4">
-        Error loading event details, Please reload your browser
+        Error loading event details, Please check the event id
       </div>
     );
   }
 
-  const { image, name, testimony, companyName, companyTitle } = testimonies;
+  const { image, title, description, startDate, endDate } = event;
 
   return (
     <div>
-      <h1 className="font-bold text-2xl text-center mt-32">Edit Testimony..</h1>
-      <EditTestimonyForm
+      <EditEventForm
         _id={_id}
         image={image}
-        name={name}
-        testimony={testimony}
-        companyName={companyName}
-        companyTitle={companyTitle}
+        title={title}
+        description={description}
+        startDate={startDate}
+        endDate={endDate}
       />
     </div>
   );
