@@ -1,13 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import "aos/dist/aos.css";
-import { getCurrentEvent } from "./upcoming-event";
+import { getCurrentEvent } from "../upcoming-event";
 import Link from "next/link";
-import Loading from "./loader";
-import Footer from "./ui/footer";
-import { formatDate } from "./events";
+import Loading from "../loader";
+import Footer from "../ui/footer";
+import { formatDate } from "../events";
 import Swal from "sweetalert2";
-import { useRouter } from "next/navigation";
 
 interface EventType {
   image: string;
@@ -40,14 +39,6 @@ const deleteData = async (_id: number) => {
 const AllEvents = () => {
   const [event, setEvent] = useState<EventType[]>([]);
   const [loading, setLoading] = useState(true);
-  const router = useRouter();
-
-  useEffect(() => {
-    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
-    if (!isLoggedIn) {
-      router.push("/");
-    }
-  }, [router]);
 
   const fetchData = async () => {
     try {
@@ -71,32 +62,34 @@ const AllEvents = () => {
   );
 
   const handleDelete = async (_id: number) => {
-    try {
-      const result = await deleteData(_id);
-      Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setEvent((prevEvents: any) =>
-            prevEvents.filter((event: any) => event._id !== _id)
-          );
-          Swal.fire({
-            title: "Deleted!",
-            text: "Event has been deleted.",
-            icon: "success",
-          });
-          fetchData();
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, disable it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const deleteResult = await deleteData(_id);
+          if (deleteResult) {
+            setEvent((prevEvents) =>
+              prevEvents.filter((event) => event._id !== _id)
+            );
+            Swal.fire({
+              title: "Disabled!",
+              text: "Event has been disabled.",
+              icon: "success",
+            });
+            fetchData();
+          }
+        } catch (error) {
+          console.error("Error deleting ", error);
         }
-      });
-    } catch (error) {
-      console.error("Error deleting ", error);
-    }
+      }
+    });
   };
 
   return (
@@ -128,7 +121,7 @@ const AllEvents = () => {
                         </div>
                       </Link>
                       <div className="p-2 flex justify-between items-center">
-                        <Link href={`/editevent/${_id}`}>
+                        <Link href={`/admin/events/${_id}/edit`}>
                           <button className="bg-green-100 rounded-md w-fit px-5 font-medium border hover:border-orange-300 hover:bg-white">
                             Edit
                           </button>
