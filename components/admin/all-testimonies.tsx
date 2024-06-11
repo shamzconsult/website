@@ -146,7 +146,7 @@ const AllTestimonies = () => {
                           onClick={() => handleDelete(_id)}
                           className="bg-blue-500 text-white rounded-md w-fit px-5 font-medium border  hover:bg-red-600"
                         >
-                          {isActive ? "Disable" : "Enable"}
+                          {isActive ? "Disable" : "Deleted"}
                         </button>
                       </div>
                     </div>
