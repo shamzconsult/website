@@ -30,7 +30,7 @@ export default function AddNewEvent() {
     <div className="mt-32 w-[90%]  mx-auto p-8">
       <Link href={"/admin/testimonies"}>
         <button className="flex justify-end items-end border border-orange-300 rounded-md px-3 hover:border-orange-600">
-          Manage testimonies
+          Manage testimonials
         </button>
       </Link>
       <NewEvents />
