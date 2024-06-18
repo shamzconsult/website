@@ -38,18 +38,12 @@ export const sponsors = [
   },
   {
     id: 7,
-    src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716455206480/06bfda47-0bb2-4747-989c-d7e824bb424c.jpeg",
-    alt: "NECA",
-    name: "Nigeria Employers Consultative Association",
-  },
-  {
-    id: 8,
     src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716717554791/e57aad83-b84c-4915-a2a1-1c1464729f33.jpeg",
     alt: "BB",
     name: "Beans 'N' Bread ",
   },
   {
-    id: 9,
+    id: 8,
     src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716717570329/758a0366-460c-4ff1-ac75-dd5fb25c88bf.jpeg",
     alt: "Tukio",
     name: "Tukio Konsults",
