@@ -66,7 +66,9 @@ const EventPreview = () => {
       ) : (
         <div className="mx-auto w-[90%] flex flex-col gap-5 mb-32 lg:w-[70%] text-xl text-orange-600">
           <BackIcon />
-          <p className="lg:text-2xl text-start font-semibold">{event.title}</p>
+          <p className="lg:text-2xl text-center font-semibold max-w-[700px] mx-auto ">
+            {event.title}
+          </p>
           <div className="rounded overflow-hidden border border-orange-300">
             <img src={event.image} alt={event.title} className="w-full" />
           </div>

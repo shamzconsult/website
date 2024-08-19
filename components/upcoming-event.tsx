@@ -51,6 +51,16 @@ const UpcomingEvent = () => {
   useEffect(() => {
     Aos.init();
     fetchData();
+
+    const handleEscButton = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        handleClose();
+      }
+    };
+    window.addEventListener("keydown", handleEscButton);
+    return () => {
+      window.removeEventListener("keydown", handleEscButton);
+    };
   }, []);
 
   const handleClose = () => {
