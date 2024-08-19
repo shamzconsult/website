@@ -3,14 +3,30 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { EventAlert } from "../utils/login-alert";
+import { FileIcon } from "@radix-ui/react-icons";
 
 export default function AddNewEventForm() {
   const [image, setImage] = useState("");
+  const [gallery, setGallery] = useState<string[]>([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
   const router = useRouter();
+
+  const handleFiles = (files: FileList) => {
+    const newImages = Array.from(files).map((file) =>
+      URL.createObjectURL(file)
+    );
+    setGallery((prev) => [...prev, ...newImages]);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      handleFiles(e.target.files);
+    }
+  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -27,6 +43,7 @@ export default function AddNewEventForm() {
         },
         body: JSON.stringify({
           image,
+          gallery,
           title,
           description,
           startDate,
@@ -88,6 +105,44 @@ export default function AddNewEventForm() {
         className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
+      <div className="flex items-center gap-4">
+        <label
+          htmlFor="gallery-upload"
+          className="flex items-center gap-2 cursor-pointer text-blue-500 hover:underline"
+        >
+          <FileIcon className="w-6 h-6" />
+          <span>Upload Gallery Images</span>
+        </label>
+        <input
+          id="gallery-upload"
+          type="file"
+          multiple
+          onChange={handleFileChange}
+          className="hidden"
+        />
+      </div>
+      {gallery.length > 0 && (
+        <div className="grid sm:grid-cols-2 xl:grid-cols-6 gap-2 justify-start  mt-4">
+          {gallery.map((img, index) => (
+            <div key={index} className="flex flex-col items-center gap-2">
+              <img
+                src={img}
+                alt={`Gallery Image ${index + 1}`}
+                className="w-24 h-24 object-cover rounded-md"
+              />
+              <button
+                type="button"
+                onClick={() =>
+                  setGallery(gallery.filter((_, i) => i !== index))
+                }
+                className="text-red-500 hover:underline"
+              >
+                Delete
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
       <button
         type="submit"
         className="rounded-md bg-orange-500 px-8 py-2 w-fit font-semibold text-white hover:bg-orange-700 duration-200 "

@@ -13,6 +13,7 @@ interface EventType {
   endDate: number;
   title: string;
   description: string;
+  gallery: string[];
 }
 
 export const getEventById = async (_id: string) => {
@@ -51,6 +52,8 @@ const EventPreview = () => {
     }
   }, [id]);
 
+  console.log(event);
+
   const loading = !event;
 
   const EventPageLoader = () => (
@@ -84,6 +87,22 @@ const EventPreview = () => {
               <p> {formatDate(event.endDate)}</p>
             </div>
           </div>
+          {event.gallery.length > 0 && (
+            <div>
+              <h1 className="text-xl font-semibold text-orange-600">Gallery</h1>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 mt-4">
+                {event.gallery.map((photo, index) => (
+                  <div key={index} className="h-32 w-32">
+                    <img
+                      src={photo}
+                      alt={`Gallery Image ${index + 1}`}
+                      className="h-full w-full object-cover rounded-md"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
       <Footer />

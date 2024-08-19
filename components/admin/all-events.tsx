@@ -112,7 +112,9 @@ const AllEvents = () => {
                           alt="event"
                         />
                         <div className="flex flex-col gap-2 p-2">
-                          <h2 className="opacity-70 font-bold">{title}</h2>
+                          <h2 className="opacity-70 font-bold truncate max-w-[150px] xl:max-w-[200px]">
+                            {title}
+                          </h2>
                           <div className="flex gap-4">
                             <p>{formatDate(startDate)}</p>
                             <h1 className="bold text-lg">-</h1>
