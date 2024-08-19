@@ -117,7 +117,7 @@ const EventPreview = () => {
               className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
               onClick={() => setPreviewImage(null)}
             >
-              <div className="relative max-w-[50vw] max-h-[50vh] overflow-auto p-4 bg-white rounded-md">
+              <div className="relative max-w-[50vw] max-h-[70vh] overflow-auto p-4 bg-white rounded-md">
                 <img
                   src={previewImage}
                   alt="Preview"
