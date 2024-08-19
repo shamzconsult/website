@@ -91,7 +91,7 @@ const EventPreview = () => {
           {event.gallery.length > 0 && (
             <div>
               <h1 className="text-xl font-semibold text-orange-600">Gallery</h1>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
                 {event.gallery.map((photo, index) => (
                   <div key={index} className="relative h-32 w-40">
                     <img
@@ -117,7 +117,7 @@ const EventPreview = () => {
               className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
               onClick={() => setPreviewImage(null)}
             >
-              <div className="relative max-w-[50vw] max-h-[50vh] p-4 bg-white rounded-md">
+              <div className="relative max-w-[50vw] max-h-[50vh] overflow-auto p-4 bg-white rounded-md">
                 <img
                   src={previewImage}
                   alt="Preview"
