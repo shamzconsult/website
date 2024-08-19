@@ -103,7 +103,7 @@ const EventPreview = () => {
                     <a
                       href={photo}
                       download
-                      className="absolute bottom-2 right-2 opacity-100 transition-opacity bg-slate-200 p-2 rounded-md hover:bg-slate-500"
+                      className="absolute bottom-2 right-2  transition-opacity bg-orange-400 p-2 rounded-md hover:bg-orange-600"
                     >
                       <DownloadIcon className="w-6 h-6 text-white " />
                     </a>
