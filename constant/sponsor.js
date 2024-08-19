@@ -48,4 +48,16 @@ export const sponsors = [
     alt: "Tukio",
     name: "Tukio Konsults",
   },
+  {
+    id: 9,
+    src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1724047938134/1f0e06ef-42ad-414b-8783-d0f0bf3ca531.jpeg",
+    alt: "Topteam",
+    name: "TopTeam Technologies Ltd.",
+  },
+  {
+    id: 10,
+    src: "https://cdn.hashnode.com/res/hashnode/image/upload/v1724048508321/fe5a4529-63dc-4717-9884-0a12a523b8bf.jpeg",
+    alt: "Walk-In Tech",
+    name: "Walk-In Tech",
+  },
 ];

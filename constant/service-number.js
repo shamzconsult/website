@@ -13,7 +13,7 @@ export const servicesNumber = [
   },
   {
     id: 3,
-    name: "Community",
+    name: "Communities",
     number: "10",
     icon: "https://cdn.hashnode.com/res/hashnode/image/upload/v1716468294284/5e3c3810-c8ce-4717-bb4f-c1bdb3c2ef33.jpeg",
   },
