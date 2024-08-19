@@ -6,7 +6,7 @@ import Loading from "./loader";
 import BackIcon from "./icons/back-arrow";
 import { formatDate } from "./events";
 import Footer from "./ui/footer";
-import { DownloadIcon } from "@radix-ui/react-icons";
+import { DownloadIcon, Cross1Icon } from "@radix-ui/react-icons";
 interface EventType {
   image: string;
   startDate: number;
@@ -117,17 +117,17 @@ const EventPreview = () => {
               className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
               onClick={() => setPreviewImage(null)}
             >
-              <div className="relative">
+              <div className="relative max-w-[80vw] max-h-[80vh] p-4 bg-white rounded-md">
                 <img
                   src={previewImage}
                   alt="Preview"
-                  className="max-w-56 max-h-56 object-contain"
+                  className="max-w-full max-h-full object-contain"
                 />
                 <button
                   onClick={() => setPreviewImage(null)}
-                  className="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-2"
+                  className="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-1"
                 >
-                  Close
+                  <Cross1Icon />
                 </button>
               </div>
             </div>
