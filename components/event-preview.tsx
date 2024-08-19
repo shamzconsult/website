@@ -6,7 +6,7 @@ import Loading from "./loader";
 import BackIcon from "./icons/back-arrow";
 import { formatDate } from "./events";
 import Footer from "./ui/footer";
-
+import { DownloadIcon } from "@radix-ui/react-icons";
 interface EventType {
   image: string;
   startDate: number;
@@ -33,6 +33,7 @@ export const getEventById = async (_id: string) => {
 
 const EventPreview = () => {
   const [event, setEvent] = useState<EventType | null>(null);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const { id } = useParams();
 
   const fetchData = async () => {
@@ -88,18 +89,43 @@ const EventPreview = () => {
             </div>
           </div>
           {event.gallery.length > 0 && (
-            <div>
-              <h1 className="text-xl font-semibold text-orange-600">Gallery</h1>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 mt-4">
-                {event.gallery.map((photo, index) => (
-                  <div key={index} className="h-32 w-32">
-                    <img
-                      src={photo}
-                      alt={`Gallery Image ${index + 1}`}
-                      className="h-full w-full object-cover rounded-md"
-                    />
-                  </div>
-                ))}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 mt-4">
+              {event.gallery.map((photo, index) => (
+                <div key={index} className="relative h-32 w-40">
+                  <img
+                    src={photo}
+                    alt="g-image"
+                    className="h-full w-full object-cover rounded-md border cursor-pointer"
+                    onClick={() => setPreviewImage(photo)}
+                  />
+                  <a
+                    href={photo}
+                    download
+                    className="absolute bottom-2 right-2 opacity-0 hover:opacity-100 transition-opacity"
+                  >
+                    <DownloadIcon className="w-6 h-6 text-gray-500 hover:text-gray-800" />
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
+          {previewImage && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
+              onClick={() => setPreviewImage(null)}
+            >
+              <div className="relative">
+                <img
+                  src={previewImage}
+                  alt="Preview"
+                  className="max-w-full max-h-full object-contain"
+                />
+                <button
+                  onClick={() => setPreviewImage(null)}
+                  className="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-2"
+                >
+                  Close
+                </button>
               </div>
             </div>
           )}
