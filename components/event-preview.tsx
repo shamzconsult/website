@@ -89,24 +89,27 @@ const EventPreview = () => {
             </div>
           </div>
           {event.gallery.length > 0 && (
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 mt-4">
-              {event.gallery.map((photo, index) => (
-                <div key={index} className="relative h-32 w-40">
-                  <img
-                    src={photo}
-                    alt="g-image"
-                    className="h-full w-full object-cover rounded-md border cursor-pointer"
-                    onClick={() => setPreviewImage(photo)}
-                  />
-                  <a
-                    href={photo}
-                    download
-                    className="absolute bottom-2 right-2 opacity-0 hover:opacity-100 transition-opacity"
-                  >
-                    <DownloadIcon className="w-6 h-6 text-gray-500 hover:text-gray-800" />
-                  </a>
-                </div>
-              ))}
+            <div>
+              <h1 className="text-xl font-semibold text-orange-600">Gallery</h1>
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+                {event.gallery.map((photo, index) => (
+                  <div key={index} className="relative h-32 w-40">
+                    <img
+                      src={photo}
+                      alt="g-image"
+                      className="h-full w-full object-cover rounded-md border cursor-pointer text-slate-200 "
+                      onClick={() => setPreviewImage(photo)}
+                    />
+                    <a
+                      href={photo}
+                      download
+                      className="absolute bottom-2 right-2 opacity-100 transition-opacity bg-slate-200 p-2 rounded-md hover:bg-slate-500"
+                    >
+                      <DownloadIcon className="w-6 h-6 text-white " />
+                    </a>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
           {previewImage && (
@@ -118,7 +121,7 @@ const EventPreview = () => {
                 <img
                   src={previewImage}
                   alt="Preview"
-                  className="max-w-full max-h-full object-contain"
+                  className="max-w-56 max-h-56 object-contain"
                 />
                 <button
                   onClick={() => setPreviewImage(null)}
