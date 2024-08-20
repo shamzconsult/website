@@ -96,7 +96,7 @@ const EventPreview = () => {
                   <div key={index} className="relative h-32 w-40">
                     <img
                       src={photo}
-                      alt="g-image"
+                      alt="image"
                       className="h-full w-full object-cover rounded-md border cursor-pointer text-slate-200 "
                       onClick={() => setPreviewImage(photo)}
                     />
@@ -120,7 +120,7 @@ const EventPreview = () => {
               <div className="relative max-w-[50vw] max-h-[70vh] overflow-auto p-4 bg-white rounded-md">
                 <img
                   src={previewImage}
-                  alt="Preview"
+                  alt="Preview-image"
                   className="max-w-full max-h-full object-contain"
                 />
                 <button

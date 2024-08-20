@@ -50,7 +50,7 @@ export default function EditAnEvent() {
     );
   }
 
-  const { image, title, description, startDate, endDate } = event;
+  const { image, title, description, startDate, endDate, gallery } = event;
 
   return (
     <div>
@@ -61,6 +61,7 @@ export default function EditAnEvent() {
         description={description}
         startDate={startDate}
         endDate={endDate}
+        allImages={gallery}
       />
     </div>
   );

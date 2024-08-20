@@ -116,6 +116,7 @@ export default function AddNewEventForm() {
         <input
           id="gallery-upload"
           type="file"
+          accept="image/png, image/gif, image/jpeg"
           multiple
           onChange={handleFileChange}
           className="hidden"
@@ -127,7 +128,7 @@ export default function AddNewEventForm() {
             <div key={index} className="flex flex-col items-center gap-2">
               <img
                 src={img}
-                alt={`Gallery Image ${index + 1}`}
+                alt="image"
                 className="w-24 h-24 object-cover rounded-md"
               />
               <button
