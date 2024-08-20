@@ -23,6 +23,7 @@ export default function EditEventForm({
   const [newStartDate, setNewStartDate] = useState(startDate);
   const [newEndDate, setNewEndDate] = useState(endDate);
   const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
+  const [images, setImages] = useState(allImages);
   const router = useRouter();
 
   const handleFiles = (files: FileList) => {
@@ -77,6 +78,29 @@ export default function EditEventForm({
       console.log(error);
     }
   };
+
+  const handleDeleteImage = async (imageUrl: string) => {
+    try {
+      const res = await fetch(`/api/events/${_id}/DELETE_IMAGE`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ imageUrl }),
+      });
+      if (res.ok) {
+        setImages(images.filter((img: string) => img !== imageUrl));
+      } else {
+        const errorData = await res.json();
+        throw new Error(
+          `Image deletion failed: ${errorData.message || "Unknown error"}`
+        );
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <form
@@ -149,7 +173,11 @@ export default function EditEventForm({
                   alt="image"
                   className="w-24 h-24 object-cover rounded-md"
                 />
-                <button type="button" className="text-red-500 hover:underline">
+                <button
+                  type="button"
+                  onClick={() => handleDeleteImage(img)}
+                  className="text-red-500 hover:underline"
+                >
                   Delete
                 </button>
               </div>
