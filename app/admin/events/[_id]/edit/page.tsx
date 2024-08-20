@@ -61,7 +61,7 @@ export default function EditAnEvent() {
         description={description}
         startDate={startDate}
         endDate={endDate}
-        allImages={gallery}
+        galleryLink={gallery}
       />
     </div>
   );

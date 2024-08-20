@@ -6,14 +6,13 @@ import Loading from "./loader";
 import BackIcon from "./icons/back-arrow";
 import { formatDate } from "./events";
 import Footer from "./ui/footer";
-import { DownloadIcon, Cross1Icon } from "@radix-ui/react-icons";
 interface EventType {
   image: string;
   startDate: number;
   endDate: number;
   title: string;
   description: string;
-  gallery: string[];
+  gallery?: string;
 }
 
 export const getEventById = async (_id: string) => {
@@ -33,7 +32,6 @@ export const getEventById = async (_id: string) => {
 
 const EventPreview = () => {
   const [event, setEvent] = useState<EventType | null>(null);
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const { id } = useParams();
 
   const fetchData = async () => {
@@ -53,6 +51,7 @@ const EventPreview = () => {
     }
   }, [id]);
 
+  console.log(event);
   const loading = !event;
 
   const EventPageLoader = () => (
@@ -86,48 +85,17 @@ const EventPreview = () => {
               <p> {formatDate(event.endDate)}</p>
             </div>
           </div>
-          {event.gallery.length > 0 && (
-            <div>
-              <h1 className="text-xl font-semibold text-orange-600">Gallery</h1>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
-                {event.gallery.map((photo, index) => (
-                  <div key={index} className="relative h-32 w-40">
-                    <img
-                      src={photo}
-                      alt="image"
-                      className="h-full w-full object-cover rounded-md border cursor-pointer text-slate-200 "
-                      onClick={() => setPreviewImage(photo)}
-                    />
-                    <a
-                      href={photo}
-                      download
-                      className="absolute bottom-2 right-2  transition-opacity bg-orange-400 p-2 rounded-md hover:bg-orange-600"
-                    >
-                      <DownloadIcon className="w-6 h-6 text-white " />
-                    </a>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-          {previewImage && (
-            <div
-              className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50"
-              onClick={() => setPreviewImage(null)}
-            >
-              <div className="relative max-w-[50vw] max-h-[70vh] overflow-auto p-4 bg-white rounded-md">
-                <img
-                  src={previewImage}
-                  alt="Preview-image"
-                  className="max-w-full max-h-full object-contain"
-                />
-                <button
-                  onClick={() => setPreviewImage(null)}
-                  className="absolute top-4 right-4 text-white bg-gray-800 rounded-full p-1"
-                >
-                  <Cross1Icon />
-                </button>
-              </div>
+          {event.gallery && (
+            <div className="text-gray-500 flex flex-col gap-2">
+              <h1 className="text-xl font-semibold text-orange-600 ">
+                Gallery
+              </h1>
+              <a
+                href={event.gallery}
+                className="font-normal  text-blue-500 hover:underline"
+              >
+                Click here to view event pictures
+              </a>
             </div>
           )}
         </div>

@@ -84,43 +84,4 @@ const DELETE = async (
   }
 };
 
-const DELETE_IMAGE = async (
-  request: any,
-  { params }: { params: { _id: string } }
-) => {
-  try {
-    await connectMongoDB();
-    const id = params._id;
-    const { imageUrl } = await request.json();
-
-    if (!imageUrl) {
-      return NextResponse.json(
-        { message: "the image you want to delete does not exist" },
-        { status: 400 }
-      );
-    }
-
-    const event = await UpcomingEvent.findById(id);
-    if (!event) {
-      return NextResponse.json({ message: "Event not found" }, { status: 404 });
-    }
-
-    const updatedGallery = event.gallery.filter(
-      (url: string) => url !== imageUrl
-    );
-
-    await UpcomingEvent.findByIdAndUpdate(id, { gallery: updatedGallery });
-
-    return NextResponse.json(
-      { message: "Image deleted successfully" },
-      { status: 200 }
-    );
-  } catch (error) {
-    return NextResponse.json(
-      { message: "Failed to delete image" },
-      { status: 500 }
-    );
-  }
-};
-
-export { GET, PUT, DELETE, DELETE_IMAGE as DELETE_IMAGE };
+export { GET, PUT, DELETE };

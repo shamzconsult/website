@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 const eventSchema = new Schema(
   {
     image: { type: String },
-    gallery: [{ type: String }],
+    gallery: { type: String },
     startDate: { type: Date },
     endDate: { type: Date },
     title: { type: String },

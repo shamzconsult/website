@@ -14,30 +14,15 @@ export default function EditEventForm({
   description,
   startDate,
   endDate,
-  allImages,
+  galleryLink,
 }: any) {
   const [newImage, setNewImage] = useState(image);
-  const [newGallery, setNewGallery] = useState<string[]>([]);
+  const [newGallery, setNewGallery] = useState(galleryLink);
   const [newTitle, setNewTitle] = useState(title);
   const [newDescription, setNewDescription] = useState(description);
   const [newStartDate, setNewStartDate] = useState(startDate);
   const [newEndDate, setNewEndDate] = useState(endDate);
-  const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
-  const [images, setImages] = useState(allImages);
   const router = useRouter();
-
-  const handleFiles = (files: FileList) => {
-    const newImages = Array.from(files).map((file) =>
-      URL.createObjectURL(file)
-    );
-    setNewGallery((prev) => [...prev, ...newImages]);
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      handleFiles(e.target.files);
-    }
-  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -53,7 +38,6 @@ export default function EditEventForm({
     }
 
     try {
-      const updatedImages = [...allImages, ...newGallery];
       const res = await fetch(`/api/events/${_id}`, {
         method: "PUT",
         headers: {
@@ -65,7 +49,7 @@ export default function EditEventForm({
           newDescription,
           newStartDate,
           newEndDate,
-          newGallery: updatedImages,
+          newGallery,
         }),
       });
       if (res.ok) {
@@ -73,28 +57,6 @@ export default function EditEventForm({
         router.push("/admin/events");
       } else {
         throw new Error("Event failed to add");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleDeleteImage = async (imageUrl: string) => {
-    try {
-      const res = await fetch(`/api/events/${_id}/DELETE_IMAGE`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ imageUrl }),
-      });
-      if (res.ok) {
-        setImages(images.filter((img: string) => img !== imageUrl));
-      } else {
-        const errorData = await res.json();
-        throw new Error(
-          `Image deletion failed: ${errorData.message || "Unknown error"}`
-        );
       }
     } catch (error) {
       console.log(error);
@@ -147,43 +109,14 @@ export default function EditEventForm({
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
           required
         />
-        <div className="flex items-center gap-4">
-          <label
-            htmlFor="gallery-upload"
-            className="flex items-center gap-2 cursor-pointer text-blue-500 hover:underline"
-          >
-            <FileIcon className="w-6 h-6" />
-            <span>Upload Gallery Images</span>
-          </label>
-          <input
-            id="gallery-upload"
-            type="file"
-            accept="image/png, image/gif, image/jpeg"
-            multiple
-            onChange={handleFileChange}
-            className="hidden"
-          />
-        </div>
-        {allImages.length > 0 && (
-          <div className="grid sm:grid-cols-2 xl:grid-cols-6 gap-2 justify-start  mt-4">
-            {allImages.map((img: string, index: Key | null) => (
-              <div key={index} className="flex flex-col items-center gap-2">
-                <img
-                  src={img}
-                  alt="image"
-                  className="w-24 h-24 object-cover rounded-md"
-                />
-                <button
-                  type="button"
-                  onClick={() => handleDeleteImage(img)}
-                  className="text-red-500 hover:underline"
-                >
-                  Delete
-                </button>
-              </div>
-            ))}
-          </div>
-        )}
+        <input
+          onChange={(e) => setNewGallery(e.target.value)}
+          value={newGallery}
+          type="url"
+          placeholder="https://drive.google.com/file/d/1yJNHSqUaiTq685BVOO7yhlbG7PI78Foj/view?usp=sharing"
+          className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
+          required
+        />
         <button
           type="submit"
           className="bg-green-500 px-8 py-2 w-fit font-semibold text-white hover:bg-green-700 duration-200 "
