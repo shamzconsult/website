@@ -115,7 +115,6 @@ export default function EditEventForm({
           type="url"
           placeholder="https://drive.google.com/file/d/1yJNHSqUaiTq685BVOO7yhlbG7PI78Foj/view?usp=sharing"
           className="border border-slate-400 focus:border-red-400 w-full p-2 outline-none placeholder:opacity-50"
-          required
         />
         <button
           type="submit"
