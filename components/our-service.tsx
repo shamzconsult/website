@@ -222,7 +222,7 @@ export default function Services() {
                 </g>
               </svg>
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600">
-                Communities Development
+                Community Development
               </h4>
               <p className="text-gray-600 text-center">
                 Championing development where it matters most

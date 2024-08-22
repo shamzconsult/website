@@ -92,6 +92,7 @@ const EventPreview = () => {
               </h1>
               <a
                 href={event.gallery}
+                target="_blank"
                 className="font-normal  text-blue-500 hover:underline"
               >
                 Click here to view event pictures
