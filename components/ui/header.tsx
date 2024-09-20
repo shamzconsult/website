@@ -26,21 +26,21 @@ export default function Header() {
         !top ? "bg-white backdrop-blur-sm shadow-lg" : ""
       }`}
     >
-      <div className='max-w-6xl mx-auto px-5 sm:px-6'>
-        <div className='flex items-center justify-between h-16 md:h-20'>
+      <div className="max-w-6xl mx-auto px-5 sm:px-6">
+        <div className="flex items-center justify-between h-16 md:h-20">
           {/* Site branding */}
           <Link href={"/"}>
             <Logo />
           </Link>
 
           {/* Desktop navigation */}
-          <nav className='hidden md:flex md:grow'>
+          <nav className="hidden md:flex md:grow">
             {/* Desktop sign in links */}
-            <ul className='flex grow justify-end flex-wrap items-center'>
+            <ul className="flex grow justify-end flex-wrap items-center">
               <li>
                 <a
-                  href='/#about'
-                  className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
+                  href="/#about"
+                  className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   About us
                 </a>
@@ -48,25 +48,33 @@ export default function Header() {
               <li>
                 <Link
                   href={"/events"}
-                  className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
+                  className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Events
                 </Link>
               </li>
               <li>
                 <a
-                  href='/#service'
-                  className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
+                  href="/#service"
+                  className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Services
                 </a>
               </li>
               <li>
                 <a
-                  href='/#testimonial'
-                  className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
+                  href="/#testimonial"
+                  className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
                 >
                   Testimonials
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/hiring"
+                  className="font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out"
+                >
+                  Hiring
                 </a>
               </li>
             </ul>
