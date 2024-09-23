@@ -7,8 +7,11 @@ import { EventAlert } from "../utils/login-alert";
 export default function AddNewJobForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [eligibility, setEligibility] = useState("");
   const [type, setType] = useState("");
   const [mode, setMode] = useState("");
+  const [about, setAbout] = useState("");
+  const [payment, setPayment] = useState("");
   const [location, setLocation] = useState("");
   const router = useRouter();
 
@@ -28,8 +31,10 @@ export default function AddNewJobForm() {
         body: JSON.stringify({
           title,
           description,
+          eligibility,
           type,
           mode,
+          about,
           location,
         }),
       });
@@ -64,11 +69,19 @@ export default function AddNewJobForm() {
         className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
+      <textarea
+        onChange={(e) => setEligibility(e.target.value)}
+        value={eligibility}
+        rows={5}
+        placeholder="Criteria/Eligibility"
+        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
+        required
+      />
       <input
         onChange={(e) => setType(e.target.value)}
         value={type}
         type="text "
-        placeholder="fulltime, part-time, remote"
+        placeholder="fulltime, part-time, contract"
         className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
@@ -80,12 +93,31 @@ export default function AddNewJobForm() {
         className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
+
+      <input
+        onChange={(e) => setPayment(e.target.value)}
+        value={payment}
+        type="text"
+        placeholder="Payment Range"
+        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
+        required
+      />
+
       <input
         onChange={(e) => setLocation(e.target.value)}
         value={location}
         type="text"
         placeholder="Abuja"
         className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
+      />
+
+      <textarea
+        onChange={(e) => setAbout(e.target.value)}
+        value={about}
+        rows={5}
+        placeholder="About the Company"
+        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
+        required
       />
       <button
         type="submit"

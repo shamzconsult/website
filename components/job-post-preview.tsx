@@ -8,8 +8,11 @@ import Link from "next/link";
 interface JobType {
   title: string;
   description: string;
+  eligibility: string;
   mode: string;
   location: string;
+  about: string;
+  payment: string;
   type: string;
   _id: number;
   isActive: boolean;
@@ -64,90 +67,71 @@ const JobPostPreview = () => {
     : {
         title: "",
         description: "",
+        eligibility: "",
+        payment: "",
+        about: "",
         mode: "",
         type: "",
         isActive: false,
         location: "",
       };
-  const { title, description, mode, type, isActive, location } = jobDetails;
+  const { title, description, eligibility, payment, about, mode, type, isActive, location } = jobDetails;
 
   return (
     <div className="">
       {loading ? (
         <JobPageLoader />
       ) : (
-        <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600">
-          <h1 className="font-bold mb-6 text-lg ">Role</h1>
-          <section className="flex flex-col gap-10">
-            <div className="flex justify-between items-center">
-              <div>
-                <h2 className="text-lg font-semibold">{title}</h2>
-                <ul className="text-sm flex gap-8 text-gray-400 list-disc px-4">
-                  <li className="marker:text-orange-500">{type}</li>
-                  <li className="marker:text-blue-500">{mode}</li>
-                  <li className="marker:text-orange-500">{location}</li>
-                </ul>
-              </div>
-              <div>
-                {isActive ? (
-                  <Link href="">
-                    <button className="rounded-full bg-orange-600 hover:bg-orange-700 text-white duration-200  font-medium btn">
-                      Apply
+        <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6  text-gray-600">
+          <div className="bg-pink-50 p-6 rounded-2xl">
+            <h1 className="font-bold mb-6 text-lg ">Role</h1>
+            <section className="flex flex-col gap-10">
+              <div className="flex justify-between items-center bg-slate-100 p-5">
+                <div>
+                  <h2 className="text-lg font-semibold">{title}</h2>
+                  <ul className="text-sm flex gap-8 text-gray-400 list-disc px-4">
+                    <li className="marker:text-orange-500">{type}</li>
+                    <li className="marker:text-blue-500">{mode}</li>
+                    <li className="marker:text-orange-500">{location}</li>
+                  </ul>
+                </div>
+                <div>
+                  {isActive ? (
+                    <Link href="">
+                      <button className="rounded-full bg-orange-600 hover:bg-orange-700 text-white duration-200  font-medium btn">
+                        Apply
+                      </button>
+                    </Link>
+                  ) : (
+                    <button className="rounded-full bg-slate-600 text-white duration-200  font-medium btn">
+                      Closed
                     </button>
-                  </Link>
-                ) : (
-                  <button className="rounded-full bg-slate-600 text-white duration-200  font-medium btn">
-                    Closed
-                  </button>
-                )}
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-2">
-              <h2 className="text-lg font-semibold">Job description</h2>
-              <p>{description}</p>
-            </div>
-          </section>
-          {/* <section className="flex flex-col gap-4  w-full">
-            {job.length > 0 ? (
-              job.map(
-                ({
-                  title,
-                  description,
-                  mode,
-                  location,
-                  type,
-                  _id,
-                  isActive,
-                }) => (
-                  <div className="bg-slate-100 p-[24px] rounded-[12px] flex justify-between items-center">
-                    <div className="flex flex-col gap-1">
-                      <p className="font-medium ">{title}</p>
-                      <ul className="text-sm flex gap-8 text-gray-400 list-disc px-4">
-                        <li className="marker:text-orange-500">{type}</li>
-                        <li className="marker:text-blue-500">{mode}</li>
-                        <li className="marker:text-orange-500">{location}</li>
-                      </ul>
-                    </div>
-                    {isActive ? (
-                      <Link href={`/hiring/${_id}`} key={_id}>
-                        <button className="rounded-full py-1 bg-white hover:bg-orange-600 hover:text-white duration-200  font-medium w-24 h-1/2">
-                          Apply
-                        </button>
-                      </Link>
-                    ) : (
-                      <Link href={`/hiring/${_id}`} key={_id}>
-                        <button className="rounded-full py-1 bg-slate-600 text-white duration-200  font-medium w-24 h-1/2">
-                          Closed
-                        </button>
-                      </Link>
-                    )}
-                  </div>
-                )
-              )
-            ) : (
-              <div className="text-red-200">No job for now, check again...</div>
-            )}
-          </section> */}
+
+              <div tabIndex={0} className="collapse collapse-arrow border-base-300 bg-white border">
+                <div className="collapse-title text-xl font-medium">Job Description</div>
+                <div className="collapse-content">
+                  <p>{description}</p>
+                </div>
+              </div>
+
+              <div tabIndex={0} className="collapse collapse-arrow border-base-300 bg-white border">
+                <div className="collapse-title text-xl font-medium">Job Criteria/Requirement</div>
+                <div className="collapse-content">
+                  <p>{eligibility}</p>
+                </div>
+              </div>
+
+              <div tabIndex={0} className="collapse collapse-arrow border-base-300 bg-white border">
+                <div className="collapse-title text-xl font-medium">Payment Range</div>
+                <div className="collapse-content">
+                  <p>{payment}</p>
+                </div>
+              </div>
+            </section>
+          </div>
         </section>
       )}
       <Footer />
