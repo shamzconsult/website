@@ -84,7 +84,7 @@ const HiringAdvert = () => {
                     {isActive ? (
                       <Link href={`/hiring/${_id}`} key={_id}>
                         <button className="rounded-full py-1 bg-white hover:bg-orange-600 hover:text-white duration-200  font-medium w-24 h-1/2">
-                          Apply
+                          View
                         </button>
                       </Link>
                     ) : (

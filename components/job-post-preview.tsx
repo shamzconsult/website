@@ -84,7 +84,7 @@ const JobPostPreview = () => {
         <JobPageLoader />
       ) : (
         <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600">
-          <div className="bg-pink-50 p-6 rounded-2xl">
+          <div className="bg-slate-100 p-6 rounded-2xl">
             <h1 className="font-bold mb-6 text-lg">Role</h1>
             <section className="flex flex-col gap-10">
               <div className="flex justify-between items-center bg-slate-100 p-5">
@@ -98,7 +98,7 @@ const JobPostPreview = () => {
                 </div>
                 <div>
                   {isActive ? (
-                    <Link href="">
+                    <Link href="https://tally.so/r/3yvrA4">
                       <button className="rounded-full bg-orange-600 hover:bg-orange-700 text-white duration-200 font-medium btn">
                         Apply
                       </button>
