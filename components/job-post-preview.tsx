@@ -54,7 +54,8 @@ const JobPostPreview = () => {
     }
   }, [id]);
 
-  const loading = !event;
+  // Corrected this line to check if job is still loading
+  const loading = !job;
 
   const JobPageLoader = () => (
     <div className="min-h-screen flex justify-center items-center">
@@ -82,9 +83,9 @@ const JobPostPreview = () => {
       {loading ? (
         <JobPageLoader />
       ) : (
-        <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6  text-gray-600">
+        <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600">
           <div className="bg-pink-50 p-6 rounded-2xl">
-            <h1 className="font-bold mb-6 text-lg ">Role</h1>
+            <h1 className="font-bold mb-6 text-lg">Role</h1>
             <section className="flex flex-col gap-10">
               <div className="flex justify-between items-center bg-slate-100 p-5">
                 <div>
@@ -98,12 +99,12 @@ const JobPostPreview = () => {
                 <div>
                   {isActive ? (
                     <Link href="">
-                      <button className="rounded-full bg-orange-600 hover:bg-orange-700 text-white duration-200  font-medium btn">
+                      <button className="rounded-full bg-orange-600 hover:bg-orange-700 text-white duration-200 font-medium btn">
                         Apply
                       </button>
                     </Link>
                   ) : (
-                    <button className="rounded-full bg-slate-600 text-white duration-200  font-medium btn">
+                    <button className="rounded-full bg-slate-600 text-white duration-200 font-medium btn">
                       Closed
                     </button>
                   )}
