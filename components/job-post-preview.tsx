@@ -110,15 +110,6 @@ const JobPostPreview = () => {
                   )}
                 </div>
               </div>
-<<<<<<< HEAD
-            </div>
-            <div className="flex flex-col gap-2">
-              <h2 className="text-lg font-semibold">Job description</h2>
-              <p>{description}</p>
-            </div>
-          </section>
-          
-=======
 
               <div tabIndex={0} className="collapse collapse-arrow border-base-300 bg-white border">
                 <div className="collapse-title text-xl font-medium">Job Description</div>
@@ -142,7 +133,6 @@ const JobPostPreview = () => {
               </div>
             </section>
           </div>
->>>>>>> development
         </section>
       )}
       <Footer />
