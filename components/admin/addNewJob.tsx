@@ -35,6 +35,7 @@ export default function AddNewJobForm() {
           type,
           mode,
           about,
+          payment,
           location,
         }),
       });
