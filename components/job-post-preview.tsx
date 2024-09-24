@@ -98,7 +98,7 @@ const JobPostPreview = () => {
                 </div>
                 <div>
                   {isActive ? (
-                    <Link href="https://tally.so/r/3yvrA4">
+                    <Link href="https://tally.so/r/3yvrA4" target="_blank" rel="noopener noreferrer">
                       <button className="rounded-full bg-orange-600 hover:bg-orange-700 text-white duration-200 font-medium btn">
                         Apply
                       </button>

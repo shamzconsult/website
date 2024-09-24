@@ -122,6 +122,7 @@ export default function AddNewJobForm() {
       />
       <button
         type="submit"
+        
         className="rounded-md bg-orange-500 px-8 py-2 w-fit font-semibold text-white hover:bg-orange-700 duration-200 "
       >
         Post Job
