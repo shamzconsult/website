@@ -82,7 +82,7 @@ const HiringAdvert = () => {
                       </ul>
                     </div>
                     {isActive ? (
-                      <Link href='https://tally.so/r/m6vBGJ'>
+                      <Link href='#tally-open=n9vKz1&tally-layout=modal&tally-width=700&tally-emoji-text=👋&tally-emoji-animation=wave'>
                         <button className="rounded-full py-1 bg-white hover:bg-orange-600 hover:text-white duration-200  font-medium w-24 h-1/2">
                           Apply
                         </button>

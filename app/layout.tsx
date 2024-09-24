@@ -1,8 +1,7 @@
 import "./css/style.css";
-
 import { Inter } from "next/font/google";
-
 import Header from "@/components/ui/header";
+import TallyScript from "@/components/ui/TallyScript";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: "Shamzbridge consult",
+  title: "Shamzbridge Consult",
   description: "Your trusted ally",
 };
 
@@ -21,14 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body
         className={`${inter.variable} font-inter antialiased bg-white text-gray-900 tracking-tight`}
       >
-        <div className='flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip'>
+        <div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
           <Header />
+          {/* Add the TallyScript component here to ensure the script is loaded */}
+          <TallyScript />
           {children}
-          {/* <Banner /> */}
         </div>
       </body>
     </html>
