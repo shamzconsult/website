@@ -58,7 +58,7 @@ export default function AddNewJobForm() {
         value={title}
         type="text "
         placeholder="Job Title.."
-        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
+        className="rounded-md border bg-white border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
       <textarea
@@ -82,7 +82,7 @@ export default function AddNewJobForm() {
         value={type}
         type="text "
         placeholder="fulltime, part-time, contract"
-        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
+        className="rounded-md border bg-white border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
       <input
