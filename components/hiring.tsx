@@ -82,9 +82,9 @@ const HiringAdvert = () => {
                       </ul>
                     </div>
                     {isActive ? (
-                      <Link href={`/hiring/${_id}`} key={_id}>
+                      <Link href='https://tally.so/r/m6vBGJ'>
                         <button className="rounded-full py-1 bg-white hover:bg-orange-600 hover:text-white duration-200  font-medium w-24 h-1/2">
-                          View
+                          Apply
                         </button>
                       </Link>
                     ) : (
