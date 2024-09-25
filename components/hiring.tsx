@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import Footer from "./ui/footer";
 import Link from "next/link";
-import Loading from "./loader";
 
 interface JobType {
   title: string;
@@ -30,16 +29,13 @@ export const getAllJob = async () => {
 
 const HiringAdvert = () => {
   const [jobs, setJobs] = useState<JobType[]>([]);
-  const [loading, setLoading] = useState(false); 
 
   const fetchData = async () => {
     try {
       const data = await getAllJob();
       setJobs(data.jobs);
-      setLoading(false); 
     } catch (error) {
       console.log("Error loading data", error);
-      setLoading(false); 
     }
   };
 
@@ -52,7 +48,7 @@ const HiringAdvert = () => {
       <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600">
         <h1 className="font-bold mb-6 text-lg px-2">Roles</h1>
         <section className="flex flex-col gap-4 w-full">
-          {jobs.length > 0 ? (
+          {(
             jobs.map(({ title, description, mode, location, type, _id, isActive }) => (
               <div
                 key={_id}
@@ -88,11 +84,7 @@ const HiringAdvert = () => {
                 )}
               </div>
             ))
-          ) : (
-            !loading && (
-              <div className="text-red-200">Wait while we fetch the available Jobs...</div>
-            )
-          )}
+          ) }
         </section>
       </section>
       <Footer />
