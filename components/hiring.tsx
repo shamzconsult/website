@@ -57,25 +57,32 @@ const HiringAdvert = () => {
                 <div className="flex flex-col gap-1">
                   <p className="font-medium">{title}</p>
                   <ul className="text-sm flex gap-8 text-gray-400 list-disc px-4">
-                    <li className="marker:text-orange-500">{type}</li>
-                    <li className="marker:text-blue-500">{mode}</li>
-                    {mode !== "Remote" && <li className="marker:text-orange-500">{location}</li>}
+                    <li className='font-medium marker:text-orange-500'>
+                      {type}
+                    </li>
+                    <li className='font-medium marker:text-blue-500'>
+                      {mode}
+                    </li>
+                    {mode !== "Remote" && (
+                        <li className='font-medium marker:text-orange-500'>
+                          {location}
+                        </li>
+                      )}
                   </ul>
                 </div>
-                {isActive ? (
-                  <div className="flex justify-center mt-8">
-                    <button
-                      data-tally-open={formId}
-                      data-tally-layout="modal"
-                      data-tally-width="700"
-                      data-tally-emoji-text="👋"
-                      data-tally-emoji-animation="wave"
-                      className="rounded-full py-2 bg-white hover:bg-orange-600 hover:text-white duration-200 font-medium w-24 h-1/2"
-                    >
-                      Apply Now
-                    </button>
-                  
-                    </div>
+                  {isActive ? (
+                    <div className='flex justify-center mt-8'>
+                      <button
+                        data-tally-open='n9vKz1'
+                        data-tally-layout='modal'
+                        data-tally-width='700'
+                        data-tally-emoji-text='👋'
+                        data-tally-emoji-animation='wave'
+                        className='rounded-full px-2 py-3 w-28 text-sm bg-orange-600 text-slate-50 hover:bg-orange-500 duration-200 font-semibold'
+                      >
+                        Apply Now
+                      </button>
+                      </div>
                   ) : (
                     <div className='flex justify-center items-center mt-8'>
                       <Link href={`/hiring/${_id}`}>
