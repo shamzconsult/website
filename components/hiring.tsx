@@ -5,7 +5,6 @@ import Link from "next/link";
 
 interface JobType {
   title: string;
-  description: string;
   mode: string;
   location: string;
   type: string;
@@ -49,7 +48,7 @@ const HiringAdvert = () => {
         <h1 className="font-bold mb-6 text-lg px-2">Roles</h1>
         <section className="flex flex-col gap-4 w-full">
           {(
-            jobs.map(({ title, description, mode, location, type, _id, isActive }) => (
+            jobs.map(({ title, mode, location, type, _id, isActive }) => (
               <div
                 key={_id}
                 className="bg-slate-100 p-[24px] rounded-[12px] flex justify-between items-center"
