@@ -51,7 +51,7 @@ const HiringAdvert = () => {
             jobs.map(({ title, mode, location, type, _id, isActive }) => (
               <div
                 key={_id}
-                className="bg-slate-100 p-[24px] rounded-[12px] flex justify-between items-center"
+                className="bg-slate-100 p-[24px] rounded-[12px] md:flex justify-between items-center"
               >
                 <div className="flex flex-col gap-1">
                   <p className="font-medium">{title}</p>
@@ -75,11 +75,13 @@ const HiringAdvert = () => {
                     </button>
                   </div>
                 ) : (
-                  <Link href={`/hiring/${_id}`}>
-                    <button className="rounded-full py-1 bg-slate-600 text-white duration-200 font-medium w-24 h-1/2">
-                      Closed
-                    </button>
-                  </Link>
+                  <div className=" flex justify-center items-center mt-8">
+                    <Link href={`/hiring/${_id}`}>
+                      <button className="rounded-full py-1 bg-slate-600 text-white duration-200 font-medium w-24 h-1/2 justify-center">
+                        Closed
+                      </button>
+                    </Link>
+                  </div>
                 )}
               </div>
             ))
