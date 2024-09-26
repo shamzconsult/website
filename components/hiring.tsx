@@ -96,9 +96,11 @@ const HiringAdvert = () => {
               <div className='flex flex-col gap-1'>
                 <p className='font-medium'>{title}</p>
                 <ul className='text-sm flex gap-8 text-gray-400 list-disc px-4'>
-                  <li className='marker:text-orange-500'>{type}</li>
-                  <li className='marker:text-blue-500'>{mode}</li>
-                  <li className='marker:text-orange-500'>{location}</li>
+                  <li className='font-medium marker:text-orange-500'>{type}</li>
+                  <li className='font-medium marker:text-blue-500'>{mode}</li>
+                  <li className='font-medium marker:text-purple-500'>
+                    {location}
+                  </li>
                 </ul>
 >>>>>>> 2a5f260aa92c077195446aa55b982b61eeb1b8ad
               </div>
@@ -110,7 +112,7 @@ const HiringAdvert = () => {
                     data-tally-width='700'
                     data-tally-emoji-text='👋'
                     data-tally-emoji-animation='wave'
-                    className='rounded-full px-2 py-3 w-28 text-sm bg-white hover:bg-orange-600 hover:text-white duration-200 font-semibold'
+                    className='rounded-full px-2 py-3 w-28 text-sm bg-orange-600 text-slate-50 hover:bg-orange-500 duration-200 font-semibold'
                   >
                     Apply Now
                   </button>
