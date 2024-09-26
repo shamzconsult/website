@@ -10,7 +10,7 @@ const hiringSchema = new Schema(
     mode: { type: String, enum: ALLOWED_MODE, default: null },
     location: { type: String },
     isActive: { type: Boolean, default: true },
-    formId: {type: Number, required: true}
+    formId: {type: String, required: true}
   },
   {
     timestamps: true,
