@@ -59,14 +59,13 @@ const HiringAdvert = () => {
                   <ul className="text-sm flex gap-8 text-gray-400 list-disc px-4">
                     <li className="marker:text-orange-500">{type}</li>
                     <li className="marker:text-blue-500">{mode}</li>
-                    {/* Only show location if the mode is not "Remote" */}
                     {mode !== "Remote" && <li className="marker:text-orange-500">{location}</li>}
                   </ul>
                 </div>
                 {isActive ? (
                   <div className="flex justify-center mt-8">
                     <button
-                      data-tally-open={formId}
+                      data-tally-open="n9vKz1"
                       data-tally-layout="modal"
                       data-tally-width="700"
                       data-tally-emoji-text="👋"
