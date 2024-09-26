@@ -20,7 +20,7 @@ export default function AddNewJobForm() {
     }
 
     try {
-      const res = await fetch("/api/hiring", {
+      const res = await fetch("/api/career", {
         method: "POST",
         headers: {
           "content-type": "application/json",
