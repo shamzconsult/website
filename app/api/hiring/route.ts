@@ -4,15 +4,27 @@ import { NextResponse } from "next/server";
 
 const POST = async (request: any) => {
   try {
-    const { title, type, mode, about, location } = await request.json();
+    const {
+      title,
+      description,
+      eligibility,
+      type,
+      mode,
+      about,
+      payment,
+      location,
+    } = await request.json();
     await connectMongoDB();
 
     const result = await Hiring.create({
       title,
+      description,
+      eligibility,
       type,
       mode,
       about,
       location,
+      payment,
     });
     return NextResponse.json(
       { message: "New job details added successfully" },
