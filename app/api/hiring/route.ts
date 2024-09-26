@@ -39,14 +39,9 @@ const POST = async (request: any) => {
 };
 
 const GET = async () => {
-  try {
-    await connectMongoDB();
-    const jobs = await Hiring.find();
-    console.log(jobs);
-    return NextResponse.json({ jobs });
-  } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
-  }
+  await connectMongoDB();
+  const jobs = await Hiring.find();
+  return NextResponse.json({ jobs });
 };
 
 export { POST, GET };
