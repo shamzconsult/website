@@ -4,7 +4,16 @@ import { NextResponse } from "next/server";
 
 const POST = async (request: any) => {
   try {
-    const { title, description, eligibility, type, mode, about, payment, location } = await request.json();
+    const {
+      title,
+      description,
+      eligibility,
+      type,
+      mode,
+      about,
+      payment,
+      location,
+    } = await request.json();
     await connectMongoDB();
 
     const result = await Hiring.create({
@@ -30,9 +39,14 @@ const POST = async (request: any) => {
 };
 
 const GET = async () => {
-  await connectMongoDB();
-  const jobs = await Hiring.find();
-  return NextResponse.json({ jobs });
+  try {
+    await connectMongoDB();
+    const jobs = await Hiring.find();
+    console.log(jobs);
+    return NextResponse.json({ jobs });
+  } catch (error) {
+    return NextResponse.json({ error }, { status: 500 });
+  }
 };
 
 export { POST, GET };
