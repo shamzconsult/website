@@ -5,20 +5,17 @@ import { useRouter } from "next/navigation";
 import { EventAlert } from "../utils/login-alert";
 
 export default function AddNewJobForm() {
+  const [formId, setFormId] = useState("");
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [eligibility, setEligibility] = useState("");
   const [type, setType] = useState("");
   const [mode, setMode] = useState("");
-  const [about, setAbout] = useState("");
-  const [payment, setPayment] = useState("");
   const [location, setLocation] = useState("");
   const router = useRouter();
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (!type || !title || !description || !mode || !location) {
+    if (!type || !title || !formId || !mode || !location) {
       return;
     }
 
@@ -30,12 +27,9 @@ export default function AddNewJobForm() {
         },
         body: JSON.stringify({
           title,
-          description,
-          eligibility,
+          formId,
           type,
           mode,
-          about,
-          payment,
           location,
         }),
       });
@@ -54,6 +48,16 @@ export default function AddNewJobForm() {
       onSubmit={handleSubmit}
       className="w-full flex flex-col justify-center gap-6 bg-slate-50 rounded-md p-10 lg:w-[70%]"
     >
+
+      <input
+        onChange={(e) => setFormId(e.target.value)}
+        value={formId}
+        type="text"
+        placeholder="Form Number"
+        className="rounded-md border bg-white border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
+        required
+      />
+
       <input
         onChange={(e) => setTitle(e.target.value)}
         value={title}
@@ -62,22 +66,7 @@ export default function AddNewJobForm() {
         className="rounded-md border bg-white border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
         required
       />
-      <textarea
-        onChange={(e) => setDescription(e.target.value)}
-        value={description}
-        rows={5}
-        placeholder="Job description"
-        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
-        required
-      />
-      <textarea
-        onChange={(e) => setEligibility(e.target.value)}
-        value={eligibility}
-        rows={5}
-        placeholder="Criteria/Eligibility"
-        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
-        required
-      />
+     
       <input
         onChange={(e) => setType(e.target.value)}
         value={type}
@@ -96,15 +85,6 @@ export default function AddNewJobForm() {
       />
 
       <input
-        onChange={(e) => setPayment(e.target.value)}
-        value={payment}
-        type="text"
-        placeholder="Payment Range"
-        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
-        required
-      />
-
-      <input
         onChange={(e) => setLocation(e.target.value)}
         value={location}
         type="text"
@@ -112,14 +92,6 @@ export default function AddNewJobForm() {
         className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
       />
 
-      <textarea
-        onChange={(e) => setAbout(e.target.value)}
-        value={about}
-        rows={5}
-        placeholder="About the Company"
-        className="rounded-md border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
-        required
-      />
       <button
         type="submit"
         

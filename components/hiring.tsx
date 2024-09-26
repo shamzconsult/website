@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Footer from "./ui/footer";
+import Link from "next/link";
 
 interface JobType {
   title: string;
@@ -9,6 +10,7 @@ interface JobType {
   type: string;
   _id: number;
   isActive: boolean;
+  formId: number;
 }
 
 export const getAllJob = async () => {
@@ -42,13 +44,12 @@ const HiringAdvert = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
     <div className="">
       <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600">
         <h1 className="font-bold mb-6 text-lg px-2">Roles</h1>
         <section className="flex flex-col gap-4 w-full">
-          {(
-            jobs.map(({ title, mode, location, type, _id, isActive }) => (
+          {jobs.length > 0 ? (
+            jobs.map(({ title, mode, location, type, _id, isActive, formId }) => (
               <div
                 key={_id}
                 className="bg-slate-100 p-[24px] rounded-[12px] md:flex justify-between items-center"
@@ -58,13 +59,14 @@ const HiringAdvert = () => {
                   <ul className="text-sm flex gap-8 text-gray-400 list-disc px-4">
                     <li className="marker:text-orange-500">{type}</li>
                     <li className="marker:text-blue-500">{mode}</li>
-                    <li className="marker:text-orange-500">{location}</li>
+                    {/* Only show location if the mode is not "Remote" */}
+                    {mode !== "Remote" && <li className="marker:text-orange-500">{location}</li>}
                   </ul>
                 </div>
                 {isActive ? (
                   <div className="flex justify-center mt-8">
                     <button
-                      data-tally-open="n9vKz1"
+                      data-tally-open={formId}
                       data-tally-layout="modal"
                       data-tally-width="700"
                       data-tally-emoji-text="👋"
@@ -75,60 +77,19 @@ const HiringAdvert = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className=" flex justify-center items-center mt-8">
+                  <div className="flex justify-center items-center mt-8">
                     <Link href={`/hiring/${_id}`}>
-                      <button className="rounded-full py-1 bg-slate-600 text-white duration-200 font-medium w-24 h-1/2 justify-center">
+                      <button className="rounded-full py-1 bg-slate-600 text-white duration-200 font-medium w-24 h-1/2">
                         Closed
                       </button>
                     </Link>
                   </div>
                 )}
-=======
-    <div className=''>
-      <section className='min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600 mb-8'>
-        <h1 className='font-bold mb-6 text-lg px-2'>Roles</h1>
-        <section className='flex flex-col gap-4 w-full'>
-          {jobs.map(({ title, mode, location, type, _id, isActive }) => (
-            <div
-              key={_id}
-              className='bg-slate-100 p-[24px] rounded-[12px] flex justify-between items-center'
-            >
-              <div className='flex flex-col gap-1'>
-                <p className='font-medium'>{title}</p>
-                <ul className='text-sm flex gap-8 text-gray-400 list-disc px-4'>
-                  <li className='font-medium marker:text-orange-500'>{type}</li>
-                  <li className='font-medium marker:text-blue-500'>{mode}</li>
-                  <li className='font-medium marker:text-purple-500'>
-                    {location}
-                  </li>
-                </ul>
->>>>>>> 2a5f260aa92c077195446aa55b982b61eeb1b8ad
               </div>
-              {isActive ? (
-                <div className='flex justify-center mt-8'>
-                  <button
-                    data-tally-open='n9vKz1'
-                    data-tally-layout='modal'
-                    data-tally-width='700'
-                    data-tally-emoji-text='👋'
-                    data-tally-emoji-animation='wave'
-                    className='rounded-full px-2 py-3 w-28 text-sm bg-orange-600 text-slate-50 hover:bg-orange-500 duration-200 font-semibold'
-                  >
-                    Apply Now
-                  </button>
-                </div>
-              ) : (
-                <div>
-                  <button
-                    disabled
-                    className='rounded-full px-2 py-3 w-28 bg-slate-400 cursor-not-allowed text-white duration-200 font-medium'
-                  >
-                    Closed
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
+            ))
+          ) : (
+            <div className="text-red-200">No jobs available...</div>
+          )}
         </section>
       </section>
       <Footer />

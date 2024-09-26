@@ -6,25 +6,19 @@ const POST = async (request: any) => {
   try {
     const {
       title,
-      description,
-      eligibility,
       type,
       mode,
-      about,
-      payment,
       location,
+      formId
     } = await request.json();
     await connectMongoDB();
 
     const result = await Hiring.create({
+      formId,
       title,
-      description,
-      eligibility,
       type,
       mode,
-      about,
       location,
-      payment,
     });
     return NextResponse.json(
       { message: "New job details added successfully" },
