@@ -30,18 +30,14 @@ export const getAllJob = async () => {
 
 const HiringAdvert = () => {
   const [jobs, setJobs] = useState<JobType[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   const fetchData = async () => {
     try {
       const data = await getAllJob();
       setJobs(data.jobs);
     } catch (error) {
-      setError("Failed to load jobs.");
-    } finally {
-      setLoading(false);
-    }
+      console.log("Failed to load jobs.");
+    } 
   };
 
 
@@ -54,11 +50,7 @@ const HiringAdvert = () => {
       <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600 mb-8">
         <h1 className="font-bold mb-6 text-lg px-2">Roles</h1>
         <section className="flex flex-col gap-4 w-full">
-          {loading ? (
-            <div className="text-gray-500"></div>
-          ) : error ? (
-            <div className="text-red-500">{error}</div>
-          ) : jobs.length > 0 ? (
+          {jobs.length > 0 ? (
             jobs.map(({ title, mode, location, type, _id, isActive, formId }) => (
               <div
                 key={_id}
@@ -101,7 +93,7 @@ const HiringAdvert = () => {
               </div>
             ))
           ) : (
-            <div className="text-gray-500">No jobs available at the moment.</div>
+            <div className="text-gray-500"></div>
           )}
         </section>
       </section>
