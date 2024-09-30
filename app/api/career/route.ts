@@ -38,8 +38,8 @@ const POST = async (request: any) => {
 const GET = async () => {
   try {
     await connectMongoDB();
-    const jobs = await Hiring.find();
-    return NextResponse.json({ jobs });
+    const jobs = await Hiring.find({}).sort({ createdAt: -1 });  
+      return NextResponse.json({ jobs });
   } catch (error) {
     console.error("Error fetching jobs:", error);
     return NextResponse.json(
