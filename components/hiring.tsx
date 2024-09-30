@@ -1,5 +1,7 @@
-"use client";
-import { useEffect, useState } from "react";
+'use client'
+
+import React from "react";
+import { getAllJob } from "@/app/services/careerService";
 import Footer from "./ui/footer";
 import Link from "next/link";
 
@@ -13,37 +15,9 @@ interface JobType {
   formId: string;
 }
 
-export const getAllJob = async () => {
-  try {
-    const res = await fetch("/api/career", {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      throw new Error("Error found while fetching");
-    }
-    return res.json();
-  } catch (error) {
-    console.log("Error loading data", error);
-    throw error; 
-  }
-};
-
-const HiringAdvert = () => {
-  const [jobs, setJobs] = useState<JobType[]>([]);
-
-  const fetchData = async () => {
-    try {
-      const data = await getAllJob();
-      setJobs(data.jobs);
-    } catch (error) {
-      console.log("Failed to load jobs.");
-    } 
-  };
-
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+export default async function HiringAdvert() {
+  const data = await getAllJob(); 
+  const jobs: JobType[] = data.jobs || [];
 
   return (
     <>
@@ -102,4 +76,3 @@ const HiringAdvert = () => {
   );
 };
 
-export default HiringAdvert;
