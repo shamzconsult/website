@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { getAllJob } from "@/app/services/careerService";
 import Footer from "./ui/footer";
@@ -29,8 +27,8 @@ export default async function HiringAdvert() {
 
   return (
     <>
-      <section className='min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600 mb-8'>
-        <h1 className='font-bold mb-6 text-lg px-2'>Roles</h1>
+      <section className='min-h-screen max-w-6xl mx-auto px-4 sm:px-6 mb-8'>
+        <h1 className='font-bold mb-6 text-lg px-2 text-slate-800'>Roles</h1>
         <section className='flex flex-col gap-4 w-full'>
           {jobs.length > 0 ? (
             jobs.map(
@@ -46,12 +44,14 @@ export default async function HiringAdvert() {
               }) => (
                 <div
                   key={_id}
-                  className='bg-slate-100 p-[24px] rounded-[12px] min-[450px]:flex justify-between items-center text-center min-[450px]:text-left'
+                  className='bg-slate-100 hover:bg-slate-100/80 p-[24px] rounded-[12px] min-[450px]:flex justify-between items-center text-center min-[450px]:text-left'
                 >
                   <div className='flex flex-col gap-1'>
                     <div className='flex flex-col gap-2'>
-                      <p className='font-medium'>{title}</p>
-                      <ul className='text-sm flex gap-8 text-gray-400 list-disc px-4 justify-center min-[450px]:justify-start'>
+                      <p className='font-medium text-slate-700 font-sans'>
+                        {title}
+                      </p>
+                      <ul className='text-sm flex gap-8 list-disc px-4 justify-center min-[450px]:justify-start text-slate-500'>
                         <li className='font-medium marker:text-orange-500'>
                           {type}
                         </li>
@@ -65,13 +65,12 @@ export default async function HiringAdvert() {
                         )}
                       </ul>
                     </div>
-                    <div className='flex items-center gap-1 text-sm text-gray-400 justify-center min-[450px]:justify-start'>
-                      {/* <h3 className='font-medium'>Posted:</h3> */}
-                      <time>{dayjs(createdAt).fromNow()}</time>
-                    </div>
+                    <time className='text-sm text-slate-400'>
+                      {dayjs(createdAt).fromNow()}
+                    </time>
                   </div>
                   {isActive ? (
-                    <div className='flex justify-center mt-3 min-[450px]:mt-8'>
+                    <div className='flex justify-center items-center mt-3 min-[450px]:mt-0'>
                       <button
                         data-tally-open={formId}
                         data-tally-layout='modal'
