@@ -22,13 +22,14 @@ export default async function HiringAdvert() {
   const data = await getAllJob();
   const jobs: JobType[] = data.jobs || [];
 
-  jobs.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-
+  jobs.sort(
+    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  );
 
   return (
     <>
       <section className='min-h-screen max-w-6xl mx-auto px-4 sm:px-6 mb-8'>
-        <h1 className='font-bold mb-6 text-lg px-2 text-slate-800'>Roles</h1>
+        <h1 className='font-bold mb-6 text-lg px-2 text-slate-800'>Careers</h1>
         <section className='flex flex-col gap-4 w-full'>
           {jobs.length > 0 ? (
             jobs.map(
