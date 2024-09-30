@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { getAllJob } from "@/app/services/careerService";
 import Footer from "./ui/footer";
