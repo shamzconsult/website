@@ -37,7 +37,7 @@ export default function AddNewJobForm() {
       });
       if (res.ok) {
         EventAlert();
-        router.push("/career");
+        router.push("/careers");
       } else {
         throw new Error("job failed to add");
       }

@@ -107,7 +107,7 @@ export default function MobileMenu() {
               className="flex font-medium w-full text-gray-600 hover:text-gray-900 py-2 justify-center"
               onClick={() => setMobileNavOpen(false)}
             >
-              Career
+              Careers
             </a>
           </ul>
         </Transition>
