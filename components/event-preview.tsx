@@ -51,7 +51,6 @@ const EventPreview = () => {
     }
   }, [id]);
 
-  console.log(event);
   const loading = !event;
 
   const EventPageLoader = () => (

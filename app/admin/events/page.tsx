@@ -28,11 +28,18 @@ export default function AddNewEvent() {
   if (!authenticated) return <PageLoader />;
   return (
     <div className="mt-32 w-[90%]  mx-auto p-8">
-      <Link href={"/admin/testimonies"}>
-        <button className="flex justify-end items-end border border-orange-300 rounded-md px-3 hover:border-orange-600">
-          Manage testimonials
-        </button>
-      </Link>
+      <div className="flex gap-10">
+        <Link href={"/admin/testimonies"}>
+          <button className="flex justify-end items-end border border-orange-300 rounded-md px-3 hover:border-orange-600">
+            Manage testimonials
+          </button>
+        </Link>
+        <Link href={"/admin/hiring"}>
+          <button className="flex justify-end items-end border border-blue-600 rounded-md px-3 hover:border-orange-600">
+            Post Job
+          </button>
+        </Link>
+      </div>
       <NewEvents />
       <AllEvents />
     </div>

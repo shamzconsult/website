@@ -17,8 +17,8 @@ export default function Mission() {
           </div>
           <section className="flex flex-col gap-4 justify-center items-center lg:flex-row w-[100%]">
             <div
-              className={`lg:w-[50%] lg:h-60 bg-white shadow-md border-gray-200 hover:shadow-lg flex flex-col items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 `}
-            >
+              className={`lg:w-[50%] lg:h-60 bg-white shadow-md border-gray-200 hover:shadow-lg hover:scale-105 hover:-translate-y-2 flex flex-col items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3`}
+              >
               <div className="flex flex-col gap-1 items-center">
                 <div className="font-bold leading-snug tracking-tight mb-1">
                   Vision
@@ -32,7 +32,7 @@ export default function Mission() {
               </div>
             </div>
             <div
-              className={`lg:w-[50%] lg:h-60 bg-white shadow-md border-gray-200 hover:shadow-lg flex flex-col items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 `}
+              className={`lg:w-[50%] lg:h-60 bg-white shadow-md border-gray-200 hover:scale-105 hover:-translate-y-2 hover:shadow-lg flex flex-col items-center text-lg p-5 rounded border transition duration-300 ease-in-out mb-3 `}
             >
               <div className="flex flex-col gap-1 text-center">
                 <div className="font-bold leading-snug tracking-tight mb-1">

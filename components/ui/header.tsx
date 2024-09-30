@@ -38,12 +38,12 @@ export default function Header() {
             {/* Desktop sign in links */}
             <ul className='flex grow justify-end flex-wrap items-center'>
               <li>
-                <a
+                <Link
                   href='/#about'
                   className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
                 >
                   About us
-                </a>
+                </Link>
               </li>
               <li>
                 <Link
@@ -54,20 +54,28 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <a
+                <Link
                   href='/#service'
                   className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
                 >
                   Services
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href='/#testimonial'
                   className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
                 >
                   Testimonials
-                </a>
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href='/career'
+                  className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
+                >
+                  Career
+                </Link>
               </li>
             </ul>
           </nav>
