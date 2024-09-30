@@ -3,7 +3,8 @@ import { getBaseUrl } from "../utils/getBaseUrl";
 
 export const getAllJob = async () => {
     try {
-      const baseUrl = getBaseUrl();
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+      // const baseUrl = getBaseUrl();
       const res = await fetch(`${baseUrl}/api/career`, {
         cache: "no-store",
       });

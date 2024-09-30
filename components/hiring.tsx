@@ -24,6 +24,9 @@ export default async function HiringAdvert() {
   const data = await getAllJob();
   const jobs: JobType[] = data.jobs || [];
 
+  jobs.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+
   return (
     <>
       <section className='min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600 mb-8'>
