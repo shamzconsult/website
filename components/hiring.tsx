@@ -21,11 +21,14 @@ interface JobType {
 export default async function HiringAdvert() {
   const data = await getAllJob();
   const jobs: JobType[] = data.jobs || [];
+  const totalJobs = jobs.length;
 
   return (
     <>
       <section className='min-h-screen max-w-6xl mx-auto px-4 sm:px-6 mb-8'>
-        <h1 className='font-bold mb-6 text-lg px-2 text-slate-800'>Careers</h1>
+        <h1 className='font-bold mb-6 text-lg px-2 text-slate-800'>
+          Careers ({totalJobs})
+        </h1>
         <section className='flex flex-col gap-4 w-full'>
           {jobs.length > 0 ? (
             jobs.map(
@@ -56,7 +59,7 @@ export default async function HiringAdvert() {
                           {mode}
                         </li>
                         {mode !== "Remote" && (
-                          <li className='font-medium marker:text-orange-500'>
+                          <li className='font-medium marker:text-orange-500 capitalize'>
                             {location}
                           </li>
                         )}

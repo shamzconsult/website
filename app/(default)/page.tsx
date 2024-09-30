@@ -1,8 +1,3 @@
-export const metadata = {
-  title: "ShamzBridge Consult",
-  description: "Your trusted ally",
-};
-
 import Hero from "@/components/hero";
 // import Newsletter from "@/components/newsletter";
 import Mission from "@/components/mission-vision";
