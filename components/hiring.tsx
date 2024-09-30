@@ -1,111 +1,105 @@
-"use client";
-import { useEffect, useState } from "react";
+import React from "react";
+import { getAllJob } from "@/app/services/careerService";
 import Footer from "./ui/footer";
 import Link from "next/link";
-import Loading from "./loader";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+dayjs.extend(relativeTime);
 
 interface JobType {
   title: string;
-  description: string;
   mode: string;
   location: string;
   type: string;
   _id: number;
   isActive: boolean;
+  formId: string;
+  createdAt: string;
 }
 
-export const getAllJob = async () => {
-  try {
-    const res = await fetch("/api/hiring", {
-      cache: "no-store",
-    });
-    if (!res.ok) {
-      throw new Error("Error found while fetching");
-    }
-    return res.json();
-  } catch (error) {
-    console.log("Error loading data", error);
-  }
-};
-
-const HiringAdvert = () => {
-  const [jobs, setJobs] = useState<JobType[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  const fetchData = async () => {
-    try {
-      const data = await getAllJob();
-      setJobs(data.jobs);
-      setLoading(false);
-    } catch (error) {
-      console.log("Error loading data", error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const JobPageLoader = () => (
-    <div className="min-h-[70vh] flex justify-center items-center">
-      <Loading />
-    </div>
-  );
+export default async function HiringAdvert() {
+  const data = await getAllJob();
+  const jobs: JobType[] = data.jobs || [];
+  const totalJobs = jobs.length;
 
   return (
-    <div className="">
-      {loading ? (
-        <JobPageLoader />
-      ) : (
-        <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 text-gray-600">
-          <h1 className="font-bold mb-6 text-lg px-2">Roles</h1>
-          <section className="flex flex-col gap-4  w-full">
-            {jobs.length > 0 ? (
-              jobs.map(
-                ({
-                  title,
-                  description,
-                  mode,
-                  location,
-                  type,
-                  _id,
-                  isActive,
-                }) => (
-                  <div className="bg-slate-100 p-[24px] rounded-[12px] flex justify-between items-center">
-                    <div className="flex flex-col gap-1">
-                      <p className="font-medium ">{title}</p>
-                      <ul className="text-sm flex gap-8 text-gray-400 list-disc px-4">
-                        <li className="marker:text-orange-500">{type}</li>
-                        <li className="marker:text-blue-500">{mode}</li>
-                        <li className="marker:text-orange-500">{location}</li>
+    <>
+      <section className='min-h-screen max-w-6xl mx-auto px-4 sm:px-6 mb-8'>
+        <h1 className='font-bold mb-6 text-lg px-2 text-slate-800'>
+          Careers ({totalJobs})
+        </h1>
+        <section className='flex flex-col gap-4 w-full'>
+          {jobs.length > 0 ? (
+            jobs.map(
+              ({
+                title,
+                mode,
+                location,
+                type,
+                _id,
+                isActive,
+                formId,
+                createdAt,
+              }) => (
+                <div
+                  key={_id}
+                  className='bg-slate-100 hover:bg-slate-100/80 p-[24px] rounded-[12px] min-[450px]:flex justify-between items-center text-center min-[450px]:text-left'
+                >
+                  <div className='flex flex-col gap-1'>
+                    <div className='flex flex-col gap-2'>
+                      <p className='font-medium text-slate-700 font-sans'>
+                        {title}
+                      </p>
+                      <ul className='text-sm flex gap-8 list-disc px-4 justify-center min-[450px]:justify-start text-slate-500'>
+                        <li className='font-medium marker:text-orange-500'>
+                          {type}
+                        </li>
+                        <li className='font-medium marker:text-blue-500'>
+                          {mode}
+                        </li>
+                        {mode !== "Remote" && (
+                          <li className='font-medium marker:text-orange-500 capitalize'>
+                            {location}
+                          </li>
+                        )}
                       </ul>
                     </div>
-                    {isActive ? (
-                      <Link href={`/hiring/${_id}`} key={_id}>
-                        <button className="rounded-full py-1 bg-white hover:bg-orange-600 hover:text-white duration-200  font-medium w-24 h-1/2">
-                          View
-                        </button>
-                      </Link>
-                    ) : (
-                      <Link href={`/hiring/${_id}`} key={_id}>
-                        <button className="rounded-full py-1 bg-slate-600 text-white duration-200  font-medium w-24 h-1/2">
+                    <time className='text-sm text-slate-400'>
+                      {dayjs(createdAt).fromNow()}
+                    </time>
+                  </div>
+                  {isActive ? (
+                    <div className='flex justify-center items-center mt-3 min-[450px]:mt-0'>
+                      <button
+                        data-tally-open={formId}
+                        data-tally-layout='modal'
+                        data-tally-width='700'
+                        data-tally-emoji-text='👋'
+                        data-tally-emoji-animation='wave'
+                        className='rounded-full px-2 py-3 w-28 text-sm bg-orange-600 text-slate-50 hover:bg-orange-500 duration-200 font-semibold'
+                      >
+                        Apply Now
+                      </button>
+                    </div>
+                  ) : (
+                    <div className='flex justify-center items-center mt-8'>
+                      <Link href={`/hiring/${_id}`}>
+                        <button className='rounded-full px-2 py-3 w-28 bg-slate-400 cursor-not-allowed text-white duration-200 font-medium'>
                           Closed
                         </button>
                       </Link>
-                    )}
-                  </div>
-                )
+                    </div>
+                  )}
+                </div>
               )
-            ) : (
-              <div className="text-red-200">No job for now, check again...</div>
-            )}
-          </section>
+            )
+          ) : (
+            <div className='text-gray-500'></div>
+          )}
         </section>
-      )}
+      </section>
       <Footer />
-    </div>
+    </>
   );
-};
-
-export default HiringAdvert;
+}

@@ -6,14 +6,11 @@ const ALLOWED_MODE = ["Remote", "Physical", "Hybrid"];
 const hiringSchema = new Schema(
   {
     title: { type: String },
-    description: { type: String },
-    eligibility: {type: String},
     type: { type: String, enum: ALLOWED_TYPE, default: null },
     mode: { type: String, enum: ALLOWED_MODE, default: null },
     location: { type: String },
-    payment: {type: String},
     isActive: { type: Boolean, default: true },
-    about: {typr: String},
+    formId: { type: String, required: true },
   },
   {
     timestamps: true,
