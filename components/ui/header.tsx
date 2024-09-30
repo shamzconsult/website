@@ -71,7 +71,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href='/career'
+                  href='/careers'
                   className='font-medium text-gray-600 hover:text-gray-900 px-5 py-3 flex items-center transition duration-150 ease-in-out'
                 >
                   Careers
