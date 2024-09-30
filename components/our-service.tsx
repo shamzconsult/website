@@ -55,8 +55,8 @@ export default function Services() {
                 </g>
               </svg>
 
-              <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600">
-                Project Management
+              <h4 className="text-xl font-bold text-center leading-snug tracking-tight mb-1 text-orange-600">
+                Programs/Projects Management
               </h4>
               <p className="text-gray-600 text-center">
                 Partner with us for seamless project execution.
