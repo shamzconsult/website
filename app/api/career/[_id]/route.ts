@@ -24,7 +24,6 @@ const PUT = async (request: any, { params }: { params: { _id: string } }) => {
     const id = params._id;
     const {
       newTitle: title,
-      newDescription: description,
       newType: type,
       newMode: mode,
       newLocation: location,
@@ -32,7 +31,6 @@ const PUT = async (request: any, { params }: { params: { _id: string } }) => {
     await connectMongoDB();
     await Hiring.findByIdAndUpdate(id, {
       title,
-      description,
       type,
       mode,
       location,

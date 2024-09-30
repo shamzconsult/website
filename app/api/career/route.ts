@@ -7,7 +7,7 @@ const POST = async (request: any) => {
     const { title, type, mode, location, formId } = await request.json();
     await connectMongoDB();
 
-    if (!title || !type || !mode || !location || !formId) {
+    if (!title || !type || !mode || (mode !== "Remote" && !location) || !formId) {
       return NextResponse.json(
         { message: "Missing required fields" },
         { status: 400 }

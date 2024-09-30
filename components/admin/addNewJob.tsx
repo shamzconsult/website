@@ -17,7 +17,7 @@ export default function AddNewJobForm() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (!type || !title || !formId || !mode || !location) {
+    if (!type || !title || !formId || !mode || (mode !== "Remote" && !location)) {
       return;
     }
 
@@ -32,7 +32,7 @@ export default function AddNewJobForm() {
           formId,
           type,
           mode,
-          location,
+          location: mode === "Remote" ? "" : location,
         }),
       });
       if (res.ok) {
@@ -105,23 +105,25 @@ export default function AddNewJobForm() {
         </select>
       </div>
 
-      <div className='flex flex-col gap-1 text-sm font-medium capitalize'>
-        <label>Location</label>
-        <select
-          onChange={(e) => setLocation(e.target.value)}
-          value={location}
-          className='rounded-md text-sm border border-slate-200 w-full p-2 outline-none placeholder:opacity-50'
-        >
-          <option value='' disabled>
-            Select
-          </option>
-          {NigeriaStates.map((state) => (
-            <option key={state} value={state.toLowerCase()}>
-              {state}
+      {mode !== "Remote" && (
+        <div className='flex flex-col gap-1 text-sm font-medium capitalize'>
+          <label>Location</label>
+          <select
+            onChange={(e) => setLocation(e.target.value)}
+            value={location}
+            className='rounded-md text-sm border border-slate-200 w-full p-2 outline-none placeholder:opacity-50'
+          >
+            <option value='' disabled>
+              Select
             </option>
-          ))}
-        </select>
-      </div>
+            {NigeriaStates.map((state) => (
+              <option key={state} value={state.toLowerCase()}>
+                {state}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       <button
         type='submit'
