@@ -24,7 +24,7 @@ interface JobType {
 
 const deleteData = async (_id: number) => {
   try {
-    const res = await fetch(`api/career/${_id}`, {
+    const res = await fetch(`/api/career/${_id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -88,7 +88,7 @@ const AllCareer = () => {
               text: 'Career has been disabled',
               icon: 'success',
             });
-            fetchJobs(); // Refresh job list after deletion
+            fetchJobs();
           }
         } catch (error) {
           console.error('Error deleting', error);
@@ -101,72 +101,58 @@ const AllCareer = () => {
 
   return (
     <>
-      <section className="min-h-screen max-w-6xl mx-auto px-4 sm:px-6 mb-8">
-        <h1 className="font-bold mb-6 text-lg px-2 text-slate-800">
-          Careers ({totalJobs})
-        </h1>
-        <section className="flex flex-col gap-4 w-full">
-          {jobs?.length > 0 ? (
-            jobs.map(
-              ({
-                title,
-                mode,
-                location,
-                type,
-                _id,
-                isActive,
-                formId,
-                createdAt,
-              }) => (
-                <div
-                  key={_id}
-                  className="bg-slate-100 hover:bg-slate-100/80 p-[24px] rounded-[12px] min-[450px]:flex justify-between items-center text-center min-[450px]:text-left"
-                >
-                  <div className="flex flex-col gap-1">
-                    <div className="flex flex-col gap-2">
-                      <p className="font-medium text-slate-700 font-sans">
-                        {title}
-                      </p>
-                      <ul className="text-sm flex gap-8 list-disc px-4 justify-center min-[450px]:justify-start text-slate-500">
-                        <li className="font-medium marker:text-orange-500">
-                          {type}
-                        </li>
-                        <li className="font-medium marker:text-blue-500">
-                          {mode}
-                        </li>
-                        {mode !== 'Remote' && (
-                          <li className="font-medium marker:text-orange-500 capitalize">
-                            {location}
-                          </li>
-                        )}
-                      </ul>
-                    </div>
-                    <time className="text-sm text-slate-400">
-                      {dayjs(createdAt).fromNow()}
-                    </time>
-                  </div>
-                  
-                    <div className="p-2 flex justify-between items-center">
-                        <Link href={`/admin/hiring/${_id}/edit`}>
-                          <button className="bg-green-400 rounded-md w-fit px-5 font-medium border text-white hover:bg-green-600">
-                            Edit
-                          </button>
-                        </Link>
-                        <button
-                          onClick={() => handleDelete(_id)}
-                          className="bg-blue-500 text-white rounded-md w-fit px-5 font-medium border  hover:bg-red-600"
-                        >
-                          {isActive ? "Disable" : "Deleted"}
-                        </button>
-                    </div>
-                </div>
-              )
-            )
-          ) : (
-            <div className="text-gray-500">No careers available</div>
-          )}
-        </section>
-      </section>
+      <section className="min-h-screen max-w-screen-lg mx-auto px-4 sm:px-6 mb-8">
+  <h1 className="font-bold mb-6 text-xl px-2 text-slate-800">
+    Careers ({totalJobs})
+  </h1>
+  <section className="flex flex-col gap-6 w-full">
+    {jobs?.length > 0 ? (
+      jobs.map(({ title, mode, location, type, _id, isActive, formId, createdAt }) => (
+        <div
+          key={_id}
+          className="bg-slate-100 hover:bg-slate-100/80 p-4 md:p-8 rounded-xl shadow-lg 
+                    min-[450px]:flex justify-between items-center text-center min-[450px]:text-left "
+        >
+          <div className="flex flex-col gap-4">
+            <p className="font-semibold text-lg text-slate-700 font-sans">
+              {title}
+            </p>
+            <ul className="text-sm flex gap-6 list-disc px-4 justify-center 
+                          min-[450px]:justify-start text-slate-500">
+              <li className="font-medium marker:text-orange-500">{type}</li>
+              <li className="font-medium marker:text-blue-500">{mode}</li>
+              {mode !== 'Remote' && (
+                <li className="font-medium marker:text-orange-500 capitalize">{location}</li>
+              )}
+            </ul>
+            <time className="text-sm text-slate-400">{dayjs(createdAt).fromNow()}</time>
+          </div>
+
+          <div className="p-4 md:flex justify-between items-center gap-4">
+            <Link href={`/admin/hiring/${_id}/edit`}>
+              <button className="bg-green-500 flex rounded-lg px-6 py-2  font-medium text-white 
+                 hover:bg-green-700 transition-colors mb-4">
+                Edit
+              </button>
+            </Link>
+            <button
+              onClick={() => handleDelete(_id)}
+              className={`${
+                isActive ? 'bg-blue-500' : 'bg-red-500'
+              } text-white flex rounded-lg mb-4 px-6 py-2 font-medium hover:bg-red-700 transition-colors`}
+            >
+              {isActive ? "Disable" : "Deleted"}
+            </button>
+          </div>
+        </div>
+      ))
+    ) : (
+      <div className="text-gray-500">No careers available</div>
+    )}
+  </section>
+</section>
+``
+
       <Footer />
     </>
   );

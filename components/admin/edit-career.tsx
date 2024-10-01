@@ -19,8 +19,19 @@ export default function EditCareer({
 
     const router = useRouter();
 
+    const handleModeChange = (e: any) => {
+        const selectedMode = e.target.value;
+        setNewMode(selectedMode);
+
+        if (selectedMode === "Remote") {
+            setNewLocation(""); 
+        }
+    };
+
+
     const handleToggleChange = () => {
         setNewIsActive(!newIsActive); 
+        console.log('Toggle state:', !newIsActive); 
     };
 
     const handleSubmit = async (e: any) => {
@@ -53,7 +64,7 @@ export default function EditCareer({
     };
 
     return (
-        <div>
+        <div  className="flex justify-center items-center ">
             <form
                 onSubmit={handleSubmit}
                 className="w-full flex flex-col justify-center gap-6 bg-slate-50 rounded-md p-10 lg:w-[70%]"
@@ -90,7 +101,7 @@ export default function EditCareer({
                 <div className="flex flex-col gap-1 text-sm font-medium capitalize">
                     <label>Mode</label>
                     <select
-                        onChange={(e) => setNewMode(e.target.value)}
+                        onChange={handleModeChange}
                         value={newMode}
                         className="rounded-md text-sm border border-slate-200 w-full p-2 outline-none placeholder:opacity-50"
                         required
