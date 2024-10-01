@@ -8,6 +8,7 @@ export const getAllJob = async () => {
         cache: "no-store",
       });
       if (!res.ok) {
+        console.error(`Fetch error: ${res.status} - ${res.statusText}`);
         throw new Error("Error found while fetching");
       }
       return res.json();

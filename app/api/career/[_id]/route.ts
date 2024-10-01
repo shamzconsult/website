@@ -22,19 +22,27 @@ const GET = async (request: any, { params }: { params: { _id: string } }) => {
 const PUT = async (request: any, { params }: { params: { _id: string } }) => {
   try {
     const id = params._id;
+
     const {
       newTitle: title,
       newType: type,
       newMode: mode,
       newLocation: location,
+      newIsAcitive: isActive,
     } = await request.json();
+
     await connectMongoDB();
+
+    const job = await Hiring.findById(id);
+
     await Hiring.findByIdAndUpdate(id, {
       title,
       type,
       mode,
       location,
-    });
+      isActive,
+    }, { new: true });
+
     return NextResponse.json(
       { message: "job post updated successfully!!" },
       { status: 200 }
@@ -53,17 +61,19 @@ const DELETE = async (
 ) => {
   try {
     await connectMongoDB();
-    const dataToDelete = await Hiring.findByIdAndUpdate(
+
+    const JobToDelete = await Hiring.findByIdAndUpdate(
       params._id,
       { isActive: false },
       { new: true }
     );
-    if (!dataToDelete) {
+    if (!JobToDelete) {
       return NextResponse.json(
-        { message: "Data to delete not found  " },
+        { message: "Testimony to delete not found  " },
         { status: 404 }
       );
     }
+
     return NextResponse.json(
       { message: "Event deleted successfully" },
       { status: 200 }
