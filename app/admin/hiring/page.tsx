@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Loading from "@/components/loader";
 import AddNewJobForm from "@/components/admin/addNewJob";
 import Footer from "@/components/ui/footer";
+import AllCareer from "@/components/admin/all-career";
 
 export default function AddNewJob() {
   const router = useRouter();
@@ -27,6 +28,7 @@ export default function AddNewJob() {
   return (
     <div className="mt-32 flex flex-col gap-16 justify-center items-center mx-auto w-[90%] p-10">
       <AddNewJobForm />
+      <AllCareer/>
       <Footer />
     </div>
   );

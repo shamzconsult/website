@@ -88,6 +88,7 @@ export default function AddNewJobForm() {
           <option value='Contract'>Contract</option>
         </select>
       </div>
+      
       <div className='flex flex-col gap-1 text-sm font-medium capitalize'>
         <label>Mode</label>
         <select
