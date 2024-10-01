@@ -2,6 +2,7 @@ import "./css/style.css";
 import { Inter } from "next/font/google";
 import Header from "@/components/ui/header";
 import TallyScript from "@/components/ui/TallyScript";
+import { GoogleAnalytics } from "@/components/scripts/GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -29,6 +30,7 @@ export default function RootLayout({
         <div className='flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip'>
           <Header />
           <TallyScript />
+          <GoogleAnalytics />
           {children}
         </div>
       </body>
