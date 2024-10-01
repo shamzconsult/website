@@ -69,8 +69,8 @@ export default async function HiringAdvert() {
                       {dayjs(createdAt).fromNow()}
                     </time>
                   </div>
-                  {isActive ? (
-                    <div className='flex justify-center items-center mt-3 min-[450px]:mt-0'>
+                  <div className='flex justify-center items-center mt-3 min-[450px]:mt-0'>
+                    {isActive ? (
                       <button
                         data-tally-open={formId}
                         data-tally-layout='modal'
@@ -81,16 +81,16 @@ export default async function HiringAdvert() {
                       >
                         Apply Now
                       </button>
-                    </div>
-                  ) : (
-                    <div className='flex justify-center items-center mt-8'>
-                      <Link href={`/hiring/${_id}`}>
-                        <button className='rounded-full px-2 py-3 w-28 bg-slate-400 cursor-not-allowed text-white duration-200 font-medium'>
-                          Closed
-                        </button>
-                      </Link>
-                    </div>
-                  )}
+                    ) : (
+                      <button
+                        title='Application closed.'
+                        disabled
+                        className='rounded-full px-2 py-3 w-28 bg-slate-400 cursor-not-allowed text-white duration-200 font-medium'
+                      >
+                        Closed
+                      </button>
+                    )}
+                  </div>
                 </div>
               )
             )
@@ -103,7 +103,7 @@ export default async function HiringAdvert() {
             href='mailto:shamzbridgeconsult@gmail.com?subject=Contacting%20you%20about%20hiring%20service%20with%20Shamzbridge&body=Hi, %0D%0A%0D%0A'
             target='_blank'
             rel='noopener'
-            className='text-sm text-slate-800 hover:underline'
+            className='text-sm text-slate-800 font-medium hover:underline'
           >
             Want to hire? Contact us
           </a>
