@@ -20,6 +20,7 @@ const POST = async (request: any) => {
       type,
       mode,
       location,
+      isDeleted: false
     });
 
     return NextResponse.json(
@@ -38,7 +39,8 @@ const POST = async (request: any) => {
 const GET = async () => {
   try {
     await connectMongoDB();
-    const jobs = await Hiring.find({}).sort({ createdAt: -1 });  
+    const jobs = await Hiring.find({ isDeleted: { $ne: true } })
+      .sort({ createdAt: -1 });  
       return NextResponse.json({ jobs });
   } catch (error) {
     console.error("Error fetching jobs:", error);

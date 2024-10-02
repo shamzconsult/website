@@ -46,7 +46,7 @@ export default function EditCareer({
                 body: JSON.stringify({
                     newTitle,
                     newMode,
-                    location: newMode === "Remote" ? "" : newLocation,
+                    newLocation: newMode === "Remote" ? "" : newLocation,
                     newType,
                     newIsActive, 
                 }),

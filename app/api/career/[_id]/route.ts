@@ -6,7 +6,7 @@ const GET = async (request: any, { params }: { params: { _id: string } }) => {
   try {
     const id = params._id;
     await connectMongoDB();
-    const job = await Hiring.findOne({ _id: id });
+    const job = await Hiring.findOne({ _id: id, isDeleted: { $ne: true } });
     if (!job) {
       return NextResponse.json({ message: "job not found!!" }, { status: 404 });
     }
@@ -28,23 +28,17 @@ const PUT = async (request: any, { params }: { params: { _id: string } }) => {
       newType: type,
       newMode: mode,
       newLocation: location,
-      newIsAcitive: isActive,
+      newIsActive: isActive,
     } = await request.json();
 
     await connectMongoDB();
 
-    const job = await Hiring.findById(id);
-
-    await Hiring.findByIdAndUpdate(id, {
-      title,
-      type,
-      mode,
-      location,
-      isActive,
+    const updatedJob = await Hiring.findByIdAndUpdate(id, {
+      title, type, mode, location, isActive
     }, { new: true });
 
     return NextResponse.json(
-      { message: "job post updated successfully!!" },
+      { message: "job post updated successfully!!", job: updatedJob },
       { status: 200 }
     );
   } catch (error) {
@@ -62,29 +56,31 @@ const DELETE = async (
   try {
     await connectMongoDB();
 
-    const JobToDelete = await Hiring.findByIdAndUpdate(
+    const closeJobOpening = await Hiring.findByIdAndUpdate(
       params._id,
-      { isActive: false },
+      { isDeleted: true },
       { new: true }
     );
-    if (!JobToDelete) {
+    if (!closeJobOpening) {
       return NextResponse.json(
-        { message: "Testimony to delete not found  " },
+        { message: "Job to delete not found  " },
         { status: 404 }
       );
     }
 
     return NextResponse.json(
-      { message: "Event deleted successfully" },
+      { message: "Job deleted successfully" },
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to delete event" },
+      { message: "Failed to delete Job" },
 
       { status: 500 }
     );
   }
 };
+
+
 
 export { GET, PUT, DELETE };

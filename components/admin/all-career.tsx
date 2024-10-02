@@ -6,6 +6,9 @@ import Swal from 'sweetalert2';
 import Footer from '../ui/footer';
 import dayjs from 'dayjs';
 import relativeTime from "dayjs/plugin/relativeTime";
+import { AiOutlineEdit } from "react-icons/ai";
+import { MdDeleteOutline } from 'react-icons/md';
+
 
 
 dayjs.extend(relativeTime);
@@ -47,7 +50,7 @@ const AllCareer = () => {
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     if (!isLoggedIn) {
-      router.push('careers');
+      router.push('/careers');
     }
   }, [router]);
 
@@ -74,17 +77,19 @@ const AllCareer = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, disable it!',
+      confirmButtonText: 'Yes, delete it!',
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
           const deleteResult = await deleteData(_id);
           if (deleteResult) {
             setJobs((prevJobs) =>
-              prevJobs.filter((jobs) => jobs._id !== _id)
+              prevJobs.map((job) => 
+                job._id === _id ? { ...job, isActive: false } : job 
+              )
             );
             Swal.fire({
-              title: 'Disabled!',
+              title: 'Deleted!',
               text: 'Career has been disabled',
               icon: 'success',
             });
@@ -130,19 +135,16 @@ const AllCareer = () => {
 
           <div className="p-4 md:flex justify-between items-center gap-4">
             <Link href={`/admin/hiring/${_id}/edit`}>
-              <button className="bg-green-500 flex rounded-lg px-6 py-2  font-medium text-white 
-                 hover:bg-green-700 transition-colors mb-4">
-                Edit
-              </button>
+              
+                <AiOutlineEdit className='text-green-600 text-2xl' />
             </Link>
-            <button
-              onClick={() => handleDelete(_id)}
-              className={`${
-                isActive ? 'bg-blue-500' : 'bg-red-500'
-              } text-white flex rounded-lg mb-4 px-6 py-2 font-medium hover:bg-red-700 transition-colors`}
-            >
-              {isActive ? "Disable" : "Deleted"}
-            </button>
+            
+            
+              <MdDeleteOutline 
+                onClick={() => handleDelete(_id)}
+                className={`${isActive ? 'text-blue-500' : 'text-red-500'} text-2xl cursor-pointer`}
+                />
+              
           </div>
         </div>
       ))
