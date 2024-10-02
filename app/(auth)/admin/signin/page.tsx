@@ -11,7 +11,6 @@ export default function SignIn() {
   const router = useRouter();
   const password = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
 
-  console.log(password);
 
   useEffect(() => {
     const loggedInStatus = localStorage.getItem("isLoggedIn");

@@ -20,7 +20,6 @@ const POST = async (request: any) => {
       { status: 201 }
     );
   } catch (error) {
-    console.log(error);
     return NextResponse.json(
       { message: "Check details, bad request" },
       { status: 500 }

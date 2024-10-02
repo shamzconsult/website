@@ -31,7 +31,6 @@ export default function EditCareer({
 
     const handleToggleChange = () => {
         setNewIsActive(!newIsActive); 
-        console.log('Toggle state:', !newIsActive); 
     };
 
     const handleSubmit = async (e: any) => {

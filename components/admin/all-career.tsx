@@ -68,7 +68,6 @@ const AllCareer = () => {
   const handleToggleChange = async (jobId: number, currentIsActive: boolean) => {
     try {
       const updatedJob = await toggleJobStatus(jobId, currentIsActive);
-      console.log("Updated Job: ", updatedJob);
 
       if (updatedJob) {
         setJobs((prevJobs) =>
@@ -92,7 +91,6 @@ const AllCareer = () => {
   const fetchJobs = async () => {
     try {
       const data = await getAllJob();
-      console.log("Fetched careers data:", data);
       setJobs(data.jobs);
     } catch (error) {
       console.log("Error loading data", error);
@@ -101,7 +99,6 @@ const AllCareer = () => {
 
   useEffect(() => {
     fetchJobs();
-    console.log(jobs);
   }, []);
 
   const handleDelete = async (_id: number) => {
