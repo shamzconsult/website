@@ -81,6 +81,33 @@ const DELETE = async (
   }
 };
 
+const PATCH = async (request: any, { params }: { params: { _id: string } }) => {
+  try {
+    const id = params._id;
+    const { isActive } = await request.json(); 
+    await connectMongoDB();
+
+    const updatedJob = await Hiring.findByIdAndUpdate(
+      id,
+      { isActive },
+      { new: true } 
+    );
+
+    if (!updatedJob) {
+      return NextResponse.json({ message: "Job not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(
+      { message: "Status updated successfully", job: updatedJob },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Failed to update Job status" },
+      { status: 500 }
+    );
+  }
+};
 
 
-export { GET, PUT, DELETE };
+export { GET, PUT, DELETE, PATCH };
