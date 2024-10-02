@@ -6,6 +6,8 @@ import Loading from "./loader";
 import BackIcon from "./icons/back-arrow";
 import { formatDate } from "./events";
 import Footer from "./ui/footer";
+import React from "react";
+
 interface EventType {
   image: string;
   startDate: number;
