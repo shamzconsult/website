@@ -77,7 +77,7 @@ const AllCareer = () => {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, disable it!',
+      confirmButtonText: 'Yes, delete it!',
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
@@ -89,7 +89,7 @@ const AllCareer = () => {
               )
             );
             Swal.fire({
-              title: 'Disabled!',
+              title: 'Deleted!',
               text: 'Career has been disabled',
               icon: 'success',
             });
