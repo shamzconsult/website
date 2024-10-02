@@ -50,7 +50,7 @@ const AllCareer = () => {
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     if (!isLoggedIn) {
-      router.push('careers');
+      router.push('/careers');
     }
   }, [router]);
 
@@ -84,7 +84,9 @@ const AllCareer = () => {
           const deleteResult = await deleteData(_id);
           if (deleteResult) {
             setJobs((prevJobs) =>
-              prevJobs.filter((jobs) => jobs._id !== _id)
+              prevJobs.map((job) => 
+                job._id === _id ? { ...job, isActive: false } : job 
+              )
             );
             Swal.fire({
               title: 'Disabled!',

@@ -11,7 +11,7 @@ const hiringSchema = new Schema(
     location: { type: String },
     isActive: { type: Boolean, default: true },
     formId: { type: String, required: true },
-    isDeleted:{type: Boolean, default: true},
+    isDeleted:{type: Boolean, default: false},
   },
   {
     timestamps: true,

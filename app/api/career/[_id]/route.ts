@@ -6,7 +6,7 @@ const GET = async (request: any, { params }: { params: { _id: string } }) => {
   try {
     const id = params._id;
     await connectMongoDB();
-    const job = await Hiring.findOne({ _id: id });
+    const job = await Hiring.findOne({ _id: id, isDeleted: { $ne: true } });
     if (!job) {
       return NextResponse.json({ message: "job not found!!" }, { status: 404 });
     }
@@ -58,7 +58,7 @@ const DELETE = async (
 
     const closeJobOpening = await Hiring.findByIdAndUpdate(
       params._id,
-      { isActive: false },
+      { isDeleted: true },
       { new: true }
     );
     if (!closeJobOpening) {
