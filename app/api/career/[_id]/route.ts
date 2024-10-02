@@ -6,7 +6,7 @@ const GET = async (request: any, { params }: { params: { _id: string } }) => {
   try {
     const id = params._id;
     await connectMongoDB();
-    const job = await Hiring.findOne({ _id: id });
+    const job = await Hiring.findOne({ _id: id, isDeleted: { $ne: true } });
     if (!job) {
       return NextResponse.json({ message: "job not found!!" }, { status: 404 });
     }
@@ -22,21 +22,23 @@ const GET = async (request: any, { params }: { params: { _id: string } }) => {
 const PUT = async (request: any, { params }: { params: { _id: string } }) => {
   try {
     const id = params._id;
+
     const {
       newTitle: title,
       newType: type,
       newMode: mode,
       newLocation: location,
+      newIsActive: isActive,
     } = await request.json();
+
     await connectMongoDB();
-    await Hiring.findByIdAndUpdate(id, {
-      title,
-      type,
-      mode,
-      location,
-    });
+
+    const updatedJob = await Hiring.findByIdAndUpdate(id, {
+      title, type, mode, location, isActive
+    }, { new: true });
+
     return NextResponse.json(
-      { message: "job post updated successfully!!" },
+      { message: "job post updated successfully!!", job: updatedJob },
       { status: 200 }
     );
   } catch (error) {
@@ -53,28 +55,59 @@ const DELETE = async (
 ) => {
   try {
     await connectMongoDB();
-    const dataToDelete = await Hiring.findByIdAndUpdate(
+
+    const closeJobOpening = await Hiring.findByIdAndUpdate(
       params._id,
-      { isActive: false },
+      { isDeleted: true },
       { new: true }
     );
-    if (!dataToDelete) {
+    if (!closeJobOpening) {
       return NextResponse.json(
-        { message: "Data to delete not found  " },
+        { message: "Job to delete not found  " },
         { status: 404 }
       );
     }
+
     return NextResponse.json(
-      { message: "Event deleted successfully" },
+      { message: "Job deleted successfully" },
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
-      { message: "Failed to delete event" },
+      { message: "Failed to delete Job" },
 
       { status: 500 }
     );
   }
 };
 
-export { GET, PUT, DELETE };
+const PATCH = async (request: any, { params }: { params: { _id: string } }) => {
+  try {
+    const id = params._id;
+    const { isActive } = await request.json(); 
+    await connectMongoDB();
+
+    const updatedJob = await Hiring.findByIdAndUpdate(
+      id,
+      { isActive },
+      { new: true } 
+    );
+
+    if (!updatedJob) {
+      return NextResponse.json({ message: "Job not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(
+      { message: "Status updated successfully", job: updatedJob },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Failed to update Job status" },
+      { status: 500 }
+    );
+  }
+};
+
+
+export { GET, PUT, DELETE, PATCH };

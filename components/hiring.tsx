@@ -103,7 +103,7 @@ export default async function HiringAdvert() {
             href='mailto:shamzbridgeconsult@gmail.com?subject=Contacting%20you%20about%20hiring%20service%20with%20Shamzbridge&body=Hi, %0D%0A%0D%0A'
             target='_blank'
             rel='noopener'
-            className='text-sm text-slate-800 font-medium hover:underline'
+            className='text-sm text-blue-800 font-medium hover:underline'
           >
             Want to hire? Contact us
           </a>

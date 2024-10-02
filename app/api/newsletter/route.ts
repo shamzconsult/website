@@ -15,7 +15,6 @@ const POST = async (request: any) => {
     }
 
     const result = await NewsLetter.create({ email });
-    console.log(result);
     return NextResponse.json(
       { message: "Successfully subscribed to Shamz-bridge newsletter" },
       { status: 201 }
