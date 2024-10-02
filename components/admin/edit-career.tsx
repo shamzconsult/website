@@ -67,7 +67,7 @@ export default function EditCareer({
         <div  className="flex justify-center items-center ">
             <form
                 onSubmit={handleSubmit}
-                className="w-full flex flex-col justify-center gap-6 bg-slate-50 rounded-md p-10 lg:w-[70%]"
+                className="max-w-6xl mx-auto flex flex-col justify-center gap-6 bg-slate-50 rounded-md p-10 md:w-[65%] lg:w-[70%]"
             >
                 <div className="flex flex-col gap-1 text-sm font-medium capitalize">
                     <label>Job title</label>
