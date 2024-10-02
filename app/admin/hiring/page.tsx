@@ -29,7 +29,6 @@ export default function AddNewJob() {
     <div className="mt-32 flex flex-col gap-16 justify-center items-center mx-auto w-[90%] p-10">
       <AddNewJobForm />
       <AllCareer/>
-      <Footer />
     </div>
   );
 }
