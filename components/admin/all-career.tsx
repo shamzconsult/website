@@ -1,18 +1,15 @@
-import { getAllJob } from '@/app/services/careerService';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
-import Footer from '../ui/footer';
-import dayjs from 'dayjs';
+import { getAllJob } from "@/app/services/careerService";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import Footer from "../ui/footer";
+import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import { AiOutlineEdit } from "react-icons/ai";
-import { MdDeleteOutline } from 'react-icons/md';
-
-
+import { MdDeleteOutline } from "react-icons/md";
 
 dayjs.extend(relativeTime);
-
 
 interface JobType {
   title: string;
@@ -28,18 +25,18 @@ interface JobType {
 const deleteData = async (_id: number) => {
   try {
     const res = await fetch(`/api/career/${_id}`, {
-      method: 'DELETE',
+      method: "DELETE",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
     });
     if (!res.ok) {
-      throw new Error('Unable to delete');
+      throw new Error("Unable to delete");
     }
     const data = await res.json();
     return data;
   } catch (error) {
-    console.error('Error deleting ', error);
+    console.error("Error deleting ", error);
   }
 };
 
@@ -48,55 +45,55 @@ const AllCareer = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     if (!isLoggedIn) {
-      router.push('/careers');
+      router.push("/careers");
     }
   }, [router]);
 
   const fetchJobs = async () => {
     try {
       const data = await getAllJob();
-      console.log("Fetched careers data:", data)
+      console.log("Fetched careers data:", data);
       setJobs(data.jobs);
     } catch (error) {
-      console.log('Error loading data', error);
+      console.log("Error loading data", error);
     }
   };
 
   useEffect(() => {
     fetchJobs();
-    console.log(jobs); 
+    console.log(jobs);
   }, []);
 
   const handleDelete = async (_id: number) => {
     Swal.fire({
-      title: 'Are you sure?',
-      text: 'You won’t be able to revert this operation',
-      icon: 'warning',
+      title: "Are you sure?",
+      text: "You won’t be able to revert this operation",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
           const deleteResult = await deleteData(_id);
           if (deleteResult) {
             setJobs((prevJobs) =>
-              prevJobs.map((job) => 
-                job._id === _id ? { ...job, isActive: false } : job 
+              prevJobs.map((job) =>
+                job._id === _id ? { ...job, isActive: false } : job
               )
             );
             Swal.fire({
-              title: 'Deleted!',
-              text: 'Career has been disabled',
-              icon: 'success',
+              title: "Deleted!",
+              text: "Career has been disabled",
+              icon: "success",
             });
             fetchJobs();
           }
         } catch (error) {
-          console.error('Error deleting', error);
+          console.error("Error deleting", error);
         }
       }
     });
@@ -106,55 +103,94 @@ const AllCareer = () => {
 
   return (
     <>
-      <section className="min-h-screen max-w-screen-lg mx-auto px-4 sm:px-6 mb-8">
-  <h1 className="font-bold mb-6 text-xl px-2 text-slate-800">
-    Careers ({totalJobs})
-  </h1>
-  <section className="flex flex-col gap-6 w-full">
-    {jobs?.length > 0 ? (
-      jobs.map(({ title, mode, location, type, _id, isActive, formId, createdAt }) => (
-        <div
-          key={_id}
-          className="bg-slate-100 hover:bg-slate-100/80 p-4 md:p-8 rounded-xl shadow-lg 
-                    min-[450px]:flex justify-between items-center text-center min-[450px]:text-left "
-        >
-          <div className="flex flex-col gap-4">
-            <p className="font-semibold text-lg text-slate-700 font-sans">
-              {title}
-            </p>
-            <ul className="text-sm flex gap-6 list-disc px-4 justify-center 
-                          min-[450px]:justify-start text-slate-500">
-              <li className="font-medium marker:text-orange-500">{type}</li>
-              <li className="font-medium marker:text-blue-500">{mode}</li>
-              {mode !== 'Remote' && (
-                <li className="font-medium marker:text-orange-500 capitalize">{location}</li>
-              )}
-            </ul>
-            <time className="text-sm text-slate-400">{dayjs(createdAt).fromNow()}</time>
-          </div>
+      <section className='min-h-screen max-w-screen-lg w-full mx-auto px-4 sm:px-6 mb-8'>
+        <h1 className='font-bold mb-6 text-xl px-2 text-slate-800'>
+          Careers ({totalJobs})
+        </h1>
+        <section className='flex flex-col gap-6 w-full'>
+          {jobs?.length > 0 ? (
+            jobs.map(
+              ({
+                title,
+                mode,
+                location,
+                type,
+                _id,
+                isActive,
+                formId,
+                createdAt,
+              }) => (
+                <div
+                  key={_id}
+                  className='bg-slate-100 hover:bg-slate-100/80 p-4 md:p-8 rounded-xl shadow-lg 
+                    flex flex-col md:flex-row justify-between items-center text-center min-[450px]:text-left '
+                >
+                  <div className='flex flex-col gap-4'>
+                    <p className='font-semibold text-lg text-slate-700 font-sans'>
+                      {title}
+                    </p>
+                    <ul
+                      className='text-sm flex gap-6 list-disc px-4 justify-center 
+                          min-[450px]:justify-start text-slate-500'
+                    >
+                      <li className='font-medium marker:text-orange-500'>
+                        {type}
+                      </li>
+                      <li className='font-medium marker:text-blue-500'>
+                        {mode}
+                      </li>
+                      {mode !== "Remote" && (
+                        <li className='font-medium marker:text-orange-500 capitalize'>
+                          {location}
+                        </li>
+                      )}
+                    </ul>
 
-          <div className="p-4 md:flex justify-between items-center gap-4">
-            <Link href={`/admin/hiring/${_id}/edit`}>
-              
-                <AiOutlineEdit className='text-green-600 text-2xl' />
-            </Link>
-            
-            
-              <MdDeleteOutline 
-                onClick={() => handleDelete(_id)}
-                className={`${isActive ? 'text-blue-500' : 'text-red-500'} text-2xl cursor-pointer`}
-                />
-              
-          </div>
-        </div>
-      ))
-    ) : (
-      <div className="text-gray-500">No careers available</div>
-    )}
-  </section>
-</section>
-``
-
+                    <time className='text-sm text-slate-400 text-center md:text-left'>
+                      {dayjs(createdAt).fromNow()}
+                    </time>
+                  </div>
+                  <div className='flex md:flex-col items-center gap-3 justify-between'>
+                    <div className='p-4 flex md:flex-row justify-between items-center gap-4'>
+                      <Link
+                        href={`/admin/hiring/${_id}/edit`}
+                        className='hover:bg-slate-300/80 rounded-full p-1'
+                      >
+                        <AiOutlineEdit className='text-slate-600 text-2xl' />
+                      </Link>
+                      <div className='hover:bg-slate-300/80 rounded-full p-1'>
+                        <MdDeleteOutline
+                          onClick={() => handleDelete(_id)}
+                          className='text-slate-600 text-2xl cursor-pointer'
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label
+                        htmlFor='toggle-activeness'
+                        className='inline-flex relative items-center cursor-pointer'
+                      >
+                        <input
+                          type='checkbox'
+                          id='toggle-activeness'
+                          className='sr-only peer'
+                        />
+                        <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600" />
+                        <span className='bg-slate-700 rounded-full p-1 px-1.5 text-xs text-slate-200 ml-3 font-medium'>
+                          {isActive ? "Active" : "Closed"}
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              )
+            )
+          ) : (
+            <div className='text-gray-500'>No careers available</div>
+          )}
+        </section>
+      </section>
+      ``
       <Footer />
     </>
   );
