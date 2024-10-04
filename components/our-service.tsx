@@ -2,7 +2,7 @@
 
 import { ServiceNumber } from "./service-numbers";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightDots, faHandshake, faHelmetSafety, faListCheck, faUsersGear, faVideoCamera } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightDots, faHandshake, faHelmetSafety, faMicrophoneAlt, faUsersGear, faVideoCamera } from '@fortawesome/free-solid-svg-icons';
 
 export default function Services() {
   return (
@@ -23,9 +23,8 @@ export default function Services() {
             {/* 1st item */}
             <div className="relative flex flex-col items-center p-6 bg-white rounded shadow-xl  hover:scale-105 hover:-translate-y-2 hover:shadow-xl duration-500">
               <div className="bg-slate-200 rounded-full">
-                <FontAwesomeIcon icon={faListCheck} className="w-16 h-16 -mt-1 text-orange-500  p-4 " />
+                <FontAwesomeIcon icon={faHelmetSafety} className="w-16 h-16 -mt-1 text-orange-500 p-4 " />              
               </div>
-
               <h4 className="text-xl font-bold text-center leading-snug tracking-tight mb-1 text-orange-600">
                 Programs/Projects Management
               </h4>
@@ -39,8 +38,6 @@ export default function Services() {
             <div className="bg-slate-200 rounded-full mb-2">
               <FontAwesomeIcon icon={faArrowUpRightDots} className="w-16 h-16 -mt-1 text-orange-500  p-4 " />
             </div>
-
-              
               <h4 className="text-xl font-bold leading-snug mt-2 tracking-tight mb-1 text-orange-600">
                 Capacity Building
               </h4>
@@ -54,7 +51,6 @@ export default function Services() {
               <div className="bg-slate-200 rounded-full mb-2">
                 <FontAwesomeIcon icon={faUsersGear} className="w-16 h-16 -mt-1 text-orange-500  p-4 " />
               </div>
-
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600">
                 Consultancy Services
               </h4>
@@ -66,8 +62,7 @@ export default function Services() {
             {/* 4th item */}
             <div className="relative flex flex-col items-center p-8 bg-white rounded shadow-xl hover:scale-105 hover:-translate-y-2 hover:shadow-xl duration-500">
               <div className="bg-slate-200 rounded-full mb-2">
-              
-              <FontAwesomeIcon icon={faHelmetSafety} className="w-16 h-16 -mt-1 text-orange-500 p-4 " />              
+              <FontAwesomeIcon icon={faMicrophoneAlt} className="w-16 h-16 -mt-1 text-orange-500 p-4 " />              
               </div>
               <h4 className="text-xl font-bold leading-snug tracking-tight mb-1 text-orange-600">
                 Event Host/Management
