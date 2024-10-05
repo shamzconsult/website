@@ -14,6 +14,7 @@ interface JobType {
   type: string;
   _id: number;
   isActive: boolean;
+  closing: string;
   formId: string;
   createdAt: string;
 }
@@ -51,6 +52,7 @@ export default async function HiringAdvert() {
                 type,
                 _id,
                 isActive,
+                closing,
                 formId,
                 createdAt,
               }) => (
@@ -77,10 +79,9 @@ export default async function HiringAdvert() {
                         )}
                       </ul>
                     </div>
-                    <time className='text-sm text-slate-400'>Posted: 
-                      {dayjs(createdAt).fromNow()}
+                    <time className='text-sm text-slate-400'>Posted : {dayjs(createdAt).fromNow()}
                     </time>
-                    <p className='text-sm text-slate-400'>Deadline: </p>
+                    <p className='text-sm text-slate-400'>Deadline : { closing} </p>
                   </div>
                   <div className='flex justify-center items-center mt-3 min-[450px]:mt-0'>
                     {isActive ? (
