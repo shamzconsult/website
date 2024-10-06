@@ -79,9 +79,11 @@ export default async function HiringAdvert() {
                         )}
                       </ul>
                     </div>
-                    <time className='text-sm text-slate-400'>Posted : {dayjs(createdAt).fromNow()}
-                    </time>
-                    <p className='text-sm text-slate-400'>Deadline : { closing} </p>
+                    <div className="flex gap-10">
+                      <time className='text-sm text-slate-400'>Posted : {dayjs(createdAt).fromNow()}
+                      </time>
+                      <p className='text-sm text-slate-400'>Deadline : { closing} </p>
+                    </div>
                   </div>
                   <div className='flex justify-center items-center mt-3 min-[450px]:mt-0'>
                     {isActive ? (
