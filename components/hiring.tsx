@@ -14,6 +14,7 @@ interface JobType {
   type: string;
   _id: number;
   isActive: boolean;
+  closing: string;
   formId: string;
   createdAt: string;
 }
@@ -26,7 +27,19 @@ export default async function HiringAdvert() {
   return (
     <>
       <section className='min-h-screen max-w-6xl mx-auto px-4 sm:px-6 mb-8'>
-        <h1 className='font-bold text-lg px-2 text-slate-800 mb-6'>
+      <div className='mt-1 text-right'>
+          <a
+            href='mailto:shamzbridgeconsult@gmail.com?subject=Contacting%20you%20about%20hiring%20service%20with%20Shamzbridge&body=Hi, %0D%0A%0D%0A'
+            target='_blank'
+            rel='noopener'
+            className='text-sm bg-orange-500 p-4 rounded-lg text-white font-medium hover:bg-orange-700'
+          >
+            Want to hire? Contact us
+          </a>
+        </div>
+
+        <div>
+        <h1 className='font-bold text-2xl px-2 text-slate-800 mb-6'>
           Careers ({totalJobs})
         </h1>
         <section className='flex flex-col gap-4 w-full'>
@@ -39,6 +52,7 @@ export default async function HiringAdvert() {
                 type,
                 _id,
                 isActive,
+                closing,
                 formId,
                 createdAt,
               }) => (
@@ -48,26 +62,28 @@ export default async function HiringAdvert() {
                 >
                   <div className='flex flex-col gap-1'>
                     <div className='flex flex-col gap-2'>
-                      <p className='font-medium text-slate-700 font-sans'>
+                      <p className='font-medium md:text-2xl text-slate-700 font-sans'>
                         {title}
                       </p>
-                      <ul className='text-sm flex gap-8 list-disc px-4 justify-center min-[450px]:justify-start text-slate-500'>
-                        <li className='font-medium marker:text-orange-500'>
+                      <ul className='text-sm mb-6 flex gap-8 list-disc px-4 justify-center min-[450px]:justify-start text-slate-500'>
+                        <li className='font-medium md:text-lg marker:text-orange-500'>
                           {type}
                         </li>
-                        <li className='font-medium marker:text-blue-500'>
+                        <li className='font-medium md:text-lg marker:text-blue-500'>
                           {mode}
                         </li>
                         {mode !== "Remote" && (
-                          <li className='font-medium marker:text-orange-500 capitalize'>
+                          <li className='font-medium md:text-lg marker:text-orange-500 capitalize'>
                             {location}
                           </li>
                         )}
                       </ul>
                     </div>
-                    <time className='text-sm text-slate-400'>
-                      {dayjs(createdAt).fromNow()}
-                    </time>
+                    <div className="flex gap-10">
+                      <time className='text-sm text-slate-400'>Posted : {dayjs(createdAt).fromNow()}
+                      </time>
+                      <p className='text-sm text-slate-400'>Deadline : { closing} </p>
+                    </div>
                   </div>
                   <div className='flex justify-center items-center mt-3 min-[450px]:mt-0'>
                     {isActive ? (
@@ -97,16 +113,8 @@ export default async function HiringAdvert() {
           ) : (
             <div className='text-gray-500'></div>
           )}
+          
         </section>
-        <div className='mt-3'>
-          <a
-            href='mailto:shamzbridgeconsult@gmail.com?subject=Contacting%20you%20about%20hiring%20service%20with%20Shamzbridge&body=Hi, %0D%0A%0D%0A'
-            target='_blank'
-            rel='noopener'
-            className='text-sm text-blue-800 font-medium hover:underline'
-          >
-            Want to hire? Contact us
-          </a>
         </div>
       </section>
       <Footer />

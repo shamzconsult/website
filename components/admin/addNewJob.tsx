@@ -10,6 +10,7 @@ export default function AddNewJobForm() {
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [mode, setMode] = useState("");
+  const [closing, setClosing] = useState("");
   const [location, setLocation] = useState("");
   const router = useRouter();
 
@@ -17,7 +18,7 @@ export default function AddNewJobForm() {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
 
-    if (!type || !title || !formId || !mode || (mode !== "Remote" && !location)) {
+    if (!type || !title || !formId || !mode || (mode !== "Remote" && !location) || !closing) {
       return;
     }
 
@@ -32,6 +33,7 @@ export default function AddNewJobForm() {
           formId,
           type,
           mode,
+          closing,
           location: mode === "Remote" ? "" : location,
         }),
       });
@@ -125,6 +127,18 @@ export default function AddNewJobForm() {
           </select>
         </div>
       )}
+
+      <div className='flex flex-col gap-1 text-sm font-medium capitalize'>
+        <label>Deadline</label>
+          <input 
+            onChange={(e) => setClosing(e.target.value)}
+            value={closing}
+            type="text"
+            placeholder="Job deadline"
+            className='rounded-md border bg-white border-slate-200 w-full p-2 outline-none placeholder:opacity-50'
+            required
+            />
+      </div>
 
       <button
         type='submit'

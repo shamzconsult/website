@@ -4,10 +4,10 @@ import { NextResponse } from "next/server";
 
 const POST = async (request: any) => {
   try {
-    const { title, type, mode, location, formId } = await request.json();
+    const { title, type, mode, location, formId, closing } = await request.json();
     await connectMongoDB();
 
-    if (!title || !type || !mode || (mode !== "Remote" && !location) || !formId) {
+    if (!title || !type || !mode || (mode !== "Remote" && !location) || !formId || !closing) {
       return NextResponse.json(
         { message: "Missing required fields" },
         { status: 400 }
@@ -20,6 +20,7 @@ const POST = async (request: any) => {
       type,
       mode,
       location,
+      closing,
       isDeleted: false
     });
 
