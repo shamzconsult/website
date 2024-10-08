@@ -76,7 +76,17 @@ const JobPostPreview = () => {
         isActive: false,
         location: "",
       };
-  const { title, description, eligibility, payment, about, mode, type, isActive, location } = jobDetails;
+  const {
+    title,
+    description,
+    eligibility,
+    payment,
+    about,
+    mode,
+    type,
+    isActive,
+    location,
+  } = jobDetails;
 
   return (
     <div className="">
@@ -98,7 +108,11 @@ const JobPostPreview = () => {
                 </div>
                 <div>
                   {isActive ? (
-                    <Link href="https://tally.so/r/3yvrA4" target="_blank" rel="noopener noreferrer">
+                    <Link
+                      href="https://tally.so/r/3yvrA4"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <button className="rounded-full bg-orange-600 hover:bg-orange-700 text-white duration-200 font-medium btn">
                         Apply
                       </button>
@@ -111,22 +125,37 @@ const JobPostPreview = () => {
                 </div>
               </div>
 
-              <div tabIndex={0} className="collapse collapse-arrow border-base-300 bg-white border">
-                <div className="collapse-title text-xl font-medium">Job Description</div>
+              <div
+                tabIndex={0}
+                className="collapse collapse-arrow border-base-300 bg-white border"
+              >
+                <div className="collapse-title text-xl font-medium">
+                  Job Description
+                </div>
                 <div className="collapse-content">
                   <p>{description}</p>
                 </div>
               </div>
 
-              <div tabIndex={0} className="collapse collapse-arrow border-base-300 bg-white border">
-                <div className="collapse-title text-xl font-medium">Job Criteria/Requirement</div>
+              <div
+                tabIndex={0}
+                className="collapse collapse-arrow border-base-300 bg-white border"
+              >
+                <div className="collapse-title text-xl font-medium">
+                  Job Criteria/Requirement
+                </div>
                 <div className="collapse-content">
                   <p>{eligibility}</p>
                 </div>
               </div>
 
-              <div tabIndex={0} className="collapse collapse-arrow border-base-300 bg-white border">
-                <div className="collapse-title text-xl font-medium">Payment Range</div>
+              <div
+                tabIndex={0}
+                className="collapse collapse-arrow border-base-300 bg-white border"
+              >
+                <div className="collapse-title text-xl font-medium">
+                  Payment Range
+                </div>
                 <div className="collapse-content">
                   <p>{payment}</p>
                 </div>
