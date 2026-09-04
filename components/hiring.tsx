@@ -1,6 +1,6 @@
 "use client";
 
-import { getAllJob } from "@/app/services/careerService";
+import { getAllJob } from "@/app/(site)/services/careerService";
 import Footer from "./ui/footer";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";

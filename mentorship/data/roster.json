@@ -1,0 +1,76 @@
+{
+  "hostCompany": {
+    "name": "Shamzbridge Consult",
+    "email": "shamzbridgeconsult@gmail.com"
+  },
+
+  "program": {
+    "name": "ITF-NECA TSDP PROGRAM",
+    "sponsor": "ITF-NECA TSDP",
+    "cadence": "Monthly",
+    "months": ["2026-08", "2026-09", "2026-10", "2026-11"]
+  },
+
+  "mentors": [
+    {
+      "name": "Fikayo Adepoju",
+      "email": "fikfikky@gmail.com",
+      "phone": "07068006051",
+      "groupId": 1
+    },
+      {
+      "name": "Mercy Ekoh",
+      "email": "m.ekoh@cchrglobal.com",
+      "phone": "08062186684",
+      "groupId": 2
+    },
+    {
+      "name": "Pishikeni Tukura",
+      "email": "pk.tukura@gmail.com",
+      "phone": "07062963540",
+      "groupId": 3
+    },
+    {
+      "name": "Ibrahim Babayemi",
+      "email": "ibrahimbabayemi@gmail.com",
+      "phone": "08032669095",
+      "groupId": 4
+    },
+    {
+      "name": "Oluwaseun Irekoya",
+      "email": "orekoyaoluwaseun@gmail.com",
+      "phone": "08062189432",
+      "groupId": 5
+    }
+  ],
+
+  "mentees": [
+    { "name": "Sarah Agada", "email": "sarahagada143@gmail.com", "gender": "Female", "groupId": 2 },
+    { "name": "Folakemi Ayodeji", "email": "folakemialayande86@gmail.com", "gender": "Female", "groupId": 3 },
+    { "name": "Ayuba Abdulkareem", "email": "abdulkareemayuba@gmail.com", "gender": "Male", "groupId": 3 },
+    { "name": "Hikmah Ishaq", "email": "hikmaheniola7@gmail.com", "gender": "Female", "groupId": 4 },
+    { "name": "Moses Bukola", "email": "mosesbukola554@gmail.com", "gender": "Female", "groupId": 1 },
+    { "name": "Fadilat Ojomo", "email": "ojomofadilat@gmail.com", "gender": "Female", "groupId": 2 },
+    { "name": "Victor Idoko", "email": "idokovictor127@gmail.com", "gender": "Male", "groupId": 1 },
+    { "name": "Samson Oguntade", "email": "oguntadesamson5@gmail.com", "gender": "Male", "groupId": 3 },
+    { "name": "Temiloluwa Stephen", "email": "temiloluwaorimolade70@gmail.com", "gender": "Male", "groupId": 2 },
+    { "name": "Alfred Habila", "email": "alfredjj53@gmail.com", "gender": "Male", "groupId": 3 },
+    { "name": "Magdaline Joshua", "email": "magdalinejo4@gmail.com", "gender": "Female", "groupId": 5 },
+    { "name": "Sophia Uzoamaka Okoro", "email": "okorouzoamakasophia@gmail.com", "gender": "Female", "groupId": 5 },
+    { "name": "Agnes Paul", "email": "maladypaul9@gmail.com", "gender": "Female", "groupId": 3 },
+    { "name": "Fadheelat Yetunde Abubakar", "email": "abubakarfadheelat123@gmail.com", "gender": "Female", "groupId": 5 },
+    { "name": "Samuel Odeh", "email": "samuelodeh64@gmail.com", "gender": "Male", "groupId": 1 },
+    { "name": "Aka Agape", "email": "loveagape268@gmail.com", "gender": "Male", "groupId": 1 },
+    { "name": "Ujunwa Chinaza Mbaeyi", "email": "cynthiambaeyi2001@gmail.com", "gender": "Female", "groupId": 2 },
+    { "name": "Adedeji Yusuff", "email": "adedejioladimeji84@gmail.com", "gender": "Male", "groupId": 5 },
+    { "name": "Joseph Ukim", "email": "josephukim7@gmail.com", "gender": "Male", "groupId": 4 },
+    { "name": "Faridah Okeniyi", "email": "funkyderin03@gmail.com", "gender": "Female", "groupId": 5 },
+    { "name": "Hadizat Funke Yusuf", "email": "hadizatfunke94@gmail.com", "gender": "Female", "groupId": 4 },
+    { "name": "Habiba Tela", "email": "habibatela1302@gmail.com", "gender": "Female", "groupId": 1 },
+    { "name": "Muhammad Abubakar", "email": "ma.abakar@gmail.com", "gender": "Male", "groupId": 2 },
+    { "name": "Faridah Abdulazeez Raji", "email": "whisper2faridah@gmail.com", "gender": "Female", "groupId": 4 },
+    { "name": "Henry Eze", "email": "ezehenrychizoba@gmail.com", "gender": "Male", "groupId": 4 },
+    { "name": "Solomon Osheidu", "email": "osheidusolomon@gmail.com", "gender": "Male", "groupId": 1 },
+    { "name": "Adejumo Taiwo", "email": "", "gender": "Male", "groupId": 4 }
+  ]
+}
