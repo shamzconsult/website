@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { UpdatedAlert } from "../utils/login-alert";
-import { NigeriaStates } from "@/app/services/nigeriaStates";
+import { NigeriaStates } from "@/app/(site)/services/nigeriaStates";
 
 export default function EditCareer({
   _id,

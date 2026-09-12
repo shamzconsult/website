@@ -1,0 +1,236 @@
+/* ==========================================================================
+   MENTORSHIP FEEDBACK PORTAL — Tailwind source
+   ==========================================================================
+   This is the portal's original stylesheet, unchanged apart from the import
+   line and the @source block below.
+
+   The portal is built with Tailwind v4; the marketing site is on v3. Rather
+   than translate one to the other — which moved shadows, radii and gradient
+   interpolation, and changed how the portal rendered — each keeps its own
+   Tailwind. This file is compiled by the v4 CLI into portal.css, which is what
+   the portal's layout imports:
+
+       npm run portal:css          once
+       npm run portal:css:watch    while working on the portal
+
+   "tailwindcss4" is an npm alias for tailwindcss@4 (see package.json). The
+   bare name resolves to the v3 copy the site's PostCSS pipeline uses, so the
+   alias is how this file reaches v4.
+   ========================================================================== */
+@import "tailwindcss4" source(none);
+
+/* ==========================================================================
+   SOURCES
+   ==========================================================================
+   Standalone, this file sat at the root of its own project and Tailwind found
+   the source files by itself. Here it shares a repo with the marketing site,
+   so the scan is limited to the portal's own code — otherwise the site's
+   class names would generate utilities in the portal's stylesheet.
+
+   Paths are relative to this file: "." is app/(portal).
+   ========================================================================== */
+@source "./**/*.{ts,tsx}";
+@source "../../mentorship/**/*.{ts,tsx}";
+
+/* ==========================================================================
+   DESIGN TOKENS
+   Brand: Shamzbridge orange (primary) + a teal accent used for the mentee
+   experience, over a deep "ink" navy canvas.
+   ========================================================================== */
+@theme {
+  --color-brand-50: #fff5ed;
+  --color-brand-100: #ffe8d5;
+  --color-brand-200: #fecdaa;
+  --color-brand-300: #fdab74;
+  --color-brand-400: #fb7e3c;
+  --color-brand-500: #f9601a;
+  --color-brand-600: #ea4708;
+  --color-brand-700: #c23409;
+  --color-brand-800: #9a2b10;
+  --color-brand-900: #7c2610;
+
+  --color-teal-50: #eefdfa;
+  --color-teal-100: #d3f9f2;
+  --color-teal-200: #abf1e7;
+  --color-teal-300: #71e4d7;
+  --color-teal-400: #35cdbf;
+  --color-teal-500: #14b0a5;
+  --color-teal-600: #0b8d87;
+  --color-teal-700: #0d716d;
+  --color-teal-800: #105a58;
+  --color-teal-900: #124b49;
+
+  --color-ink-50: #f4f6fb;
+  --color-ink-100: #e7ebf4;
+  --color-ink-200: #cbd4e5;
+  --color-ink-300: #9dadcc;
+  --color-ink-400: #6980ae;
+  --color-ink-500: #486393;
+  --color-ink-600: #384e79;
+  --color-ink-700: #2f4062;
+  --color-ink-800: #1d2942;
+  --color-ink-900: #131c30;
+  --color-ink-950: #070c18;
+
+  --font-display: var(--font-sora), var(--font-geist-sans), system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.2s linear infinite;
+  --animate-rise: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) scale(1.04);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-ink-950);
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+/* Keyboard focus that reads clearly on both the dark and light surfaces. */
+:focus-visible {
+  outline: 2px solid var(--color-brand-500);
+  outline-offset: 2px;
+  border-radius: 0.35rem;
+}
+
+::selection {
+  background: var(--color-brand-500);
+  color: white;
+}
+
+/* Tidy scrollbars inside the searchable people lists. */
+.scroll-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ink-200) transparent;
+}
+.scroll-slim::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  background: var(--color-ink-200);
+  border-radius: 999px;
+}
+.scroll-slim::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ==========================================================================
+   REUSABLE SURFACES
+   ========================================================================== */
+@utility glass-card {
+  background: color-mix(in srgb, white 7%, transparent);
+  border: 1px solid color-mix(in srgb, white 12%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+@utility grid-texture {
+  background-image:
+    linear-gradient(color-mix(in srgb, white 4%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, white 4%, transparent) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT — the "Download PDF" path on the organiser dashboard
+   ==========================================================================
+   The button calls window.print(); these rules turn the screen dashboard into
+   a report page. Chart fills are real background colours, so print-color-adjust
+   has to be forced or browsers drop them and every bar comes out white.
+   ========================================================================== */
+@media print {
+  html,
+  body {
+    background: white !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+  }
+
+  @page {
+    margin: 14mm;
+  }
+
+  /* Site chrome and the dark hero belong to the app, not to the report. */
+  body > header,
+  body > footer,
+  .grid-texture {
+    display: none !important;
+  }
+
+  /* Keep a card whole across a page break wherever the page allows it. */
+  main section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border-color: var(--color-ink-200) !important;
+  }
+
+  /* Tables are the part worth spilling; let long ones flow. */
+  main section:has(table) {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  main table {
+    font-size: 10px;
+  }
+
+  /* Nothing on a printed page scrolls sideways. */
+  .overflow-x-auto {
+    overflow: visible !important;
+  }
+}

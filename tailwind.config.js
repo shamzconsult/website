@@ -5,6 +5,11 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx, mdx}",
     "./pages/**/*.{js,ts,jsx,tsx, mdx}",
     "./components/**/*.{js,ts,jsx,tsx, mdx}",
+    // The mentorship portal ships its own Tailwind (v4, built by
+    // scripts/build-portal-css.mjs) and must not be scanned by this one.
+    // Written with * rather than escaped parens: fast-glob does not match
+    // "\\(portal\\)" on Windows, so the escaped form silently matches nothing.
+    "!./app/*portal*/**",
   ],
   theme: {
   	extend: {

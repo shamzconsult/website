@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "@/app/utils/cn";
+import { cn } from "@/app/(site)/utils/cn";
 
 export const FlipWords = ({
   words,
