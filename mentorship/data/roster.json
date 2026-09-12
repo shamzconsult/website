@@ -1,5 +1,5 @@
 {
-  "hostCompany": {
+   "hostCompany": {
     "name": "Shamzbridge Consult",
     "email": "shamzbridgeconsult@gmail.com"
   },
@@ -18,7 +18,7 @@
       "phone": "07068006051",
       "groupId": 1
     },
-      {
+    {
       "name": "Mercy Ekoh",
       "email": "m.ekoh@cchrglobal.com",
       "phone": "08062186684",
